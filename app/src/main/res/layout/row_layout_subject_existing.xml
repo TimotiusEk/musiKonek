@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_margin="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@android:color/white">
+
+            <ImageView
+                android:id="@+id/subject_bg_existing"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/guitar" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_below="@+id/subject_bg_existing"
+                >
+
+                <TextView
+                    android:id="@+id/show_kursus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kursus "
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:id="@+id/subject_name_existing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/show_kursus"
+                    android:text="GITAR"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:id="@+id/show_dengan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/show_kursus"
+                    android:text="DENGAN "
+                    android:paddingTop="10dp"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:id="@+id/subject_teacher_existing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PAK DHANNY"
+                    android:paddingTop="10dp"
+                    android:layout_below="@+id/show_kursus"
+                    android:layout_toEndOf="@id/show_dengan"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
