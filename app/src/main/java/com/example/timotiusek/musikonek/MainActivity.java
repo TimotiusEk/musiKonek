@@ -100,6 +100,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         } else if(id == R.id.menu_edit_profile){
             changeFragment(new EditProfileFragment());
+        } else if(id == R.id.menu_attendance){
+            changeFragment(new AttendanceFragment());
         }
 
         drawer.closeDrawer(GravityCompat.START);

@@ -31,13 +31,22 @@ public class Subject {
         this.teacher = teacher;
     }
 
-    public Subject(int teacherImage, int coursePackage, String dateGraduated, int image, String name, String teacher, String status) {
+    public Subject(int teacherImage, int coursePackage, String dateGraduated, int image, String name, String teacher) {
         this.image = image;
         this.name = name;
         this.teacher = teacher;
         this.coursePackage = coursePackage;
         this.dateGraduated = dateGraduated;
         this.teacherImage = teacherImage;
+    }
+
+    public Subject(int teacherImage, String name, int coursePackage, int image, String time, String teacher, String status) {
+        this.teacherImage = teacherImage;
+        this.name = name;
+        this.coursePackage = coursePackage;
+        this.image = image;
+        this.time = time;
+        this.teacher = teacher;
         this.status = status;
     }
 

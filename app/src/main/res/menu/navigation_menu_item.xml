@@ -12,5 +12,11 @@
             android:icon="@mipmap/ic_launcher"
             android:title="Edit Profile"
             />
+
+        <item
+            android:id="@+id/menu_attendance"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Attendance"
+            />
     </group>
 </menu>

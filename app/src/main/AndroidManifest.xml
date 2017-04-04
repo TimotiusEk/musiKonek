@@ -12,9 +12,19 @@
         <activity
             android:name=".SplashScreen"
             android:noHistory="true"
-            android:theme="@style/SplashScreenTheme"/>
-            <activity android:name=".MainActivity"
-                android:theme="@style/NoActionBarTheme">
+            android:theme="@style/SplashScreenTheme" />
+        <activity
+            android:name=".CourseDetailActivity"
+            android:label="@string/title_activity_cousre_detail"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".ProfileActivity"
+            android:theme="@style/NoActionBarTheme"/>
+        <activity android:name=".TeacherProfileActivity"
+            android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,6 +37,7 @@
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/NoActionBarTheme" />
+
     </application>
 
 </manifest>

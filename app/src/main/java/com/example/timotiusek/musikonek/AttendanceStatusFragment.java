@@ -40,15 +40,23 @@ public class AttendanceStatusFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_attendance_status, container, false);
         ButterKnife.bind(this,v);
+        notFilteredData = new ArrayList<>();
+        filteredData = new ArrayList<>();
+        notFilteredData.add(new Subject(R.drawable.avatar, "Kursus Piano Pemula", 12, R.drawable.piano, "21:01 WIB", "Bu Vonny", "PENDING"));
+        notFilteredData.add(new Subject(R.drawable.avatar, "Kursus Bass Pemula", 21, R.drawable.bass, "06:66 WIB", "Pak Epen", "ACCEPTED"));
+        notFilteredData.add(new Subject(R.drawable.avatar, "Kursus Trumpet Intermediate", 30, R.drawable.trumpet, "11:11 WIB", "Bu Aya", "REJECTED"));
         this.inflater = inflater;
         this.container = container;
-        if(whichView.equals("PENDING")){
 
-        } else if(whichView.equals("ACCEPTED")){
-
-        } else if(whichView.equals("PENDING")){
-
+        for(Subject subject : notFilteredData){
+            if(subject.getStatus().equals(whichView)){
+                filteredData.add(subject);
+            }
         }
+
+        AttendanceStatusAdapter statusAdapter = new AttendanceStatusAdapter(filteredData, getActivity());
+        listView.setAdapter(statusAdapter);
+
         // Inflate the layout for this fragment
         return v;
     }

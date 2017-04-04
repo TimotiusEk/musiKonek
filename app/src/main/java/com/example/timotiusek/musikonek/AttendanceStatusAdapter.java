@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -26,6 +27,21 @@ public class AttendanceStatusAdapter extends BaseAdapter {
 
     @BindView(R.id.teacher_image)
     ImageView teacherImage;
+
+    @BindView(R.id.course_image)
+    ImageView courseImage;
+
+    @BindView(R.id.course_name)
+    TextView courseName;
+
+    @BindView(R.id.course_package)
+    TextView coursePackage;
+
+    @BindView(R.id.course_time)
+    TextView courseTime;
+
+    @BindView(R.id.attendance_teacher)
+    TextView attendanceTeacher;
 
     public AttendanceStatusAdapter(ArrayList<Subject> subjects, Context c){
         this.subjects = subjects;
@@ -49,12 +65,19 @@ public class AttendanceStatusAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final Teacher teacher = (Teacher) getItem(position);
+        final Subject subject = (Subject) getItem(position);
         inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if(convertView == null){
             convertView = inflater.inflate(R.layout.row_layout_attendance_status, parent, false);
             ButterKnife.bind(this, convertView);
 
+            teacherImage.setImageResource(subject.getTeacherImage());
+            courseImage.setImageResource(subject.getImage());
+            courseName.setText(subject.getName());
+            String coursePackageStr = "Paket " + subject.getCoursePackage() + " kali pertemuan";
+            coursePackage.setText(coursePackageStr);
+            courseTime.setText(subject.getTime());
+            attendanceTeacher.setText(subject.getTeacher());
 
         }
         return convertView;

@@ -46,9 +46,17 @@
 
     <style name="TextLabel" parent="TextAppearance.AppCompat.Medium.Inverse">
         <item name="android:textColor">@color/colorPrimary</item>
-
     </style>
 
+    <style name="WhiteText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="MediumWhiteText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">23sp</item>
+    </style>
 
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
