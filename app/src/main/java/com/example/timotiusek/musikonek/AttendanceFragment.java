@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,8 @@ public class AttendanceFragment extends Fragment {
     @BindView(R.id.view_pager_attendance)
     ViewPager viewPager;
 
+    MainActivity ma;
+
     public AttendanceFragment() {
         // Required empty public constructor
     }
@@ -36,13 +39,16 @@ public class AttendanceFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_attendance, container, false);
         ButterKnife.bind(this, view);
 
+        ma = (MainActivity) getActivity();
+        ma.setChecked(R.id.menu_attendance);
+
         viewPager.setAdapter(new MyAdapter(getActivity().getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
         // Inflate the layout for this fragment
         return view;
     }
 
-    class MyAdapter extends FragmentPagerAdapter {
+    class MyAdapter extends FragmentStatePagerAdapter {
 
         public MyAdapter(FragmentManager fm) {
             super(fm);

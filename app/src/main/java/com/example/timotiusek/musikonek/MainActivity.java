@@ -1,6 +1,7 @@
 package com.example.timotiusek.musikonek;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -14,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,13 +30,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
     ActionBarDrawerToggle toggle;
+    BrowseFragment browseFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        changeFragment(new MainFragment());
+        changeFragment(new DashboardFragment());
+        browseFragment = new BrowseFragment();
 
         setSupportActionBar(toolbar);
         toggle = new ActionBarDrawerToggle(
@@ -45,15 +47,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(MainActivity.this);
+        navigationView.setItemIconTintList(null);
 
         setChecked(R.id.menu_home);
+
+
+
+        getSupportActionBar().setTitle("MainActivity");
     }
 
     public void changeFragment(Fragment newFragment) {
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.replace(R.id.fragment_container, newFragment);
-
         mFragmentTransaction.commit();
     }
 
@@ -95,13 +101,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.menu_home) {
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
+            changeFragment(new DashboardFragment());
         } else if(id == R.id.menu_edit_profile){
             changeFragment(new EditProfileFragment());
         } else if(id == R.id.menu_attendance){
             changeFragment(new AttendanceFragment());
+        } else if(id == R.id.menu_browse){
+            changeFragment(new BrowseFragment());
+        } else if(id == R.id.menu_profile){
+           Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -112,19 +121,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(id);
     }
 
-    public void setHomeToBackBtn(){
+    public void setHomeToBackBtn(final Fragment fragment){
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                changeFragment(fragment);
+                setSupportActionBar(toolbar);
+                toggle = new ActionBarDrawerToggle(
+                        MainActivity.this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                drawer.setDrawerListener(toggle);
+                toggle.syncState();
             }
         });
     }
-
 
 }
 

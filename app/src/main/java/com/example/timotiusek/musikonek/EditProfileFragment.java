@@ -13,7 +13,7 @@ import android.view.ViewGroup;
  */
 public class EditProfileFragment extends Fragment {
 
-
+    MainActivity ma;
     public EditProfileFragment() {
         // Required empty public constructor
     }
@@ -22,6 +22,9 @@ public class EditProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        ma = (MainActivity) getActivity();
+        ma.setChecked(R.id.menu_edit_profile);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_edit_profile, container, false);
     }

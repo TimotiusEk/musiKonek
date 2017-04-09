@@ -8,15 +8,27 @@
             android:title="Home" />
 
         <item
-            android:id="@+id/menu_edit_profile"
+            android:id="@+id/menu_browse"
             android:icon="@mipmap/ic_launcher"
-            android:title="Edit Profile"
+            android:title="Browse"
             />
 
         <item
             android:id="@+id/menu_attendance"
             android:icon="@mipmap/ic_launcher"
             android:title="Attendance"
+            />
+
+        <item
+            android:id="@+id/menu_profile"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Profile"
+            />
+
+        <item
+            android:id="@+id/menu_edit_profile"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Edit Profile"
             />
     </group>
 </menu>

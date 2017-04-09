@@ -100,6 +100,7 @@ public class SubjectAdapter extends BaseAdapter {
                 subjectNameGraduated.setText(subject.getName());
                 subjectTeacherGraduated.setText(subject.getTeacher());
                 studentImage.setImageResource(subject.getStudentImage());
+
                 String howManyCourseStr = "Paket "+subject.getCoursePackage() + " Kali Pertemuan";
                 howManyCourse.setText(howManyCourseStr);
                 String dateGraduatedStr = "selesai pada " + subject.getDateGraduated();

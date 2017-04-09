@@ -1,5 +1,6 @@
 package com.example.timotiusek.musikonek;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -34,6 +35,7 @@ public class SubjectViewFragment extends Fragment {
     LayoutInflater inflater;
     ViewGroup container;
     MainActivity ma;
+    BrowseFragment bf;
 
     public SubjectViewFragment(){
     }
@@ -88,13 +90,18 @@ public class SubjectViewFragment extends Fragment {
         subjects.add(new Subject(R.drawable.flute, "FLUTE"));
         subjects.add(new Subject(R.drawable.trumpet, "TRUMPET"));
         ma = (MainActivity) getActivity();
+        bf = new BrowseFragment();
         SubjectAdapter subjectAdapter = new SubjectAdapter(subjects, getActivity(), "ALL");
         subjectGridView.setAdapter(subjectAdapter);
         subjectGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ma.changeFragment(new SubjectViewAllTeacherFragment(subjects.get(position).getName()));
-                ma.setHomeToBackBtn();
+//                ma.changeFragment(new SubjectViewAllTeacherFragment(subjects.get(position).getName()));
+//                ma.setHomeToBackBtn(bf);
+                Intent intent = new Intent(getActivity(), SubjectViewAllTeacherActivity.class);
+                intent.putExtra("subject", subjects.get(position).getName());
+                startActivity(intent);
+
             }
         });
     }

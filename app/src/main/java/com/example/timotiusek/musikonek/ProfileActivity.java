@@ -2,6 +2,7 @@ package com.example.timotiusek.musikonek;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -16,6 +17,12 @@ public class ProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ProfileActivity.super.onBackPressed();
+                }
+            });
         }
 
     }
