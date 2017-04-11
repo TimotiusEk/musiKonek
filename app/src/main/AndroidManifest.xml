@@ -35,11 +35,11 @@
         </activity>
         <activity
             android:name=".SignInActivity"
-            android:theme="@style/NoActionBarTheme"
+            android:theme="@style/SignTheme"
             android:noHistory="true"/>
         <activity
             android:name=".SignUpActivity"
-            android:theme="@style/NoActionBarTheme"
+            android:theme="@style/SignTheme"
             android:noHistory="true"/>
         <activity android:name=".SubjectViewAllTeacherActivity"
             android:theme="@style/NoActionBarTheme"></activity>
