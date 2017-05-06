@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
@@ -60,6 +61,8 @@ public class DashboardFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
         BarChart reportChart = (BarChart) view.findViewById(R.id.report_bar_chart);
         BarChart taskChart = (BarChart) view.findViewById(R.id.task_bar_chart);
+        reportChart.animateY(1000, Easing.EasingOption.Linear);
+        taskChart.animateY(1000, Easing.EasingOption.Linear);
 
         setupChart(reportChart);
         setupChart(taskChart);

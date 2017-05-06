@@ -11,10 +11,9 @@ import android.widget.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class CourseDetailActivity extends AppCompatActivity {
-    @BindView(R.id.teacher_desc)
-    LinearLayout teacherDesc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +27,6 @@ public class CourseDetailActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
-        teacherDesc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CourseDetailActivity.this, TeacherProfileActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -47,5 +38,11 @@ public class CourseDetailActivity extends AppCompatActivity {
                 return true;
         }
         return (super.onOptionsItemSelected(menuItem));
+    }
+
+    @OnClick(R.id.fab)
+    void openTeacherProfile(){
+        Intent intent = new Intent(CourseDetailActivity.this, TeacherProfileActivity.class);
+        startActivity(intent);
     }
 }

@@ -40,6 +40,7 @@ public class AttendanceFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         ma = (MainActivity) getActivity();
+        ma.setTitle("Attendance");
         ma.setChecked(R.id.menu_attendance);
 
         viewPager.setAdapter(new MyAdapter(getActivity().getSupportFragmentManager()));

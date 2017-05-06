@@ -1,7 +1,7 @@
 package com.example.timotiusek.musikonek;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -19,9 +19,10 @@ import android.view.View;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R.id.nav_view) NavigationView navigationView;
+    @BindView(R.id.nav_view)
+    NavigationView navigationView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
     @BindView(R.id.toolbar)
@@ -32,12 +33,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ActionBarDrawerToggle toggle;
     BrowseFragment browseFragment;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        changeFragment(new DashboardFragment());
+        changeFragment(new HomeFragment());
+
         browseFragment = new BrowseFragment();
 
         setSupportActionBar(toolbar);
@@ -47,13 +50,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(MainActivity.this);
-        navigationView.setItemIconTintList(null);
 
         setChecked(R.id.menu_home);
-
-
-
-        getSupportActionBar().setTitle("MainActivity");
     }
 
     public void changeFragment(Fragment newFragment) {
@@ -101,27 +99,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.menu_home) {
-            changeFragment(new DashboardFragment());
-        } else if(id == R.id.menu_edit_profile){
-            changeFragment(new EditProfileFragment());
-        } else if(id == R.id.menu_attendance){
+            changeFragment(new HomeFragment());
+        } else if (id == R.id.menu_attendance) {
             changeFragment(new AttendanceFragment());
-        } else if(id == R.id.menu_browse){
+        } else if (id == R.id.menu_course) {
             changeFragment(new BrowseFragment());
-        } else if(id == R.id.menu_profile){
-           Intent intent = new Intent(this, ProfileActivity.class);
+        } else if (id == R.id.menu_profile) {
+            Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
+        } else if (id == R.id.menu_exit_application) {
+            System.exit(0);
         }
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    public void setChecked(int id){
+    public void setChecked(int id) {
         navigationView.setCheckedItem(id);
     }
 
-    public void setHomeToBackBtn(final Fragment fragment){
+    public void setHomeToBackBtn(final Fragment fragment) {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -136,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
+
 
 }
 

@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.timotiusek.musikonek.ReportPageFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+   <ListView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/report_list_view"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_white_18dp"
+        app:backgroundTint="#3F569A"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="15dp"
+        android:id="@+id/add_report_fab_frp"/>
+</FrameLayout>

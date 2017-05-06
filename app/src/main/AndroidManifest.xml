@@ -9,10 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".CourseDetailActivity"
-            android:label="@string/title_activity_cousre_detail"
+            android:label="@string/title_activity_course_detail"
             android:theme="@style/NoActionBarTheme" />
         <activity
             android:name=".ProfileActivity"
@@ -20,13 +19,17 @@
         <activity
             android:name=".TeacherProfileActivity"
             android:theme="@style/NoActionBarTheme" />
+        <activity android:name=".RejectAttendanceVerificationActivity" />
+        <activity android:name=".AttendanceVerificationActivity" />
+        <activity android:name=".ReportDetailActivity" />
+        <activity android:name=".ScheduleActivity" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/NoActionBarTheme"/>
+            android:theme="@style/NoActionBarTheme" />
         <activity
             android:name=".SplashScreen"
             android:noHistory="true"
-            android:theme="@style/SplashScreenTheme" >
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,14 +38,17 @@
         </activity>
         <activity
             android:name=".SignInActivity"
-            android:theme="@style/SignTheme"
-            android:noHistory="true"/>
+            android:noHistory="true"
+            android:theme="@style/SignTheme" />
         <activity
             android:name=".SignUpActivity"
-            android:theme="@style/SignTheme"
-            android:noHistory="true"/>
-        <activity android:name=".SubjectViewAllTeacherActivity"
-            android:theme="@style/NoActionBarTheme"></activity>
+            android:noHistory="true"
+            android:theme="@style/SignTheme" />
+        <activity
+            android:name=".SubjectViewAllTeacherActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".ConfirmationScreenActivity"></activity>
     </application>
 
 </manifest>

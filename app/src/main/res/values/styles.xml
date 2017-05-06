@@ -12,7 +12,10 @@
         <item name="colorControlNormal">#ede8e8</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="android:itemBackground">@android:color/white</item>
     </style>
+
+
 
     <style name="SignTheme" parent="NoActionBarTheme">
         <item name="colorControlNormal">@android:color/white</item>

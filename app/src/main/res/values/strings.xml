@@ -25,7 +25,7 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
-    <string name="title_activity_cousre_detail">CousreDetailActivity</string>
+    <string name="title_activity_course_detail">CourseDetailActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

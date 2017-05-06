@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.timotiusek.musikonek.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/screen_center"
+            android:background="@drawable/nature"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jelajahi dunia musikmu"
+                android:textSize="30sp"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cari suara musik yang kamu inginkan"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="25dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CARI"
+                android:textColor="@android:color/white"
+                android:background="#3F569A"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:id="@+id/search_btn"
+                android:layout_marginTop="45dp"
+                />
+
+        </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/screen_center"
+        android:layout_margin="3dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/screen_center"
+        android:background="@drawable/recommendation"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lihat rekomendasi kami"
+            android:textSize="30sp"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pilihan kursus baru dan menarik setiap harinya"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="25dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LIHAT"
+            android:textColor="@android:color/white"
+            android:background="#3F569A"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:id="@+id/see_recommendation_btn"
+            android:layout_marginTop="45dp"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

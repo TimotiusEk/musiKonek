@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="15dp"
+    android:weightSum="1"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lagu &amp; Pekerjaan Rumah"
+        android:textColor="#b7b7b7"
+        android:layout_weight="0"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jonathan harus menyelesaikan [JUDUL LAGU] yang diberikan dari Minggu p kursus. Hari ini sudah cukup lancar"
+        android:textSize="18sp"
+        android:layout_weight="0"/>
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Latihan untuk Pertemuan Berikutnya"
+    android:textColor="#b7b7b7"
+    android:layout_marginTop="30dp"
+    android:layout_weight="0"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latih kembali bagian baru. Masih bermain dengan tersendat-sendat. Ingat untuk bermain dengan Tempo yang lebih pelan untuk memahiri"
+        android:textSize="18sp"
+        android:layout_weight="0"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Komentar"
+        android:textColor="#b7b7b7"
+        android:layout_marginTop="30dp"
+        android:layout_weight="0"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_weight="1"
+        android:text="-Lebih berkonsentrasi saat latihan \n -Jangan terlalu banyak istirahat"/>
+
+
+
+
+    <Button
+        android:id="@+id/close_btn"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/round_btn"
+        android:text="Tutup"
+        android:textColor="@android:color/white"
+        android:layout_weight="0"
+        />
+</LinearLayout>

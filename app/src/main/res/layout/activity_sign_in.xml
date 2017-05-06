@@ -19,7 +19,7 @@
         android:layout_gravity="center_horizontal"
         android:adjustViewBounds="true"
         android:src="@drawable/musikonek_logo"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="25dp"/>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -58,6 +58,16 @@
         android:layout_marginTop="60dp"
         android:id="@+id/sign_in_btn"
         />
+
+    <TextView
+        android:layout_marginTop="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not registered? Click here!"
+        android:id="@+id/link_to_register"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:textSize="15sp"/>
 
 
 

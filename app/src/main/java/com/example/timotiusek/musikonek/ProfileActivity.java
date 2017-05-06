@@ -1,18 +1,25 @@
 package com.example.timotiusek.musikonek;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ProfileActivity extends AppCompatActivity {
-
+    @BindView(R.id.toolbar_course_detail) android.support.v7.widget.Toolbar toolbar;
+    @BindView(R.id.link_to_edit_profile)
+    ImageView linkToEditProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        ButterKnife.bind(this);
 
-
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar)findViewById(R.id.toolbar_course_detail);
         toolbar.setTitle("Jonathan Simananda");
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null){
@@ -25,5 +32,10 @@ public class ProfileActivity extends AppCompatActivity {
             });
         }
 
+    }
+
+    @OnClick(R.id.link_to_edit_profile)
+    void goToEditProfile(){
+        startActivity(new Intent(this, EditProfileActivity.class));
     }
 }

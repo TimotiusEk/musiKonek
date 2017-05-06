@@ -2,7 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="@color/ForestGreen"
+    android:background="@drawable/keyboard"
+    android:backgroundTintMode="src_over"
+    android:backgroundTint="#40000000"
+
     >
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -10,7 +13,7 @@
         android:id="@+id/profile_image"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/avatar"
         android:layout_marginTop="30dp"
         android:layout_marginStart="24dp"
         />
@@ -23,23 +26,22 @@
         android:textStyle="bold"
         android:gravity="start"
         android:id="@+id/username"
-        android:layout_above="@+id/department"
+        android:layout_above="@+id/email_label"
         android:layout_alignStart="@+id/profile_image"
         android:layout_below="@id/profile_image"
-        android:text="Ari Wibowo"
+        android:text="Jonathan Simananda"
         android:layout_marginTop="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/department"
+        android:id="@+id/email_label"
         android:gravity="start"
         android:layout_marginBottom="15dp"
-        android:textSize="16sp"
         android:textColor="#fff"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/username"
-        android:text="Sales"
+        android:text="jonathan.simananda@gmail.com"
 
         />
 

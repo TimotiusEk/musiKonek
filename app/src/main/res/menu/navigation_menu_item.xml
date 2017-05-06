@@ -4,31 +4,29 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_home"
-            android:icon="@mipmap/ic_launcher"
-            android:title="Home" />
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Beranda" />
 
         <item
-            android:id="@+id/menu_browse"
-            android:icon="@mipmap/ic_launcher"
-            android:title="Browse"
+            android:id="@+id/menu_course"
+            android:icon="@drawable/ic_library_music_black_24dp"
+            android:title="Kursus"
             />
-
-        <item
-            android:id="@+id/menu_attendance"
-            android:icon="@mipmap/ic_launcher"
-            android:title="Attendance"
-            />
-
         <item
             android:id="@+id/menu_profile"
-            android:icon="@mipmap/ic_launcher"
-            android:title="Profile"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Profil"
+            android:checkable="false"
             />
-
         <item
-            android:id="@+id/menu_edit_profile"
-            android:icon="@mipmap/ic_launcher"
-            android:title="Edit Profile"
+            android:id="@+id/menu_attendance"
+            android:icon="@drawable/ic_event_black_24dp"
+            android:title="Kehadiran"
+            />
+        <item
+            android:id="@+id/menu_exit_application"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="Keluar"
             />
     </group>
 </menu>

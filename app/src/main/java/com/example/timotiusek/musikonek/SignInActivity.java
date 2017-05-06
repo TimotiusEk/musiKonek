@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -16,6 +17,9 @@ public class SignInActivity extends AppCompatActivity {
 
     @BindView(R.id.input_password_sign_in)
     EditText inputPassword;
+
+    @BindView(R.id.link_to_register)
+    TextView linkToRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +38,10 @@ public class SignInActivity extends AppCompatActivity {
 //        } else{
 //            Toast.makeText(this, "Email/Password Salah", Toast.LENGTH_SHORT).show();
 //        }
+    }
+
+    @OnClick(R.id.link_to_register)
+    void goToRegisterPage(){
+        startActivity(new Intent(this, SignUpActivity.class));
     }
 }

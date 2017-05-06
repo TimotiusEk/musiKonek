@@ -27,7 +27,6 @@
                 android:id="@+id/header_image"
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
-                android:contentDescription="asdasd"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/drum"
@@ -52,6 +51,15 @@
                 android:title="Testing"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+            <ImageView
+                android:id="@+id/link_to_edit_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_edit_black_24dp"
+                android:tint="@android:color/white"
+                android:layout_gravity="end"
+                android:padding="10dp"/>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
