@@ -19,4 +19,9 @@ public class SignUpActivity extends AppCompatActivity {
     void register(){
         startActivity(new Intent(this, ConfirmationScreenActivity.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, SignInActivity.class));
+    }
 }

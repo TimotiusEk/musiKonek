@@ -48,7 +48,8 @@
             android:name=".SubjectViewAllTeacherActivity"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".EditProfileActivity" />
-        <activity android:name=".ConfirmationScreenActivity"></activity>
+        <activity android:name=".ConfirmationScreenActivity" android:theme="@style/NoActionBarTheme"
+            android:noHistory="true"/>
     </application>
 
 </manifest>
