@@ -116,6 +116,8 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="blank_description" />
+    <string name="fullnmae">fullname</string>
+    <string name="username">Username</string>
 
 
 </resources>
