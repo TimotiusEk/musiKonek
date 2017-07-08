@@ -1,6 +1,8 @@
 package com.example.timotiusek.musikonek;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,11 +50,19 @@ public class SignInActivity extends AppCompatActivity {
     @BindView(R.id.link_to_register)
     TextView linkToRegister;
 
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         ButterKnife.bind(this);
+
+        sharedPreferences = getSharedPreferences("profile", Context.MODE_PRIVATE);
+        if(!sharedPreferences.getString("email","").equals("")) {
+            inputEmail.setText(sharedPreferences.getString("email",""));
+        }
+
     }
 
     @OnClick(R.id.sign_in_btn)
@@ -80,7 +90,7 @@ public class SignInActivity extends AppCompatActivity {
 
     void loginCall(){
 
-        Log.d("ASDF","Called");
+//        Log.d("ASDF","Called");
 
         RequestQueue requestQueue;
         Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024); // 1MB cap
@@ -102,9 +112,24 @@ public class SignInActivity extends AppCompatActivity {
 
                             if(res.getString("token")!=null){
 
-                                Toast.makeText(SignInActivity.this, "token is "+ res.getString("token"), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(SignInActivity.this, "token is "+ res.getString("token"), Toast.LENGTH_SHORT).show();
+
+//                                Bundle extras = new Bundle();
+//                                extras.putString("email",inputEmail.getText().toString());
+//                                extras.putString("username","USERNAME HERE");
+
+
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("email",inputEmail.getText().toString());
+                                editor.putString("token",res.getString("token"));
+                                editor.putString("username",res.getString("username"));
+                                editor.apply();
+
 
                                 Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+
+//                                intent.putExtras(extras);
+
                                 startActivity(intent);
                             }
 
@@ -124,6 +149,9 @@ public class SignInActivity extends AppCompatActivity {
                         NetworkResponse networkResponse = error.networkResponse;
 
                         if(networkResponse == null){
+
+                            Toast.makeText(SignInActivity.this, "Connection Error",Toast.LENGTH_SHORT).show();
+
                         }else{
                             int a = networkResponse.statusCode;
                             if(networkResponse.statusCode == 401){

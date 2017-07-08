@@ -17,7 +17,6 @@
             android:paddingTop="10dp">
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/first_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -26,9 +25,10 @@
                 app:hintTextAppearance="@style/TextLabel">
 
                 <EditText
+                    android:id="@+id/username_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Firstname"
+                    android:hint="Username"
                     android:inputType="textPersonName"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
@@ -43,10 +43,10 @@
                 app:hintTextAppearance="@style/TextLabel">
 
                 <EditText
-                    android:id="@+id/last_name"
+                    android:id="@+id/fullname_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Lastname"
+                    android:hint="Fullname"
                     android:inputType="textPersonName"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />

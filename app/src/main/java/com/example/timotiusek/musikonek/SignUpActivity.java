@@ -93,6 +93,9 @@ public class SignUpActivity extends AppCompatActivity {
                         NetworkResponse networkResponse = error.networkResponse;
 
                         if(networkResponse == null){
+
+                            Toast.makeText(SignUpActivity.this, "Connection Error",Toast.LENGTH_SHORT).show();
+
                         }else{
                             int a = networkResponse.statusCode;
                             if(networkResponse.statusCode == 401){
