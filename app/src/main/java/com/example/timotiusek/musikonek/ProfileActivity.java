@@ -3,6 +3,7 @@ package com.example.timotiusek.musikonek;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +40,8 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.link_to_edit_profile)
     ImageView linkToEditProfile;
 
+    CollapsingToolbarLayout ctl;
+
     String fullname = "JONATHAN ";
 
     @Override
@@ -47,7 +50,11 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
 
+        ctl = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+
         callGetMyProfile();
+
+
 
         toolbar.setTitle(fullname);
         setSupportActionBar(toolbar);
@@ -107,7 +114,8 @@ public class ProfileActivity extends AppCompatActivity {
                             String x = location.getString("x");
                             String y  = location.getString("y");
 
-                            toolbar.setTitle(fullname);
+//                            getSupportActionBar().setTitle("fullname");
+                            ctl.setTitle(fullname);
                             Log.d("ASDF","fullname"+fullname);
 
                             TextView emailText = (TextView) findViewById(R.id.email_profile_page);

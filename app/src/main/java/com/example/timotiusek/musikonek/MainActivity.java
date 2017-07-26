@@ -14,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,15 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         sharedPreferences = getSharedPreferences("profile", Context.MODE_PRIVATE);
 
-        if(!sharedPreferences.getString("email","").equals("")) {
-            email = sharedPreferences.getString("email","");
-        }
-
-        if(!sharedPreferences.getString("username","").equals("")) {
-            username = sharedPreferences.getString("username","");
-        }else{
-            username = "username";
-        }
+        updateNavView();
 
         browseFragment = new BrowseFragment();
 
@@ -165,6 +158,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    public void updateNavView(){
+        if(!sharedPreferences.getString("email","").equals("")) {
+            email = sharedPreferences.getString("email","");
+        }
 
+        if(!sharedPreferences.getString("username","").equals("")) {
+            username = sharedPreferences.getString("username","");
+        }else{
+            username = "username";
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("ASDF","called");
+        updateNavView();
+    }
 }
 

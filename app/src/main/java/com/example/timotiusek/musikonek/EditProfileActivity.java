@@ -236,6 +236,17 @@ public class EditProfileActivity extends AppCompatActivity {
 //                            String name = String.valueOf(res.get("name"));
                             Log.d("ASDF", "YOSAH + \n"+res.toString() );
 
+                            SharedPreferences sharedPreferences = getSharedPreferences("profile", Context.MODE_PRIVATE);
+
+                            EditText usernameEdit = (EditText) findViewById(R.id.username_edit);
+
+
+
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("username",usernameEdit.getText().toString());
+                            editor.apply();
+
+
                             finish();
 
                         } catch (JSONException e) {
