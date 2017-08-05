@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.timotiusek.musikonek.CustomClass.Report;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;

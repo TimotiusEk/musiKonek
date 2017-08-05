@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        changeFragment(new HomeFragment());
+       showTheFirstFragment();
 
         browseFragment = new BrowseFragment();
 
@@ -54,10 +54,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setChecked(R.id.menu_home);
     }
 
+    void showTheFirstFragment(){
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        mFragmentTransaction.replace(R.id.fragment_container, new HomeFragment());
+        mFragmentTransaction.commit();
+    }
+
     public void changeFragment(Fragment newFragment) {
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.replace(R.id.fragment_container, newFragment);
+        mFragmentTransaction.addToBackStack(null);
         mFragmentTransaction.commit();
     }
 

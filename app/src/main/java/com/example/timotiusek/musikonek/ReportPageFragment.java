@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.timotiusek.musikonek.CustomClass.Report;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;

@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.timotiusek.musikonek.CustomClass.Teacher;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;

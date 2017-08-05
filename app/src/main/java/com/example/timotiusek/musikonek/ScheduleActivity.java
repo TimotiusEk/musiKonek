@@ -4,7 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import java.lang.reflect.Array;
+import com.example.timotiusek.musikonek.CustomClass.Schedule;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;

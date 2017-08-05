@@ -28,7 +28,7 @@ public class TeacherProfileActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        viewPager.setAdapter(new MyAdapter(this.getSupportFragmentManager()));
+        viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
 
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar)findViewById(R.id.toolbar_course_detail);
@@ -49,7 +49,7 @@ public class TeacherProfileActivity extends AppCompatActivity {
         return (super.onOptionsItemSelected(menuItem));
     }
 
-    class MyAdapter extends FragmentStatePagerAdapter {
+    class MyAdapter extends android.support.v4.app.FragmentStatePagerAdapter {
 
         public MyAdapter(FragmentManager fm) {
             super(fm);

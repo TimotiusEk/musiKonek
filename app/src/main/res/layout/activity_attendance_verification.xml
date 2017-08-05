@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         android:text="Mengajar Piano 4 Kali Pertemuan"
         android:textSize="18sp"
-        android:layout_weight="0"/>
+        android:layout_weight="0"
+        android:id="@+id/course_name__attendance_verification_page"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,9 +36,8 @@
         android:layout_height="wrap_content"
         android:text="3"
         android:textSize="18sp"
-        android:layout_weight="1"/>
-
-
+        android:layout_weight="1"
+        android:id="@+id/which_meeting__attendance_verification_page"/>
 
     <Button
         android:id="@+id/decline_btn"

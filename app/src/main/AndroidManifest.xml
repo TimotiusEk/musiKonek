@@ -26,6 +26,10 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/NoActionBarTheme" />
+        <activity android:name=".CourseReportDetailActivity" />
+        <activity android:name=".SetScheduleActivity" />
+
+        <activity android:name=".CourseListSpecificTeacherActivity"/>
         <activity
             android:name=".SplashScreen"
             android:noHistory="true"
@@ -52,6 +56,7 @@
             android:name=".ConfirmationScreenActivity"
             android:noHistory="true"
             android:theme="@style/NoActionBarTheme" />
+
     </application>
 
 </manifest>

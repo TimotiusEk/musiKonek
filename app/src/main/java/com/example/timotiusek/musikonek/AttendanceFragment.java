@@ -43,13 +43,13 @@ public class AttendanceFragment extends Fragment {
         ma.setTitle("Attendance");
         ma.setChecked(R.id.menu_attendance);
 
-        viewPager.setAdapter(new MyAdapter(getActivity().getSupportFragmentManager()));
+        viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
         // Inflate the layout for this fragment
         return view;
     }
 
-    class MyAdapter extends FragmentStatePagerAdapter {
+    class MyAdapter extends android.support.v4.app.FragmentStatePagerAdapter {
 
         public MyAdapter(FragmentManager fm) {
             super(fm);

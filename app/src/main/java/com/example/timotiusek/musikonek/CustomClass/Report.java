@@ -1,4 +1,4 @@
-package com.example.timotiusek.musikonek;
+package com.example.timotiusek.musikonek.CustomClass;
 
 /**
  * Created by TimotiusEk on 5/6/2017.

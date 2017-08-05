@@ -1,4 +1,4 @@
-package com.example.timotiusek.musikonek;
+package com.example.timotiusek.musikonek.CustomClass;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.timotiusek.musikonek.CustomClass.Schedule;
+import com.example.timotiusek.musikonek.R;
 
 import java.util.ArrayList;
 
@@ -18,21 +18,17 @@ import butterknife.ButterKnife;
  * Created by TimotiusEk on 5/6/2017.
  */
 
-public class ScheduleAdapter extends BaseAdapter {
+public class SetScheduleAdapter extends BaseAdapter {
     private ArrayList<Schedule> schedules;
     private Context mContext;
     private LayoutInflater inflater;
-    @BindView(R.id.schedule_name)
-    TextView scheduleName;
+    @BindView(R.id.which_meeting__set_schedule_page)
+    TextView whichMeeting;
 
-    @BindView(R.id.schedule_date_and_time)
-    TextView scheduleDateAndTime;
+    @BindView(R.id.meeting_date__set_schedule_page)
+    TextView meetingDate;
 
-    @BindView(R.id.schedule_status)
-    TextView scheduleStatus;
-
-
-    ScheduleAdapter(ArrayList<Schedule> schedules, Context mContext){
+    SetScheduleAdapter(ArrayList<Schedule> schedules, Context mContext){
         this.schedules = schedules;
         this.mContext = mContext;
     }
@@ -57,12 +53,11 @@ public class ScheduleAdapter extends BaseAdapter {
         final Schedule schedule = (Schedule) getItem(position);
         inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if(convertView == null){
-            convertView = inflater.inflate(R.layout.row_layout_schedule, parent, false);
+            convertView = inflater.inflate(R.layout.row_layout_set_schedule, parent, false);
             ButterKnife.bind(this, convertView);
 
-            scheduleName.setText(schedule.getName());
-            scheduleDateAndTime.setText(schedule.getDateAndTime());
-            scheduleStatus.setText(schedule.getStatus());
+            whichMeeting.setText(schedule.getName());
+            meetingDate.setText(schedule.getDateAndTime());
         }
         return convertView;
     }

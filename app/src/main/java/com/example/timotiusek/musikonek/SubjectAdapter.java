@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.timotiusek.musikonek.CustomClass.Subject;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;

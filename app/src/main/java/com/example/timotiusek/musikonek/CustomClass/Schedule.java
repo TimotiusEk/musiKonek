@@ -1,4 +1,4 @@
-package com.example.timotiusek.musikonek;
+package com.example.timotiusek.musikonek.CustomClass;
 
 /**
  * Created by TimotiusEk on 5/6/2017.
@@ -13,6 +13,11 @@ public class Schedule {
         this.name = name;
         this.dateAndTime = dateAndTime;
         this.status = status;
+    }
+
+    public Schedule(String name, String dateAndTime) {
+        this.name = name;
+        this.dateAndTime = dateAndTime;
     }
 
     public String getName() {
