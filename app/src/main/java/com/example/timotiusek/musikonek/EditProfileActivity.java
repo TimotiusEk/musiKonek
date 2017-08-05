@@ -2,12 +2,13 @@ package com.example.timotiusek.musikonek;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.example.timotiusek.musikonek.CustomClass.FavouriteInstrumentAdapter;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ import butterknife.ButterKnife;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    @BindView(R.id.favourite_instrument_list_view)
+    @BindView(R.id.favourite_instrument_lv__edit_profile_act)
     ListView favouriteInstrumentLV;
     FavouriteInstrumentAdapter favouriteInstrumentAdapter;
 

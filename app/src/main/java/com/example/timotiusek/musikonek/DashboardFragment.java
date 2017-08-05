@@ -59,8 +59,8 @@ public class DashboardFragment extends Fragment {
         ma = (MainActivity) getActivity();
         ma.setChecked(R.id.menu_home);
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        BarChart reportChart = (BarChart) view.findViewById(R.id.report_bar_chart);
-        BarChart taskChart = (BarChart) view.findViewById(R.id.task_bar_chart);
+        BarChart reportChart = (BarChart) view.findViewById(R.id.report_bar_chart__dashboard_fra);
+        BarChart taskChart = (BarChart) view.findViewById(R.id.task_bar_chart__dashboard_fra);
         reportChart.animateY(1000, Easing.EasingOption.Linear);
         taskChart.animateY(1000, Easing.EasingOption.Linear);
 

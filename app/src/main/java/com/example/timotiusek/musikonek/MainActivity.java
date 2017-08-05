@@ -1,6 +1,5 @@
 package com.example.timotiusek.musikonek;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -21,11 +20,11 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R.id.nav_view)
+    @BindView(R.id.nav_view__main_act)
     NavigationView navigationView;
-    @BindView(R.id.drawer_layout)
+    @BindView(R.id.drawer_layout__main_act)
     DrawerLayout drawer;
-    @BindView(R.id.toolbar)
+    @BindView(R.id.toolbar__app_bar_main)
     Toolbar toolbar;
 
     private FragmentManager mFragmentManager;
@@ -57,14 +56,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     void showTheFirstFragment(){
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.fragment_container, new HomeFragment());
+        mFragmentTransaction.replace(R.id.fragment_container__app_bar_main, new HomeFragment());
         mFragmentTransaction.commit();
     }
 
     public void changeFragment(Fragment newFragment) {
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.fragment_container, newFragment);
+        mFragmentTransaction.replace(R.id.fragment_container__app_bar_main, newFragment);
         mFragmentTransaction.addToBackStack(null);
         mFragmentTransaction.commit();
     }

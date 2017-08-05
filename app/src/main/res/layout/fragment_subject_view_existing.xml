@@ -5,6 +5,6 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/existing_subject_list_view"/>
+        android:id="@+id/existing_subject_lv__subject_view_existing_fra"/>
 
 </LinearLayout>

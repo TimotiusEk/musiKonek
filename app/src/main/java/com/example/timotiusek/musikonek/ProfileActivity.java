@@ -11,8 +11,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ProfileActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar_course_detail) android.support.v7.widget.Toolbar toolbar;
-    @BindView(R.id.link_to_edit_profile)
+    @BindView(R.id.toolbar__profile_act) android.support.v7.widget.Toolbar toolbar;
+    @BindView(R.id.edit_profile_btn__profile_act)
     ImageView linkToEditProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.link_to_edit_profile)
+    @OnClick(R.id.edit_profile_btn__profile_act)
     void goToEditProfile(){
         startActivity(new Intent(this, EditProfileActivity.class));
     }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.example.timotiusek.musikonek.CustomClass.AttendanceStatusAdapter;
 import com.example.timotiusek.musikonek.CustomClass.Subject;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class AttendanceStatusFragment extends Fragment {
-    @BindView(R.id.attendance_list_view)
+    @BindView(R.id.attendance_lv__attendance_status_fra)
     ListView listView;
     String whichView;
     LayoutInflater inflater;

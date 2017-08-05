@@ -1,24 +1,20 @@
 package com.example.timotiusek.musikonek;
 
-import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TeacherProfileActivity extends AppCompatActivity {
-    @BindView(R.id.tab_layout_teacher)
+    @BindView(R.id.tab_layout__teacher_profile_act)
     TabLayout tabLayout;
-    @BindView(R.id.view_pager_teacher)
+    @BindView(R.id.view_pager__teacher_profile_act)
     ViewPager viewPager;
 
     @Override
@@ -31,7 +27,7 @@ public class TeacherProfileActivity extends AppCompatActivity {
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
 
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar)findViewById(R.id.toolbar_course_detail);
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar)findViewById(R.id.toolbar__teacher_profile_act);
         toolbar.setTitle("Jonathan Simananda");
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null){

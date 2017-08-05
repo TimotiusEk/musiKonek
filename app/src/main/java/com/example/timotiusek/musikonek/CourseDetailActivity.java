@@ -2,14 +2,9 @@ package com.example.timotiusek.musikonek;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.Toolbar;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -21,7 +16,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_course_detail);
         ButterKnife.bind(this);
 
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_course_detail);
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar__course_detail_act);
         toolbar.setTitle("Kursus Piano Pemula");
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -40,7 +35,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         return (super.onOptionsItemSelected(menuItem));
     }
 
-    @OnClick(R.id.fab)
+    @OnClick(R.id.fab__course_detail_act)
     void openTeacherProfile(){
         Intent intent = new Intent(CourseDetailActivity.this, TeacherProfileActivity.class);
         startActivity(intent);

@@ -20,7 +20,7 @@
         >
 
         <EditText
-            android:id="@+id/rejection_reason__reject_attendance_verification_page"
+            android:id="@+id/rejection_reason__reject_attendance_verification_act"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Alasan Menolak"
@@ -44,10 +44,10 @@
         android:text="3"
         android:textSize="18sp"
         android:layout_weight="1"
-        android:id="@+id/which_meeting__reject_attendance_verification_page"/>
+        android:id="@+id/which_meeting__reject_attendance_verification_act"/>
 
     <Button
-        android:id="@+id/save_btn__reject_attendance_verification_page"
+        android:id="@+id/save_btn__reject_attendance_verification_act"
         android:layout_width="match_parent"
         android:layout_height="33dp"
         android:layout_gravity="center_horizontal|bottom"

@@ -14,6 +14,7 @@ import android.widget.GridView;
 import android.widget.ListView;
 
 import com.example.timotiusek.musikonek.CustomClass.Subject;
+import com.example.timotiusek.musikonek.CustomClass.SubjectAdapter;
 
 import java.util.ArrayList;
 
@@ -22,15 +23,15 @@ import butterknife.ButterKnife;
 
 public class SubjectViewFragment extends Fragment {
     @Nullable
-    @BindView(R.id.subject_grid_view)
+    @BindView(R.id.subject_grid_view__subject_view_all_fra)
     GridView subjectGridView;
 
     @Nullable
-    @BindView(R.id.existing_subject_list_view)
+    @BindView(R.id.existing_subject_lv__subject_view_existing_fra)
     ListView existingSubjectListView;
 
     @Nullable
-    @BindView(R.id.graduated_subject_list_view)
+    @BindView(R.id.graduated_subject_lv__subject_view_graduated_fra)
     ListView graduatedSubjectListView;
 
     String whichView;

@@ -55,7 +55,7 @@
 
 
     <Button
-        android:id="@+id/close_btn"
+        android:id="@+id/close_btn__report_detail_act"
         android:layout_width="match_parent"
         android:layout_height="33dp"
         android:layout_gravity="center_horizontal|bottom"

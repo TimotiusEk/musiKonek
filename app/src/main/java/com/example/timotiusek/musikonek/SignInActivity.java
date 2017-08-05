@@ -5,20 +5,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SignInActivity extends AppCompatActivity {
-    @BindView(R.id.input_email_sign_in)
+    @BindView(R.id.input_email__sign_in_act)
     EditText inputEmail;
 
-    @BindView(R.id.input_password_sign_in)
+    @BindView(R.id.input_password__sign_in_act)
     EditText inputPassword;
 
-    @BindView(R.id.link_to_register)
+    @BindView(R.id.link_to_register__sign_in_act)
     TextView linkToRegister;
 
     @Override
@@ -28,7 +27,7 @@ public class SignInActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.sign_in_btn)
+    @OnClick(R.id.sign_in_btn__sign_in_act)
     public void signIn()
     {   Intent intent = new Intent(SignInActivity.this, MainActivity.class);
         startActivity(intent);
@@ -40,7 +39,7 @@ public class SignInActivity extends AppCompatActivity {
 //        }
     }
 
-    @OnClick(R.id.link_to_register)
+    @OnClick(R.id.link_to_register__sign_in_act)
     void goToRegisterPage(){
         startActivity(new Intent(this, SignUpActivity.class));
     }

@@ -6,14 +6,14 @@
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar_layout"
+        android:id="@+id/app_bar_layout__teacher_profile_act"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar"
+            android:id="@+id/collapsing_toolbar__teacher_profile_act"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:fitsSystemWindows="true"
@@ -24,7 +24,7 @@
             app:expandedTitleMarginTop="195dp">
 
             <ImageView
-                android:id="@+id/header_image"
+                android:id="@+id/header_image__teacher_profile_act"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:contentDescription="asdasd"
@@ -46,7 +46,7 @@
 
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar_course_detail"
+                android:id="@+id/toolbar__teacher_profile_act"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:title="Testing"
@@ -54,7 +54,7 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
         </android.support.design.widget.CollapsingToolbarLayout>
         <android.support.design.widget.TabLayout
-            android:id="@+id/tab_layout_teacher"
+            android:id="@+id/tab_layout__teacher_profile_act"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -68,7 +68,6 @@
 
 
     <android.support.v4.widget.NestedScrollView
-        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
@@ -84,7 +83,7 @@
             android:layout_gravity="fill_vertical"
             >
             <android.support.v4.view.ViewPager
-                android:id="@+id/view_pager_teacher"
+                android:id="@+id/view_pager__teacher_profile_act"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"

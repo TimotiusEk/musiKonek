@@ -12,7 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ScheduleActivity extends AppCompatActivity {
-    @BindView(R.id.schedule_list_view)
+    @BindView(R.id.schedule_lv__schedule_act)
     ListView scheduleListView;
 
     ArrayList<Schedule> schedules;

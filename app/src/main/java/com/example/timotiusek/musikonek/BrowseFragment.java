@@ -6,7 +6,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +19,9 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class BrowseFragment extends Fragment {
-    @BindView(R.id.tab_layout)
+    @BindView(R.id.tab_layout__browse_fra)
     TabLayout tabLayout;
-    @BindView(R.id.view_pager)
+    @BindView(R.id.view_pager__browse_fra)
     ViewPager viewPager;
     int whichFragment;
     MainActivity ma;

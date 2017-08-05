@@ -7,16 +7,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.timotiusek.musikonek.R;
-
 import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by TimotiusEk on 5/6/2017.
+ * Created by TimotiusEk on 8/5/2017.
  */
 
 public class CourseAdapter extends BaseAdapter {
@@ -37,16 +34,15 @@ public class CourseAdapter extends BaseAdapter {
     TextView courseDesc;
 
     @BindView(R.id.how_many_meetings__course_rl)
-    TextView courseDuration;
+    TextView duration;
 
     @BindView(R.id.course_price__course_rl)
     TextView coursePrice;
 
-    public CourseAdapter(ArrayList<Course> courses, Context mContext){
+    public CourseAdapter(ArrayList<Course> courses, Context c){
         this.courses = courses;
-        this.mContext = mContext;
+        mContext = c;
     }
-
     @Override
     public int getCount() {
         return courses.size();
@@ -75,7 +71,7 @@ public class CourseAdapter extends BaseAdapter {
             teacherName.setText(course.getTeacherName());
             courseName.setText(course.getCourseName());
             courseDesc.setText(course.getCourseDesc());
-            courseDuration.setText(durationToShow);
+            duration.setText(durationToShow);
             coursePrice.setText(course.getCoursePrice());
         }
         return convertView;

@@ -17,7 +17,7 @@
             android:paddingTop="10dp">
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/first_name"
+                android:id="@+id/first_name__edit_profile_act"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -43,7 +43,7 @@
                 app:hintTextAppearance="@style/TextLabel">
 
                 <EditText
-                    android:id="@+id/last_name"
+                    android:id="@+id/last_name__edit_profile_act"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Lastname"
@@ -54,7 +54,6 @@
 
 
             <TextView
-                android:id="@+id/gender_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -63,7 +62,7 @@
                 android:textSize="17sp" />
 
             <Spinner
-                android:id="@+id/gender_spinner"
+                android:id="@+id/gender_spinner__edit_profile_act"
                 style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,7 +80,7 @@
                 android:textSize="17sp" />
 
             <ListView
-                android:id="@+id/favourite_instrument_list_view"
+                android:id="@+id/favourite_instrument_lv__edit_profile_act"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 />
@@ -101,7 +100,7 @@
                 app:hintTextAppearance="@style/TextLabel">
 
                 <EditText
-                    android:id="@+id/address"
+                    android:id="@+id/address__edit_profile_act"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Address"
@@ -111,7 +110,6 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
-                android:id="@+id/pi_upload_identity_photo_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -120,13 +118,13 @@
                 android:textSize="17sp" />
 
             <ImageView
-                android:id="@+id/pi_upload_identity_photo_image"
+                android:id="@+id/show_uploaded_photo__edit_profile_act"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="11dp" />
 
             <Button
-                android:id="@+id/pi_upload_btn"
+                android:id="@+id/upload_btn__edit_profile_act"
                 android:layout_width="120dp"
                 android:layout_height="33dp"
                 android:layout_marginTop="10dp"
@@ -135,7 +133,7 @@
                 android:textColor="@android:color/white" />
 
             <Button
-                android:id="@+id/save_btn"
+                android:id="@+id/save_btn__edit_profile_act"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
                 android:layout_gravity="center_horizontal|bottom"

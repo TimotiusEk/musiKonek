@@ -16,7 +16,7 @@ public class ReportDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.close_btn)
+    @OnClick(R.id.close_btn__report_detail_act)
     void back(){
         super.onBackPressed();
     }

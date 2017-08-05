@@ -9,7 +9,7 @@
    <ListView
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:id="@+id/report_list_view"/>
+       android:id="@+id/report_lv__report_page_fra"/>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
@@ -18,5 +18,5 @@
         app:backgroundTint="#3F569A"
         android:layout_gravity="end|bottom"
         android:layout_margin="15dp"
-        android:id="@+id/add_report_fab_frp"/>
+        android:id="@+id/add_report_fab__report_page_fra"/>
 </FrameLayout>

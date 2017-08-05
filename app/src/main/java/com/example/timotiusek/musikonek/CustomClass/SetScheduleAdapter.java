@@ -22,10 +22,10 @@ public class SetScheduleAdapter extends BaseAdapter {
     private ArrayList<Schedule> schedules;
     private Context mContext;
     private LayoutInflater inflater;
-    @BindView(R.id.which_meeting__set_schedule_page)
+    @BindView(R.id.which_meeting__set_schedule_rl)
     TextView whichMeeting;
 
-    @BindView(R.id.meeting_date__set_schedule_page)
+    @BindView(R.id.meeting_date__set_schedule_rl)
     TextView meetingDate;
 
     SetScheduleAdapter(ArrayList<Schedule> schedules, Context mContext){

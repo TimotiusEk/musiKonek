@@ -37,14 +37,14 @@
                     android:layout_height="wrap_content"
                     android:textSize="22sp"
                     android:text="Senin, 31 Juli 2015"
-                    android:id="@+id/show_date__course_report_detail_page"/>
+                    android:id="@+id/show_date__course_report_detail_act"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:text="Jam 17:30"
-                    android:id="@+id/show_time__course_report_detail_page"/>
+                    android:id="@+id/show_time__course_report_detail_act"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jonathan harus menyelesaikan lagu [JUDUL LAGU] yang diberikan dari Minggu 1 kursus. Hari ini sudah cukup lancar."
-                    android:id="@+id/show_homework__course_report_detail_page"
+                    android:id="@+id/show_homework__course_report_detail_act"
                     android:textSize="18sp"
                     />
 
@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Latih kembali bagian baru. Masih bermain dengan tersendat-sendat. Ingat untuk bermain dengan tempo yang lebih pelan untuk memahiri"
-                    android:id="@+id/show_exercise__course_report_detail_page"
+                    android:id="@+id/show_exercise__course_report_detail_act"
                     android:textSize="18sp"
                     />
 
@@ -121,7 +121,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="-Lebih berkonsentrasi saat latihan\n-Jangan terlalu banyak istirahat"
-                    android:id="@+id/show_comment__course_report_detail_page"
+                    android:id="@+id/show_comment__course_report_detail_act"
                     android:textSize="18sp"
                     android:layout_marginBottom="5dp"
                     />
@@ -133,7 +133,7 @@
             android:layout_weight="1"/>
 
         <Button
-            android:id="@+id/close_btn__course_report_detail_page"
+            android:id="@+id/close_btn__course_report_detail_act"
             android:layout_width="match_parent"
             android:layout_height="33dp"
             android:layout_gravity="center_horizontal|bottom"

@@ -30,10 +30,10 @@
         <activity android:name=".SetScheduleActivity" />
 
         <activity android:name=".CourseListSpecificTeacherActivity"/>
-        <activity
-            android:name=".SplashScreen"
-            android:noHistory="true"
-            android:theme="@style/SplashScreenTheme">
+            <activity
+                android:name=".SplashScreen"
+                android:noHistory="true"
+                android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

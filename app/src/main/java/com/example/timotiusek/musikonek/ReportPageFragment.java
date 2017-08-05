@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.timotiusek.musikonek.CustomClass.Report;
+import com.example.timotiusek.musikonek.CustomClass.ReportPageAdapter;
 
 import java.util.ArrayList;
 
@@ -22,9 +23,9 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class ReportPageFragment extends Fragment {
-    @BindView(R.id.report_list_view)
+    @BindView(R.id.report_lv__report_page_fra)
     ListView reportListView;
-    @BindView(R.id.add_report_fab_frp)
+    @BindView(R.id.add_report_fab__report_page_fra)
     FloatingActionButton addReportFAB;
     ArrayList<Report> reports;
     ReportPageAdapter reportPageAdapter;

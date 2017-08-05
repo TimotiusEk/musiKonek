@@ -9,15 +9,15 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class CourseReportDetailActivity extends AppCompatActivity {
-    @BindView(R.id.show_date__course_report_detail_page)
+    @BindView(R.id.show_date__course_report_detail_act)
     TextView showDate;
-    @BindView(R.id.show_time__course_report_detail_page)
+    @BindView(R.id.show_time__course_report_detail_act)
     TextView showTime;
-    @BindView(R.id.show_homework__course_report_detail_page)
+    @BindView(R.id.show_homework__course_report_detail_act)
     TextView showHomework;
-    @BindView(R.id.show_exercise__course_report_detail_page)
+    @BindView(R.id.show_exercise__course_report_detail_act)
     TextView showExercise;
-    @BindView(R.id.show_comment__course_report_detail_page)
+    @BindView(R.id.show_comment__course_report_detail_act)
     TextView showComment;
 
     @Override
@@ -48,7 +48,7 @@ public class CourseReportDetailActivity extends AppCompatActivity {
          */
     }
 
-    @OnClick(R.id.close_btn__course_report_detail_page)
+    @OnClick(R.id.close_btn__course_report_detail_act)
     void closeActivity(){
         super.onBackPressed();
     }

@@ -23,7 +23,7 @@
                 android:padding="10dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/student_image"
+                    android:id="@+id/student_image__subject_graduated_rl"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/avatar" />
@@ -36,7 +36,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/how_many_course"
+                        android:id="@+id/how_many_courses__subject_graduated_rl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
@@ -44,7 +44,7 @@
                         android:textColor="@android:color/black" />
 
                     <TextView
-                        android:id="@+id/date_graduated"
+                        android:id="@+id/date_graduated__subject_graduated_rl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="selesai pada 17 Maret 2017"
@@ -54,7 +54,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/subject_bg_graduated"
+                android:id="@+id/background_img__subject_graduated_rl"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:scaleType="fitXY"
@@ -66,35 +66,35 @@
                 android:padding="15dp">
 
                 <TextView
-                    android:id="@+id/show_kursus"
+                    android:id="@+id/show_kursus__subject_graduated_rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kursus "
                     android:textColor="@android:color/black" />
 
                 <TextView
-                    android:id="@+id/subject_name_graduated"
+                    android:id="@+id/subject_name__subject_graduated_rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/show_kursus"
+                    android:layout_toEndOf="@+id/show_kursus__subject_graduated_rl"
                     android:text="GITAR"
                     android:textColor="@android:color/black" />
 
                 <TextView
-                    android:id="@+id/show_dengan"
+                    android:id="@+id/show_dengan__subject_graduated_rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/show_kursus"
+                    android:layout_below="@+id/show_kursus__subject_graduated_rl"
                     android:paddingTop="10dp"
                     android:text="DENGAN "
                     android:textColor="@android:color/black" />
 
                 <TextView
-                    android:id="@+id/subject_teacher_graduated"
+                    android:id="@+id/teacher_name__subject_graduated_rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/show_kursus"
-                    android:layout_toEndOf="@id/show_dengan"
+                    android:layout_below="@+id/show_kursus__subject_graduated_rl"
+                    android:layout_toEndOf="@id/show_dengan__subject_graduated_rl"
                     android:paddingTop="10dp"
                     android:text="PAK DHANNY"
                     android:textColor="@android:color/black" />

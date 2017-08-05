@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.timotiusek.musikonek.CustomClass.SubjectViewAllTeacherAdapter;
 import com.example.timotiusek.musikonek.CustomClass.Teacher;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SubjectViewAllTeacherActivity extends AppCompatActivity {
-    @BindView(R.id.all_teacher_list_view)
+    @BindView(R.id.all_teacher_lv__subject_view_all_teacher_act)
     ListView allTeacherListView;
 
     String name;
@@ -26,7 +27,7 @@ public class SubjectViewAllTeacherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_subject_view_all_teacher);
         ButterKnife.bind(this);
 
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar)findViewById(R.id.subject_view_all_teacher_toolbar);
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar)findViewById(R.id.toolbar__subject_view_all_teacher_act);
         Intent intent = getIntent();
         toolbar.setTitle(intent.getStringExtra("subject"));
         setSupportActionBar(toolbar);
