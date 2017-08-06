@@ -35,9 +35,12 @@ public class CourseDetailActivity extends AppCompatActivity {
         return (super.onOptionsItemSelected(menuItem));
     }
 
-    @OnClick(R.id.fab__course_detail_act)
-    void openTeacherProfile(){
-        Intent intent = new Intent(CourseDetailActivity.this, TeacherProfileActivity.class);
-        startActivity(intent);
+    @OnClick(R.id.order_course_btn__course_detail_act)
+    void orderCourse(){
+        /**
+         * todo : set bundle and send data
+         */
+        startActivity(new Intent(this, SetScheduleActivity.class));
     }
+
 }

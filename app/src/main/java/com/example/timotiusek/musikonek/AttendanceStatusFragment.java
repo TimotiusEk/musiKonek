@@ -1,11 +1,13 @@
 package com.example.timotiusek.musikonek;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.timotiusek.musikonek.CustomClass.AttendanceStatusAdapter;
@@ -59,6 +61,15 @@ public class AttendanceStatusFragment extends Fragment {
 
         AttendanceStatusAdapter statusAdapter = new AttendanceStatusAdapter(filteredData, getActivity());
         listView.setAdapter(statusAdapter);
+
+        if(whichView.equals("PENDING")){
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    startActivity(new Intent(getActivity(), AttendanceVerificationActivity.class));
+                }
+            });
+        }
 
         // Inflate the layout for this fragment
         return v;

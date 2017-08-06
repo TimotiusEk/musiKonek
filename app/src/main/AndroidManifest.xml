@@ -23,17 +23,19 @@
         <activity android:name=".AttendanceVerificationActivity" />
         <activity android:name=".ReportDetailActivity" />
         <activity android:name=".ScheduleActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/NoActionBarTheme" />
+
         <activity android:name=".CourseReportDetailActivity" />
         <activity android:name=".SetScheduleActivity" />
 
         <activity android:name=".CourseListSpecificTeacherActivity"/>
-            <activity
-                android:name=".SplashScreen"
-                android:noHistory="true"
-                android:theme="@style/SplashScreenTheme">
+
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".SplashScreen"
+            android:noHistory="true"
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

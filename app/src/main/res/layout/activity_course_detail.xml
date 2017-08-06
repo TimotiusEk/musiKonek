@@ -47,128 +47,135 @@
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            card_view:cardElevation="5dp"
-            card_view:cardUseCompatPadding="true">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="15dp"
-                android:background="@android:color/white">
+                android:layout_marginBottom="16dp"
+                card_view:cardElevation="5dp"
+                card_view:cardUseCompatPadding="true">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/teacher_image__course_detail_act"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:src="@drawable/avatar" />
+                    android:background="@android:color/white"
+                    android:orientation="vertical"
+                    android:padding="15dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="15dp"
-                        android:orientation="vertical"
-                        >
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/teacher_name__course_detail_act"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Dhanny Kusuma"
-                            android:textSize="20sp" />
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/teacher_image__course_detail_act"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/avatar" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="mengajar kursus ini"
-                            android:textColor="#b7b7b7"
-                            />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="15dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/teacher_name__course_detail_act"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Dhanny Kusuma"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="mengajar kursus ini"
+                                android:textColor="#b7b7b7" />
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp">
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_subject_black_48dp" />
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kursus ini cocok bagi mereka yang sedang ingin belajar piano tanpa memiliki konsep dasar tentang musik. Kursus dibagi dalam enam pertemuan singkat. "
-                        android:layout_marginStart="10dp"
-                        android:id="@+id/course_description__course_detail_act"/>
-                </LinearLayout>
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp">
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_today_black_48dp" />
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_subject_black_48dp" />
 
-                    <TextView
+                        <TextView
+                            android:id="@+id/course_description__course_detail_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Kursus ini cocok bagi mereka yang sedang ingin belajar piano tanpa memiliki konsep dasar tentang musik. Kursus dibagi dalam enam pertemuan singkat. " />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="6 KALI PERTEMUAN"
-                        android:layout_marginStart="10dp"
-                        android:id="@+id/how_many_meeting__course_detail_act"/>
-                </LinearLayout>
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp">
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_local_offer_black_48dp" />
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_today_black_48dp" />
 
-                    <TextView
+                        <TextView
+                            android:id="@+id/how_many_meeting__course_detail_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="6 KALI PERTEMUAN" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rp 468,000"
-                        android:layout_marginStart="10dp"
-                        android:textSize="22sp"
-                        android:id="@+id/course_price__course_detail_act"/>
-                </LinearLayout>
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
 
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_local_offer_black_48dp" />
+
+                        <TextView
+                            android:id="@+id/course_price__course_detail_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Rp 468,000"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:text="PESAN"
+                android:id="@+id/order_course_btn__course_detail_act"
+                android:layout_gravity="bottom"
+                android:background="@drawable/round_btn"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                />
+        </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab__course_detail_act"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_margin="16dp"
-        android:backgroundTint="#0d53c4"
-        android:clickable="true"
-        android:src="@drawable/ic_supervisor_account_white_48dp"
-        app:elevation="6dp"
-        app:layout_anchor="@id/app_bar_layout__course_detail_act"
-        app:layout_anchorGravity="bottom|right|end"
-        app:pressedTranslationZ="12dp" />
 </android.support.design.widget.CoordinatorLayout>

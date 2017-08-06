@@ -1,8 +1,11 @@
 package com.example.timotiusek.musikonek;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.timotiusek.musikonek.CustomClass.Course;
@@ -40,6 +43,17 @@ public class CourseListSpecificTeacherActivity extends AppCompatActivity {
 
         courseAdapter = new CourseAdapter(courses, this);
         courseListLv.setAdapter(courseAdapter);
+        courseListLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Course courseDataToBeSent = (Course) courseAdapter.getItem(position);
+                /**
+                 * set bundle and send data
+                 */
+                Intent intent = new Intent(CourseListSpecificTeacherActivity.this, CourseDetailActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

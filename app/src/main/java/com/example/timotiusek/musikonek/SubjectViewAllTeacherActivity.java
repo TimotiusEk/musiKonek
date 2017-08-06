@@ -45,17 +45,21 @@ public class SubjectViewAllTeacherActivity extends AppCompatActivity {
             teacherArrayList.add(new Teacher(R.drawable.avatar,"Budi", "Maret 2010", 25000000));
             teacherArrayList.add(new Teacher(R.drawable.avatar,"Budi", "Maret 2010", 500000));
 //        }
-        SubjectViewAllTeacherAdapter subjectViewAllTeacherAdapter = new SubjectViewAllTeacherAdapter(teacherArrayList, this);
+        final SubjectViewAllTeacherAdapter subjectViewAllTeacherAdapter = new SubjectViewAllTeacherAdapter(teacherArrayList, this);
 
         allTeacherListView.setAdapter(subjectViewAllTeacherAdapter);
 
         allTeacherListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SubjectViewAllTeacherActivity.this, CourseDetailActivity.class);
-                startActivity(intent);
+                Teacher teacherDataToBeSent = (Teacher) subjectViewAllTeacherAdapter.getItem(position);
+                /**
+                 * todo : set bundle and send the data
+                 */
+                startActivity(new Intent(SubjectViewAllTeacherActivity.this, CourseListSpecificTeacherActivity.class));
             }
         });
+
     }
 
     @Override

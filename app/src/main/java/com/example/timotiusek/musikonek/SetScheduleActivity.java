@@ -37,7 +37,7 @@ public class SetScheduleActivity extends AppCompatActivity implements DatePicker
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_schedule);
         ButterKnife.bind(this);
-        getSupportActionBar().setTitle("Lihat & Revisi Jadwal");
+        getSupportActionBar().setTitle("Atur Jadwal");
 
         schedules = new ArrayList<>();
         schedules.add(new Schedule("Pertemuan 1" , "1 April 2012, 17:30 WIB"));
