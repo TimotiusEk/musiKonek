@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.timotiusek.musikonek.CustomClass.Schedule;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -20,13 +22,13 @@ public class ScheduleAdapter extends BaseAdapter {
     private ArrayList<Schedule> schedules;
     private Context mContext;
     private LayoutInflater inflater;
-    @BindView(R.id.schedule_name)
+    @BindView(R.id.schedule_name__schedule_rl)
     TextView scheduleName;
 
-    @BindView(R.id.schedule_date_and_time)
+    @BindView(R.id.schedule_date_and_time__schedule_rl)
     TextView scheduleDateAndTime;
 
-    @BindView(R.id.schedule_status)
+    @BindView(R.id.schedule_status__schedule_rl)
     TextView scheduleStatus;
 
 

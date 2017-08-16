@@ -43,7 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
     }
-    @OnClick(R.id.sign_up_btn)
+    @OnClick(R.id.sign_up_btn__sign_up_act)
     void register(){
 
         signUpCall();

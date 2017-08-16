@@ -42,12 +42,13 @@ public class SignInActivity extends AppCompatActivity {
     private final String TAG = "ASDF";
 
     @BindView(R.id.input_email_sign_in)
+    @BindView(R.id.input_email__sign_in_act)
     EditText inputEmail;
 
-    @BindView(R.id.input_password_sign_in)
+    @BindView(R.id.input_password__sign_in_act)
     EditText inputPassword;
 
-    @BindView(R.id.link_to_register)
+    @BindView(R.id.link_to_register__sign_in_act)
     TextView linkToRegister;
 
     SharedPreferences sharedPreferences;

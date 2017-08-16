@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +18,10 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class AttendanceFragment extends Fragment {
-    @BindView(R.id.tab_layout_attendance)
+    @BindView(R.id.tab_layout__attendance_fra)
     TabLayout tabLayout;
 
-    @BindView(R.id.view_pager_attendance)
+    @BindView(R.id.view_pager__attendance_fra)
     ViewPager viewPager;
 
     MainActivity ma;
@@ -43,13 +41,13 @@ public class AttendanceFragment extends Fragment {
         ma.setTitle("Attendance");
         ma.setChecked(R.id.menu_attendance);
 
-        viewPager.setAdapter(new MyAdapter(getActivity().getSupportFragmentManager()));
+        viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
         // Inflate the layout for this fragment
         return view;
     }
 
-    class MyAdapter extends FragmentStatePagerAdapter {
+    class MyAdapter extends android.support.v4.app.FragmentStatePagerAdapter {
 
         public MyAdapter(FragmentManager fm) {
             super(fm);

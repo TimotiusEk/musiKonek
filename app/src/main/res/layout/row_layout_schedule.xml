@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/schedule_name"
+            android:id="@+id/schedule_name__schedule_rl"
             android:text="Pertemuan 1"
             android:textSize="20sp"
             />
@@ -28,13 +28,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/schedule_date_and_time"
+            android:id="@+id/schedule_date_and_time__schedule_rl"
             android:text="28 April 2017, 17:30 WIB"/>
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/schedule_status"
+        android:id="@+id/schedule_status__schedule_rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|end"

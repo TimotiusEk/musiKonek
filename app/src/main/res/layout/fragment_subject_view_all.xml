@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="3"
-        android:id="@+id/subject_grid_view"
+        android:id="@+id/subject_grid_view__subject_view_all_fra"
         />
 
 </FrameLayout>

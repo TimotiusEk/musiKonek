@@ -33,6 +33,9 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import com.example.timotiusek.musikonek.CustomClass.SubjectViewAllTeacherAdapter;
+import com.example.timotiusek.musikonek.CustomClass.Teacher;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;

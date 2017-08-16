@@ -36,6 +36,8 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import com.example.timotiusek.musikonek.CustomClass.FavouriteInstrumentAdapter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -46,7 +48,7 @@ import butterknife.ButterKnife;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    @BindView(R.id.favourite_instrument_list_view)
+    @BindView(R.id.favourite_instrument_lv__edit_profile_act)
     ListView favouriteInstrumentLV;
     FavouriteInstrumentAdapter favouriteInstrumentAdapter;
 

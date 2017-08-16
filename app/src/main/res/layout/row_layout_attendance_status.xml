@@ -26,7 +26,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/avatar"
-                    android:id="@+id/teacher_image"
+                    android:id="@+id/teacher_image__attendance_status_rl"
                     />
 
                 <LinearLayout
@@ -38,7 +38,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/course_name"
+                        android:id="@+id/course_name__attendance_status_rl"
                         android:text="Kursus Piano Pemula"
                         android:textColor="@android:color/black"
                         android:layout_marginBottom="5dp"
@@ -46,7 +46,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/course_package"
+                        android:id="@+id/course_package__attendance_status_rl"
                         android:text="Paket 6 kali pertemuan"
                         android:textColor="#a8a8a8"/>
                 </LinearLayout>
@@ -54,7 +54,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/course_image"
+                android:id="@+id/course_image__attendance_status_rl"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:scaleType="fitXY"
@@ -67,29 +67,29 @@
                 >
 
                 <TextView
-                    android:id="@+id/course_time"
+                    android:id="@+id/course_time__attendance_status_rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="16:39 WIB"
                     android:textColor="@android:color/black"/>
 
                 <TextView
-                    android:id="@+id/show_dengan"
+                    android:id="@+id/show_dengan__attendance_status_rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/course_time"
+                    android:layout_below="@+id/course_time__attendance_status_rl"
                     android:text="DENGAN "
                     android:paddingTop="10dp"
                     android:textColor="@android:color/black"/>
 
                 <TextView
-                    android:id="@+id/attendance_teacher"
+                    android:id="@+id/teacher_name__attendance_status_rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PAK DHANNY"
                     android:paddingTop="10dp"
-                    android:layout_below="@+id/course_time"
-                    android:layout_toEndOf="@id/show_dengan"
+                    android:layout_below="@+id/course_time__attendance_status_rl"
+                    android:layout_toEndOf="@id/show_dengan__attendance_status_rl"
                     android:textColor="@android:color/black"/>
             </RelativeLayout>
         </LinearLayout>

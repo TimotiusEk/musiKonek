@@ -17,7 +17,7 @@
             android:background="@android:color/white">
 
             <ImageView
-                android:id="@+id/subject_bg_existing"
+                android:id="@+id/background_img__subject_existing_rl"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:scaleType="fitXY"
@@ -27,41 +27,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:layout_below="@+id/subject_bg_existing"
+                android:layout_below="@+id/background_img__subject_existing_rl"
                 >
 
                 <TextView
-                    android:id="@+id/show_kursus"
+                    android:id="@+id/show_kursus__subject_existing_rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kursus "
                     android:textColor="@android:color/black"/>
 
                 <TextView
-                    android:id="@+id/subject_name_existing"
+                    android:id="@+id/subject_name__subject_existing_rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/show_kursus"
+                    android:layout_toEndOf="@+id/show_kursus__subject_existing_rl"
                     android:text="GITAR"
                     android:textColor="@android:color/black"/>
 
                 <TextView
-                    android:id="@+id/show_dengan"
+                    android:id="@+id/show_dengan__subject_existing_rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/show_kursus"
+                    android:layout_below="@+id/show_kursus__subject_existing_rl"
                     android:text="DENGAN "
                     android:paddingTop="10dp"
                     android:textColor="@android:color/black"/>
 
                 <TextView
-                    android:id="@+id/subject_teacher_existing"
+                    android:id="@+id/teacher_name__subject_existing_rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PAK DHANNY"
                     android:paddingTop="10dp"
-                    android:layout_below="@+id/show_kursus"
-                    android:layout_toEndOf="@id/show_dengan"
+                    android:layout_below="@+id/show_kursus__subject_existing_rl"
+                    android:layout_toEndOf="@id/show_dengan__subject_existing_rl"
                     android:textColor="@android:color/black"/>
             </RelativeLayout>
         </LinearLayout>

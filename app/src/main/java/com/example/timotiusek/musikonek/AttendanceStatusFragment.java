@@ -1,12 +1,17 @@
 package com.example.timotiusek.musikonek;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.example.timotiusek.musikonek.CustomClass.AttendanceStatusAdapter;
+import com.example.timotiusek.musikonek.CustomClass.Subject;
 
 import java.util.ArrayList;
 
@@ -18,7 +23,7 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class AttendanceStatusFragment extends Fragment {
-    @BindView(R.id.attendance_list_view)
+    @BindView(R.id.attendance_lv__attendance_status_fra)
     ListView listView;
     String whichView;
     LayoutInflater inflater;
@@ -56,6 +61,15 @@ public class AttendanceStatusFragment extends Fragment {
 
         AttendanceStatusAdapter statusAdapter = new AttendanceStatusAdapter(filteredData, getActivity());
         listView.setAdapter(statusAdapter);
+
+        if(whichView.equals("PENDING")){
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    startActivity(new Intent(getActivity(), AttendanceVerificationActivity.class));
+                }
+            });
+        }
 
         // Inflate the layout for this fragment
         return v;

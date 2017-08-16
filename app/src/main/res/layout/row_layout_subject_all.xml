@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:src="@drawable/bass"
             android:scaleType="fitXY"
-            android:id="@+id/subject_bg_all"
+            android:id="@+id/background_img__subject_all_rl"
             android:tint="#66999999"
             />
 
@@ -29,7 +29,7 @@
                 android:layout_centerInParent="true"
                 android:textStyle="bold"
                 android:textSize="24sp"
-                android:id="@+id/subject_name_all"
+                android:id="@+id/subject_name__subject_all_rl"
                 android:textColor="@android:color/white"
                 />
 

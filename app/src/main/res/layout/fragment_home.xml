@@ -3,14 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.timotiusek.musikonek.HomeFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/screen_center"
+            android:layout_above="@+id/screen_center__home_fra"
             android:background="@drawable/nature"
             android:gravity="center"
             android:orientation="vertical">
@@ -37,7 +33,7 @@
                 android:background="#3F569A"
                 android:paddingLeft="50dp"
                 android:paddingRight="50dp"
-                android:id="@+id/search_btn"
+                android:id="@+id/search_btn__home_fra"
                 android:layout_marginTop="45dp"
                 />
 
@@ -48,13 +44,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_centerInParent="true"
-        android:id="@+id/screen_center"
+        android:id="@+id/screen_center__home_fra"
         android:layout_margin="3dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/screen_center"
+        android:layout_below="@+id/screen_center__home_fra"
         android:background="@drawable/recommendation"
         android:gravity="center"
         android:orientation="vertical">
@@ -81,7 +77,7 @@
             android:background="#3F569A"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
-            android:id="@+id/see_recommendation_btn"
+            android:id="@+id/see_recommendation_btn__home_fra"
             android:layout_marginTop="45dp"
             />
 

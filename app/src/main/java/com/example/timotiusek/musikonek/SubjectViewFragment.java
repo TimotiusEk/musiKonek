@@ -259,6 +259,18 @@ public class SubjectViewFragment extends Fragment {
 
         graduatedSubjectAdapter = new SubjectAdapter(graduatedSubjects, getActivity(), "GRADUATED");
         existingSubjectListView.setAdapter(graduatedSubjectAdapter);
+        subjects = new ArrayList<>();
+        subjects.add(new Subject(R.drawable.avatar, 12, "17 March 2017", R.drawable.guitar, "GUITAR", "Bu Marilyn"));
+        subjects.add(new Subject(R.drawable.avatar, 120, "1 April 2016", R.drawable.bass, "BASS", "Pak Monroe"));
+        subjectAdapter = new SubjectAdapter(subjects, getActivity(), "GRADUATED");
+        existingSubjectListView.setAdapter(subjectAdapter);
+
+        existingSubjectListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(getActivity(), ScheduleActivity.class));
+            }
+        });
         registerForContextMenu(existingSubjectListView);
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("profile", Context.MODE_PRIVATE);

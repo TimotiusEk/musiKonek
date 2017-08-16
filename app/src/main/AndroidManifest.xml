@@ -25,6 +25,12 @@
         <activity android:name=".AttendanceVerificationActivity" />
         <activity android:name=".ReportDetailActivity" />
         <activity android:name=".ScheduleActivity" />
+
+        <activity android:name=".CourseReportDetailActivity" />
+        <activity android:name=".SetScheduleActivity" />
+
+        <activity android:name=".CourseListSpecificTeacherActivity"/>
+
         <activity
             android:name=".MainActivity"
             android:theme="@style/NoActionBarTheme" />
@@ -50,8 +56,11 @@
             android:name=".SubjectViewAllTeacherActivity"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".EditProfileActivity" />
-        <activity android:name=".ConfirmationScreenActivity" android:theme="@style/NoActionBarTheme"
-            android:noHistory="true"/>
+        <activity
+            android:name=".ConfirmationScreenActivity"
+            android:noHistory="true"
+            android:theme="@style/NoActionBarTheme" />
+
     </application>
 
 </manifest>

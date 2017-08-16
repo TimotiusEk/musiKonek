@@ -1,17 +1,21 @@
 package com.example.timotiusek.musikonek;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.lang.reflect.Array;
+import com.example.timotiusek.musikonek.CustomClass.Schedule;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ScheduleActivity extends AppCompatActivity {
-    @BindView(R.id.schedule_list_view)
+    @BindView(R.id.schedule_lv__schedule_act)
     ListView scheduleListView;
 
     ArrayList<Schedule> schedules;
@@ -30,5 +34,16 @@ public class ScheduleActivity extends AppCompatActivity {
         scheduleAdapter = new ScheduleAdapter(schedules, this);
 
         scheduleListView.setAdapter(scheduleAdapter);
+        scheduleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Schedule scheduleDataToBeSent = (Schedule) scheduleAdapter.getItem(position);
+
+                /**
+                 * set bundle and send data
+                 */
+                startActivity(new Intent(ScheduleActivity.this, CourseReportDetailActivity.class));
+            }
+        });
     }
 }
