@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("ASDF","called");
+        //Log.d("ASDF","called");
         updateNavView();
     }
 }
