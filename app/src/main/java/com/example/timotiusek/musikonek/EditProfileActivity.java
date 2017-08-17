@@ -48,7 +48,7 @@ import butterknife.ButterKnife;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    @BindView(R.id.favourite_instrument_lv__edit_profile_act)
+    @BindView(R.id.favourite_instrument_list_view)
     ListView favouriteInstrumentLV;
     FavouriteInstrumentAdapter favouriteInstrumentAdapter;
 

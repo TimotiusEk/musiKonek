@@ -41,7 +41,6 @@ public class SignInActivity extends AppCompatActivity {
 
     private final String TAG = "ASDF";
 
-    @BindView(R.id.input_email_sign_in)
     @BindView(R.id.input_email__sign_in_act)
     EditText inputEmail;
 
@@ -66,7 +65,7 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.sign_in_btn)
+    @OnClick(R.id.sign_in_btn__sign_in_act)
     public void signIn()
     {
 
@@ -83,7 +82,7 @@ public class SignInActivity extends AppCompatActivity {
 //        }
     }
 
-    @OnClick(R.id.link_to_register)
+    @OnClick(R.id.link_to_register__sign_in_act)
     void goToRegisterPage(){
         startActivity(new Intent(this, SignUpActivity.class));
     }

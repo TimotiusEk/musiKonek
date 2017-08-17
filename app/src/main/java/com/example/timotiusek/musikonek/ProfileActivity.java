@@ -50,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
 
-        ctl = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        ctl = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar__profile_act);
 
         callGetMyProfile();
 
@@ -118,10 +118,10 @@ public class ProfileActivity extends AppCompatActivity {
                             ctl.setTitle(fullname);
                             Log.d("ASDF","fullname"+fullname);
 
-                            TextView emailText = (TextView) findViewById(R.id.email_profile_page);
+                            TextView emailText = (TextView) findViewById(R.id.email__profile_act);
                             emailText.setText(email);
 
-                            TextView addressText = (TextView) findViewById(R.id.address_profile_page);
+                            TextView addressText = (TextView) findViewById(R.id.address__profile_act);
                             addressText.setText("long : "+x+"\t"+"lang : "+y);
 
 
@@ -184,7 +184,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.link_to_edit_profile)
     @OnClick(R.id.edit_profile_btn__profile_act)
     void goToEditProfile(){
         startActivity(new Intent(this, EditProfileActivity.class));

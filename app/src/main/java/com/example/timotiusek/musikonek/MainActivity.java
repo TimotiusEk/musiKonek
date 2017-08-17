@@ -63,13 +63,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView nv = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView nv = (NavigationView) findViewById(R.id.nav_view__main_act);
         View header = nv.getHeaderView(0);
 
-        TextView textName = (TextView) header.findViewById(R.id.username);
+        TextView textName = (TextView) header.findViewById(R.id.username__nav_header_main);
         textName.setText(username);
 
-        TextView textEmail = (TextView) header.findViewById(R.id.email_label);
+        TextView textEmail = (TextView) header.findViewById(R.id.email__nav_header_main);
         textEmail.setText(email);
 
         navigationView.setNavigationItemSelectedListener(MainActivity.this);
