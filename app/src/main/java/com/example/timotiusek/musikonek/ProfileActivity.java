@@ -30,6 +30,7 @@ import com.example.timotiusek.musikonek.Helper.DateFormatter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -110,6 +111,13 @@ public class ProfileActivity extends AppCompatActivity {
                             String email = data.getString("email");
 
                             JSONObject location = data.getJSONObject("address");
+
+                            TextView genderText = (TextView) findViewById(R.id.gender__profile_act);
+                            if(data.getString("gender").equals("null") || data.getString("gender")==null){
+                                genderText.setText("Unspecified");
+                            }else{
+                                genderText.setText(data.getString("gender"));
+                            }
 
                             String x = location.getString("x");
                             String y  = location.getString("y");

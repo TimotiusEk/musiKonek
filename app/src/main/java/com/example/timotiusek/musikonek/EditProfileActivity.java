@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -147,6 +148,15 @@ public class EditProfileActivity extends AppCompatActivity {
 
                             String fullname = data.getString("fullname");
 //                            String username = data.getString("username");
+
+                            Spinner genderSpinner = (Spinner) findViewById(R.id.gender_spinner);
+
+                            if(data.getString("gender").equalsIgnoreCase("male")){
+                                genderSpinner.setSelection(0);
+                            }else{
+                                genderSpinner.setSelection(1);
+                            }
+
 
                             String firstname = TextFormater.firstNameSplitter(fullname);
                             String lastname = TextFormater.lastNameSplitter(fullname);
@@ -308,6 +318,10 @@ public class EditProfileActivity extends AppCompatActivity {
 
 //                String username = usernameText.getText().toString();
 //                String fullname = fullnameText.getText().toString();
+
+                Spinner genderSpinner = (Spinner) findViewById(R.id.gender_spinner);
+
+                reqBody.put("gender", genderSpinner.getSelectedItem().toString());
 
                 reqBody.put("fullname", firstName+" "+lastName);
 
