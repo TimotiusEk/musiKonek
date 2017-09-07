@@ -25,12 +25,9 @@
         <activity android:name=".AttendanceVerificationActivity" />
         <activity android:name=".ReportDetailActivity" />
         <activity android:name=".ScheduleActivity" />
-
         <activity android:name=".CourseReportDetailActivity" />
         <activity android:name=".SetScheduleActivity" />
-
-        <activity android:name=".CourseListSpecificTeacherActivity"/>
-
+        <activity android:name=".CourseListSpecificTeacherActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/NoActionBarTheme" />
@@ -60,7 +57,8 @@
             android:name=".ConfirmationScreenActivity"
             android:noHistory="true"
             android:theme="@style/NoActionBarTheme" />
-
+        <activity android:name=".ActiveCourseActivity" />
+        <activity android:name=".AppointmentListFragment"></activity>
     </application>
 
 </manifest>

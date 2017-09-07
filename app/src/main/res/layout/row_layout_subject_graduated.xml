@@ -80,6 +80,15 @@
                     android:text="GITAR"
                     android:textColor="@android:color/black" />
 
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_action_more_vert"
+                    android:background="@android:color/transparent"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/show_popup_btn__subject_graduated_rl"
+                    />
+
                 <TextView
                     android:id="@+id/show_dengan__subject_graduated_rl"
                     android:layout_width="wrap_content"

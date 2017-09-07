@@ -29,10 +29,12 @@ import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
+import com.example.timotiusek.musikonek.CustomClass.Schedule;
 import com.example.timotiusek.musikonek.CustomClass.Subject;
 import com.example.timotiusek.musikonek.CustomClass.SubjectAdapter;
 import com.example.timotiusek.musikonek.Helper.Connector;
 import com.example.timotiusek.musikonek.Helper.DateFormatter;
+import com.example.timotiusek.musikonek.Helper.TextFormater;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -95,6 +97,8 @@ public class SubjectViewFragment extends Fragment {
             else if (whichView.equals("GRADUATED"))
                 populateGraduatedSubjectData();
 
+
+
         }
 
 
@@ -137,7 +141,7 @@ public class SubjectViewFragment extends Fragment {
         subjects.add(new Subject(R.drawable.trumpet, "TRUMPET"));
         ma = (MainActivity) getActivity();
         bf = new BrowseFragment();
-        subjectAdapter = new SubjectAdapter(subjects, getActivity(), "ALL");
+        subjectAdapter = new SubjectAdapter(subjects, getActivity(), "ALL", getActivity());
         subjectGridView.setAdapter(subjectAdapter);
         subjectGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -154,7 +158,7 @@ public class SubjectViewFragment extends Fragment {
         subjects = new ArrayList<>();
 //        subjects.add(new Subject(R.drawable.guitar, "GUITAR", "Bu Marilyn"));
 //        subjects.add(new Subject(R.drawable.bass, "BASS", "Pak Monroe"));
-        subjectAdapter = new SubjectAdapter(subjects, getActivity(), "EXISTING");
+        subjectAdapter = new SubjectAdapter(subjects, getActivity(), "EXISTING", getActivity());
         existingSubjectListView.setAdapter(subjectAdapter);
         registerForContextMenu(existingSubjectListView);
 
@@ -187,11 +191,12 @@ public class SubjectViewFragment extends Fragment {
                             for(int i=0;i<arr.length();i++){
                                 JSONObject jo =  arr.getJSONObject(i);
 
-                                String instrument = jo.getString("instrument");
+                                String instrument = jo.getString("name");
                                 String teacherName = jo.getString("teacher_name");
+                                String id = jo.getString("course_id");
 //                                String date = jo.getString("date_created");
 
-                                subjects.add(new Subject(R.drawable.guitar, instrument, teacherName));
+                                subjects.add(new Subject(R.drawable.avatar, instrument,teacherName, id));
 
                                 subjectAdapter.notifyDataSetChanged();
 
@@ -259,12 +264,12 @@ public class SubjectViewFragment extends Fragment {
         graduatedSubjects = new ArrayList<>();
 //
 
-        graduatedSubjectAdapter = new SubjectAdapter(graduatedSubjects, getActivity(), "GRADUATED");
+        graduatedSubjectAdapter = new SubjectAdapter(graduatedSubjects, getActivity(), "GRADUATED", getActivity());
         existingSubjectListView.setAdapter(graduatedSubjectAdapter);
         subjects = new ArrayList<>();
-        subjects.add(new Subject(R.drawable.avatar, 12, "17 March 2017", R.drawable.guitar, "GUITAR", "Bu Marilyn"));
-        subjects.add(new Subject(R.drawable.avatar, 120, "1 April 2016", R.drawable.bass, "BASS", "Pak Monroe"));
-        subjectAdapter = new SubjectAdapter(subjects, getActivity(), "GRADUATED");
+        subjects.add(new Subject(R.drawable.avatar, 12, "17 March 2017", R.drawable.guitar, "GUITAR", "Bu Marilyn","12"));
+        subjects.add(new Subject(R.drawable.avatar, 120, "1 April 2016", R.drawable.bass, "BASS", "Pak Monroe","13"));
+        subjectAdapter = new SubjectAdapter(subjects, getActivity(), "GRADUATED", getActivity());
         existingSubjectListView.setAdapter(subjectAdapter);
 
         existingSubjectListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -298,6 +303,7 @@ public class SubjectViewFragment extends Fragment {
                     public void onResponse(String response) {
 
                         try {
+                            Log.d("ASDF",response);
                             JSONObject res = new JSONObject(response);
 
                             JSONArray arr = res.getJSONArray("data");
@@ -307,11 +313,12 @@ public class SubjectViewFragment extends Fragment {
 
                                 String instrument = jo.getString("instrument");
                                 String teacherName = jo.getString("teacher_name");
+                                String id = jo.getString("course_id");
 //                                String date = jo.getString("date_created");
 //
 //                                date = DateFormatter.monthYear(date);
 
-                                graduatedSubjects.add(new Subject(R.drawable.avatar, 12, "17 Maret 2017", R.drawable.guitar, instrument, teacherName));
+                                graduatedSubjects.add(new Subject(R.drawable.avatar, 12, "17 Maret 2017", R.drawable.guitar, instrument, teacherName, id));
 
 
                                 graduatedSubjectAdapter.notifyDataSetChanged();
@@ -379,23 +386,23 @@ public class SubjectViewFragment extends Fragment {
 
     }
 
-    public boolean onContextItemSelected (MenuItem item) {
-
-
-        AdapterView.AdapterContextMenuInfo info= (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        int index = info.position;
-        switch (item.getItemId()) {
-            case R.id.look_report_menu:
-                startActivity(new Intent(getActivity(), ReportDetailActivity.class));
-//                Toast.makeText(getActivity(), "Lihat Laporan " + subjects.get(index).getName(), Toast.LENGTH_LONG).show();
-                return true;
-            case R.id.look_schedule_menu:
-                startActivity(new Intent(getActivity(), ScheduleActivity.class));
-//                Toast.makeText(getActivity(), "Lihat Jadwal " + subjects.get(index).getName(), Toast.LENGTH_LONG).show();
-                return true;
-        }
-        return false;
-    }
+//    public boolean onContextItemSelected (MenuItem item) {
+//
+//
+//        AdapterView.AdapterContextMenuInfo info= (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+//        int index = info.position;
+//        switch (item.getItemId()) {
+//            case R.id.look_report_menu:
+//                startActivity(new Intent(getActivity(), ReportDetailActivity.class));
+////                Toast.makeText(getActivity(), "Lihat Laporan " + subjects.get(index).getName(), Toast.LENGTH_LONG).show();
+//                return true;
+//            case R.id.look_schedule_menu:
+//                startActivity(new Intent(getActivity(), ScheduleActivity.class));
+////                Toast.makeText(getActivity(), "Lihat Jadwal " + subjects.get(index).getName(), Toast.LENGTH_LONG).show();
+//                return true;
+//        }
+//        return false;
+//    }
 
 
 }

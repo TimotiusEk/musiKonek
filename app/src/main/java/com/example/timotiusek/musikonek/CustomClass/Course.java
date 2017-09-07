@@ -11,14 +11,24 @@ public class Course {
     private String courseDesc;
     private int courseDuration;
     private String coursePrice;
+    private String id;
 
-    public Course(int teacherImg, String teacherName, String courseName, String courseDesc, int courseDuration, String coursePrice) {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Course(int teacherImg, String teacherName, String courseName, String courseDesc, int courseDuration, String coursePrice, String id) {
         this.teacherImg = teacherImg;
         this.teacherName = teacherName;
         this.courseName = courseName;
         this.courseDesc = courseDesc;
         this.courseDuration = courseDuration;
         this.coursePrice = coursePrice;
+        this.id = id;
     }
 
     public int getTeacherImg() {

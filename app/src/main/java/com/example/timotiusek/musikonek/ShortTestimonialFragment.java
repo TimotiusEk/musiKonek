@@ -3,9 +3,15 @@ package com.example.timotiusek.musikonek;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,55 +27,91 @@ import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
+import com.example.timotiusek.musikonek.CustomClass.TeacherAppointment;
 import com.example.timotiusek.musikonek.Helper.Connector;
-import com.example.timotiusek.musikonek.Helper.TextFormater;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ReportDetailActivity extends AppCompatActivity {
+
+
+public class ShortTestimonialFragment extends Fragment {
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+    RatingBar ratingBar;
+
+    public ShortTestimonialFragment() {
+        // Required empty public constructor
+    }
+
+    TeacherAppointment ta;
+
+    public void setTeacherAppointment(TeacherAppointment ta){
+        this.ta = ta;
+    }
+
+    public static ShortTestimonialFragment newInstance(TeacherAppointment ta){
+        ShortTestimonialFragment stf = new ShortTestimonialFragment();
+        stf.setTeacherAppointment(ta);
+
+        return stf;
+
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report_detail);
-        getSupportActionBar().setTitle("Detil Laporan");
-        ButterKnife.bind(this);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        loadReport();
+        View v = inflater.inflate(R.layout.fragment_short_testimonial, container, false);
+        ButterKnife.bind(this, v);
+//        ma = (MainActivity) getActivity();
+        //ma.clearCheckedItems();
+        // Inflate the layout for this fragment
+        ratingBar = (RatingBar) v.findViewById(R.id.rating_bar__short_testimonial_fra);
 
+        TextView studentView = (TextView) v.findViewById(R.id.course_name__short_testimonial_fra);
+        studentView.setText(ta.getCourseName());
+
+        TextView teacherView = (TextView) v.findViewById(R.id.student_name__short_testimonial_fra);
+        teacherView.setText(ta.getStudentName());
+
+
+        float rating = (float) 3.5;
+
+        ratingBar.setRating(rating);
+        ratingBar.setIsIndicator(false);
+        loadScore();
+
+        return v;
     }
 
-    @OnClick(R.id.close_btn__report_detail_act)
-    void back(){
-        super.onBackPressed();
+    @OnClick(R.id.open_btn__short_testimonial_fra)
+    void openTestimonialInputPage(){
+        Toast.makeText(getActivity(), "getPressed", Toast.LENGTH_SHORT).show();
     }
 
-    private void loadReport(){
+    void loadScore(){
 
         RequestQueue requestQueue;
-        Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024); // 1MB cap
+        Cache cache = new DiskBasedCache(getActivity().getCacheDir(), 1024 * 1024); // 1MB cap
         final Network network = new BasicNetwork(new HurlStack());
         requestQueue = new RequestQueue(cache, network);
         requestQueue.start();
 
-        SharedPreferences sharedPreferences = getSharedPreferences("profile", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("profile", Context.MODE_PRIVATE);
 
         String token ="";
         if(!sharedPreferences.getString("token","").equals("")) {
             token = sharedPreferences.getString("token","");
         }
 
-        Intent incoming = getIntent();
-
-        Bundle params = incoming.getExtras();
-        String appointment_id = params.getString("appointment_id");
-
-
-        String url = Connector.getURL() +"/api/v1/report/showReport?token="+token+"&appointment_id="+appointment_id;
+        String url = Connector.getURL() +"/api/v1/course/rating?token="+token+"&course_id="+ta.getCourseID();
 
         Log.d("ASDF",url);
 
@@ -83,17 +125,19 @@ public class ReportDetailActivity extends AppCompatActivity {
                             JSONObject all = new JSONObject(response);
                             JSONObject res  = all.getJSONObject("data");
 
-                            String homework = res.getString("homework");
-                            String teacherRemark = res.getString("teacher_remark");
-                            String practice = res.getString("practice");
+                            ratingBar.setRating((float) res.getDouble("rating"));
 
-                            TextView showHomework = (TextView) findViewById(R.id.homework_text_view);
-                            TextView showComment = (TextView) findViewById(R.id.comment_text_view);
-                            TextView showExercises = (TextView) findViewById(R.id.practice_text_view);
+                            TextView commentView = (TextView) getView().findViewById(R.id.comment__short_testimonial_fra);
+                            EditText commentEdit = (EditText) getView().findViewById(R.id.edit_comment__short_testimonial_fra);
 
-                            showHomework.setText(homework);
-                            showComment.setText(teacherRemark);
-                            showExercises.setText(practice);
+                            if(res.getString("comment").equals("") || res.getString("comment").equals("null")){
+                                commentView.setVisibility(View.INVISIBLE);
+                            }else{
+                                commentView.setText(res.getString("comment"));
+                                commentEdit.setVisibility(View.INVISIBLE);
+                            }
+
+
 
 //                            showDate.setText(TextFormater.formatDateSpacing(res.getString("date")));
 //                            showTime.setText("Jam " +res.getString("time"));
@@ -112,7 +156,7 @@ public class ReportDetailActivity extends AppCompatActivity {
 
                         if(networkResponse == null){
 
-                            Toast.makeText(ReportDetailActivity.this, "Connection Error",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Connection Error",Toast.LENGTH_SHORT).show();
 
                         }else{
                             int a = networkResponse.statusCode;
@@ -120,7 +164,7 @@ public class ReportDetailActivity extends AppCompatActivity {
                             }
 
                             if(networkResponse.statusCode == 500){
-                                Toast.makeText(ReportDetailActivity.this, "ERROR",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "ERROR",Toast.LENGTH_SHORT).show();
                             }
 
                             if(networkResponse.statusCode != 401){

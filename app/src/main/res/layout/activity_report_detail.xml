@@ -21,20 +21,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jonathan harus menyelesaikan [JUDUL LAGU] yang diberikan dari Minggu p kursus. Hari ini sudah cukup lancar"
+        android:id="@+id/homework_text_view"
         android:textSize="18sp"
         android:layout_weight="0"/>
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Latihan untuk Pertemuan Berikutnya"
-    android:textColor="#b7b7b7"
-    android:layout_marginTop="30dp"
-    android:layout_weight="0"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latihan untuk Pertemuan Berikutnya"
+        android:textColor="#b7b7b7"
+        android:layout_marginTop="30dp"
+        android:layout_weight="0"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Latih kembali bagian baru. Masih bermain dengan tersendat-sendat. Ingat untuk bermain dengan Tempo yang lebih pelan untuk memahiri"
         android:textSize="18sp"
+        android:id="@+id/practice_text_view"
         android:layout_weight="0"/>
 
     <TextView
@@ -48,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
+        android:id="@+id/comment_text_view"
         android:layout_weight="1"
         android:text="-Lebih berkonsentrasi saat latihan \n -Jangan terlalu banyak istirahat"/>
 

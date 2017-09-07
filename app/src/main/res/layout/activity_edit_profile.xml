@@ -25,10 +25,10 @@
                 app:hintTextAppearance="@style/TextLabel">
 
                 <EditText
-                    android:id="@+id/username_edit"
+                    android:id="@+id/firstname_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
+                    android:hint="Firstname"
                     android:inputType="textPersonName"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
@@ -43,10 +43,10 @@
                 app:hintTextAppearance="@style/TextLabel">
 
                 <EditText
-                    android:id="@+id/fullname_edit"
+                    android:id="@+id/lastname_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Fullname"
+                    android:hint="Lastname"
                     android:inputType="textPersonName"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />

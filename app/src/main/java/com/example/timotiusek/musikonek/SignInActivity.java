@@ -63,7 +63,104 @@ public class SignInActivity extends AppCompatActivity {
             inputEmail.setText(sharedPreferences.getString("email",""));
         }
 
+        if(!sharedPreferences.getString("token","").equals("")){
+            checkTokenValidity(sharedPreferences.getString("token",""));
+        }
+
     }
+
+    public void checkTokenValidity(String token){
+        RequestQueue requestQueue;
+        Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024); // 1MB cap
+        final Network network = new BasicNetwork(new HurlStack());
+        requestQueue = new RequestQueue(cache, network);
+        requestQueue.start();
+        String url = Connector.getURL() +"/api/v1/checktoken?token="+token;
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject res = new JSONObject(response);
+//                            String name = String.valueOf(res.get("name"));
+                            Log.d("ASDF", "YOSAH + \n"+res.toString() );
+
+                            if(res.getString("success").equals("true")){
+
+//                                Toast.makeText(SignInActivity.this, "token is "+ res.getString("token"), Toast.LENGTH_SHORT).show();
+
+//                                Bundle extras = new Bundle();
+//                                extras.putString("email",inputEmail.getText().toString());
+//                                extras.putString("username","USERNAME HERE");
+
+
+                                Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+
+//                                intent.putExtras(extras);
+
+                                startActivity(intent);
+                            }else{
+                                Toast.makeText(SignInActivity.this, "YOU NEED TO ACTIVATE YOUR ACCOUNT",Toast.LENGTH_SHORT);
+                            }
+
+
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        NetworkResponse networkResponse = error.networkResponse;
+
+                        if(networkResponse == null){
+
+                            Toast.makeText(SignInActivity.this, "Connection Error",Toast.LENGTH_SHORT).show();
+
+                        }else{
+                            int a = networkResponse.statusCode;
+                            if(networkResponse.statusCode == 401){
+                            }
+
+                            if(networkResponse.statusCode == 500){
+                                Toast.makeText(SignInActivity.this, "INVALID CREDENTIALS",Toast.LENGTH_SHORT).show();
+                            }
+
+                            if(networkResponse.statusCode != 401){
+
+                                Log.d("ASDF","SHIT");
+
+                            }
+
+                        }
+
+
+
+                    }
+                }){
+
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                int mStatusCode = response.statusCode;
+                return super.parseNetworkResponse(response);
+            }
+
+        };
+
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(stringRequest);
+
+        requestQueue.add(stringRequest);
+    }
+
 
     @OnClick(R.id.sign_in_btn__sign_in_act)
     public void signIn()
@@ -122,7 +219,7 @@ public class SignInActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putString("email",inputEmail.getText().toString());
                                 editor.putString("token",res.getString("token"));
-                                editor.putString("username",res.getString("username"));
+                                editor.putString("fullname",res.getString("fullname"));
                                 editor.apply();
 
 

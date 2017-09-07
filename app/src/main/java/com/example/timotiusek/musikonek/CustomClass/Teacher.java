@@ -11,12 +11,23 @@ public class Teacher{
     private String haveTaughtSince;
     private int costPerMeeting;
 
+    public String getId() {
+        return id;
+    }
 
-    public Teacher(int image, String name, String haveTaughtSince, int costPerMeeting) {
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
+
+
+    public Teacher(int image, String name, String haveTaughtSince, int costPerMeeting, String id) {
         this.image = image;
         this.name = name;
         this.haveTaughtSince = haveTaughtSince;
         this.costPerMeeting = costPerMeeting;
+        this.id = id;
     }
     public int getImage() {
         return image;

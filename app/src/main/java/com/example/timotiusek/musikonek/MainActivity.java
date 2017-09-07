@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         } else if (id == R.id.menu_exit_application) {
-            System.exit(0);
+            logout();
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -171,10 +171,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             email = sharedPreferences.getString("email","");
         }
 
-        if(!sharedPreferences.getString("username","").equals("")) {
-            username = sharedPreferences.getString("username","");
+        if(!sharedPreferences.getString("fullname","").equals("")) {
+            username = sharedPreferences.getString("fullname","");
         }else{
-            username = "username";
+            username = "fullname";
         }
     }
 
@@ -183,6 +183,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onResume();
         //Log.d("ASDF","called");
         updateNavView();
+    }
+
+    private void logout(){
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("token","");
+        editor.putString("username","");
+
+        editor.apply();
+
+        Intent intent = new Intent(this, SignInActivity.class);
+        startActivity(intent);
+
+        finish();
+
     }
 }
 

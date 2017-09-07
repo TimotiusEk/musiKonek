@@ -1,0 +1,72 @@
+package com.example.timotiusek.musikonek.CustomClass;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import com.example.timotiusek.musikonek.R;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
+
+/**
+ * Created by wilbe on 24/08/2017.
+ */
+
+public class ShowAttendanceAdapter extends BaseAdapter{
+
+    private ArrayList<Attendance> attendances;
+    private Context mContext;
+    private LayoutInflater inflater;
+    @BindView(R.id.student_image__show_attendance_rl)
+    CircleImageView studentImg;
+    @BindView(R.id.student_name__show_attendance_rl)
+    TextView studentName;
+    @BindView(R.id.course_name__show_attendance_rl)
+    TextView courseName;
+    @BindView(R.id.which_attendance__show_atttendance_rl)
+    TextView whichAttendance;
+
+    public ShowAttendanceAdapter(ArrayList<Attendance> attendances, Context c) {
+        this.attendances = attendances;
+        mContext = c;
+    }
+
+    @Override
+    public int getCount() {
+        return attendances.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return attendances.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final Attendance attendance = (Attendance) getItem(position);
+        inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if(convertView == null){
+            convertView = inflater.inflate(R.layout.row_layout_show_attendance, parent, false);
+            ButterKnife.bind(this, convertView);
+
+            studentImg.setImageResource(attendance.getStudentImage());
+            studentName.setText(attendance.getStudentName());
+            courseName.setText(attendance.getCourseName());
+            whichAttendance.setText(attendance.getWhichAttendance());
+        }
+        return convertView;
+    }
+
+}

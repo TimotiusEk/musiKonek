@@ -37,6 +37,7 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import com.example.timotiusek.musikonek.CustomClass.FavouriteInstrumentAdapter;
+import com.example.timotiusek.musikonek.Helper.TextFormater;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -145,18 +146,21 @@ public class EditProfileActivity extends AppCompatActivity {
                             JSONObject data = res.getJSONObject("data");
 
                             String fullname = data.getString("fullname");
-                            String username = data.getString("username");
+//                            String username = data.getString("username");
+
+                            String firstname = TextFormater.firstNameSplitter(fullname);
+                            String lastname = TextFormater.lastNameSplitter(fullname);
 
                             JSONObject location = data.getJSONObject("address");
 
                             String x = location.getString("x");
                             String y  = location.getString("y");
 
-                            EditText fullnameEdit = (EditText) findViewById(R.id.fullname_edit);
-                            fullnameEdit.setText(fullname);
+                            EditText firstnameEdti = (EditText) findViewById(R.id.firstname_edit);
+                            firstnameEdti.setText(firstname);
 
-                            EditText usernameEdit = (EditText) findViewById(R.id.username_edit);
-                            usernameEdit.setText(username);
+                            EditText lastNameEdit = (EditText) findViewById(R.id.lastname_edit);
+                            lastNameEdit.setText(lastname);
 
                             Log.d("ASDF",res.toString());
 
@@ -240,12 +244,13 @@ public class EditProfileActivity extends AppCompatActivity {
 
                             SharedPreferences sharedPreferences = getSharedPreferences("profile", Context.MODE_PRIVATE);
 
-                            EditText usernameEdit = (EditText) findViewById(R.id.username_edit);
+                            EditText firstNameEdit = (EditText) findViewById(R.id.firstname_edit);
+                            EditText lastNameEdit = (EditText) findViewById(R.id.lastname_edit);
 
 
 
                             SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("username",usernameEdit.getText().toString());
+                            editor.putString("fullname",firstNameEdit.getText().toString() + " " + lastNameEdit.getText().toString());
                             editor.apply();
 
 
@@ -291,21 +296,20 @@ public class EditProfileActivity extends AppCompatActivity {
             protected Map<String,String> getParams(){
                 Map<String,String> reqBody = new HashMap<String, String>();
 
-                EditText fullnameEdit = (EditText) findViewById(R.id.fullname_edit);
+                EditText firstNameEdit = (EditText) findViewById(R.id.firstname_edit);
 
-                EditText usernameEdit = (EditText) findViewById(R.id.username_edit);
+                EditText lastNameEdit = (EditText) findViewById(R.id.lastname_edit);
 
 //                EditText usernameText = (EditText) findViewById(R.id.input_username_sign_up);
 //                EditText fullnameText  = (EditText)  findViewById(R.id.input_fullname_signup);
 
-                String fullname = fullnameEdit.getText().toString();
-                String username = usernameEdit.getText().toString();
+                String firstName = firstNameEdit.getText().toString();
+                String lastName = lastNameEdit.getText().toString();
 
 //                String username = usernameText.getText().toString();
 //                String fullname = fullnameText.getText().toString();
 
-                reqBody.put("fullname", fullname);
-                reqBody.put("username", username);
+                reqBody.put("fullname", firstName+" "+lastName);
 
                 String token = "";
                 SharedPreferences sharedPreferences = getSharedPreferences("profile", Context.MODE_PRIVATE);

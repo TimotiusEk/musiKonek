@@ -16,6 +16,16 @@ public class Subject {
     private int teacherImage;
     private String status;
 
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     /**
      * Todo: time ini nanti diganti datatype nya
      */
@@ -25,19 +35,21 @@ public class Subject {
         this.name = name;
     }
 
-    public Subject(int image, String name, String teacher) {
+    public Subject(int image, String name, String teacher, String id) {
         this.image = image;
         this.name = name;
         this.teacher = teacher;
+        this.id = id;
     }
 
-    public Subject(int studentImage, int coursePackage, String dateGraduated, int image, String name, String teacher) {
+    public Subject(int studentImage, int coursePackage, String dateGraduated, int image, String name, String teacher, String id) {
         this.image = image;
         this.name = name;
         this.teacher = teacher;
         this.coursePackage = coursePackage;
         this.dateGraduated = dateGraduated;
         this.studentImage = studentImage;
+        this.id = id;
     }
 
     public Subject(int teacherImage, String name, int coursePackage, int image, String time, String teacher, String status) {

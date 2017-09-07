@@ -97,7 +97,14 @@ public class SubjectViewAllTeacherActivity extends AppCompatActivity {
         allTeacherListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SubjectViewAllTeacherActivity.this, CourseDetailActivity.class);
+                Intent intent = new Intent(SubjectViewAllTeacherActivity.this, CourseListSpecificTeacherActivity.class);
+
+                Bundle extras = new Bundle();
+                extras.putString("name",teacherArrayList.get(position).getName());
+                extras.putString("teacher_id",teacherArrayList.get(position).getId());
+
+                intent.putExtras(extras);
+
                 startActivity(intent);
             }
         });
@@ -128,6 +135,9 @@ public class SubjectViewAllTeacherActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
+
+                            Log.d("ASDF",response);
+
                             JSONObject res = new JSONObject(response);
 //                            String name = String.valueOf(res.get("name"));
 
@@ -139,11 +149,12 @@ public class SubjectViewAllTeacherActivity extends AppCompatActivity {
                                 String username = jo.getString("username");
                                 String rate = jo.getString("rate");
                                 String date = jo.getString("date_created");
+                                String id = jo.getString("skill_teacher_id");
 
                                 int intrate = Integer.valueOf(rate);
 
 
-                                teacherArrayList.add(new Teacher(R.drawable.avatar,username, DateFormatter.monthYear(date), intrate));
+                                teacherArrayList.add(new Teacher(R.drawable.avatar,username, DateFormatter.monthYear(date), intrate, id));
                                 subjectViewAllTeacherAdapter.notifyDataSetChanged();
 
 
