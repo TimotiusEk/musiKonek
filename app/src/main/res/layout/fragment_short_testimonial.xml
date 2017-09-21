@@ -78,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/edit_comment__short_testimonial_fra"
                 android:textSize="18sp"
+                android:textColor="#000000"
                 android:hint="Tulis Komentar Anda"/>
             <Button
                 android:id="@+id/open_btn__short_testimonial_fra"
