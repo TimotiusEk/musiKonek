@@ -92,7 +92,12 @@ public class CourseListSpecificTeacherActivity extends AppCompatActivity {
                 extras.putString("description", courses.get(position).getCourseDesc());
                 extras.putString("price", courses.get(position).getCoursePrice());
                 extras.putInt("image", courses.get(position).getTeacherImg());
+                extras.putInt("duration_minute",courses.get(position).getDurationMinute());
+                extras.putString("teacher_id",courses.get(position).getTeacherID());
+                extras.putString("skill_id",courses.get(position).getSkillID());
 
+//                extras.putString("teacher_id",CourseListSpecificTeacherActivity.this.getIntent().getExtras().getString("teacher_id"));
+//                Log.d("DEBUG", "Angkanya: " + CourseListSpecificTeacherActivity.this.getIntent().getExtras().getString("teacher_id"));
                 intent.putExtras(extras);
 
                 startActivity(intent);
@@ -160,9 +165,11 @@ public class CourseListSpecificTeacherActivity extends AppCompatActivity {
 
                                 String programId = jo.getString("program_id");
 
+                                String teacherID = jo.getString("teacher_id");
+                                int duration = jo.getInt("duration_minute");
+                                String skillID = jo.getString("skill_id");
 
-
-                                courses.add(new Course(R.drawable.avatar, teacherName, name, description, appointments, price, programId));
+                                courses.add(new Course(R.drawable.avatar, teacherName, name, description, appointments, price, programId, duration, teacherID, skillID));
 
                                 courseAdapter.notifyDataSetChanged();
 

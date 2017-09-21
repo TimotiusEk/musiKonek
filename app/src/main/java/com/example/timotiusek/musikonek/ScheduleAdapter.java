@@ -19,18 +19,14 @@ import butterknife.ButterKnife;
  */
 
 public class ScheduleAdapter extends BaseAdapter {
+
+    @BindView(R.id.schedule_name__schedule_rl) TextView scheduleName;
+    @BindView(R.id.schedule_date_and_time__schedule_rl) TextView scheduleDateAndTime;
+    @BindView(R.id.schedule_status__schedule_rl) TextView scheduleStatus;
+
     private ArrayList<Schedule> schedules;
     private Context mContext;
     private LayoutInflater inflater;
-    @BindView(R.id.schedule_name__schedule_rl)
-    TextView scheduleName;
-
-    @BindView(R.id.schedule_date_and_time__schedule_rl)
-    TextView scheduleDateAndTime;
-
-    @BindView(R.id.schedule_status__schedule_rl)
-    TextView scheduleStatus;
-
 
     ScheduleAdapter(ArrayList<Schedule> schedules, Context mContext){
         this.schedules = schedules;

@@ -58,7 +58,8 @@
             android:noHistory="true"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ActiveCourseActivity" />
-        <activity android:name=".AppointmentListFragment"></activity>
+        <activity android:name=".AppointmentListFragment" />
+        <activity android:name=".PlanAppointmentActivity"></activity>
     </application>
 
 </manifest>

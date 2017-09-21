@@ -77,12 +77,10 @@ public class SignInActivity extends AppCompatActivity {
         requestQueue.start();
         String url = Connector.getURL() +"/api/v1/checktoken?token="+token;
 
-
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         try {
                             JSONObject res = new JSONObject(response);
 //                            String name = String.valueOf(res.get("name"));
@@ -96,54 +94,33 @@ public class SignInActivity extends AppCompatActivity {
 //                                extras.putString("email",inputEmail.getText().toString());
 //                                extras.putString("username","USERNAME HERE");
 
-
                                 Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-
-//                                intent.putExtras(extras);
-
                                 startActivity(intent);
                             }else{
                                 Toast.makeText(SignInActivity.this, "YOU NEED TO ACTIVATE YOUR ACCOUNT",Toast.LENGTH_SHORT);
                             }
-
-
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                         NetworkResponse networkResponse = error.networkResponse;
-
                         if(networkResponse == null){
-
                             Toast.makeText(SignInActivity.this, "Connection Error",Toast.LENGTH_SHORT).show();
-
                         }else{
                             int a = networkResponse.statusCode;
                             if(networkResponse.statusCode == 401){
                             }
-
                             if(networkResponse.statusCode == 500){
                                 Toast.makeText(SignInActivity.this, "INVALID CREDENTIALS",Toast.LENGTH_SHORT).show();
                             }
-
                             if(networkResponse.statusCode != 401){
-
                                 Log.d("ASDF","SHIT");
-
                             }
-
                         }
-
-
-
                     }
                 }){
 
@@ -152,7 +129,6 @@ public class SignInActivity extends AppCompatActivity {
                 int mStatusCode = response.statusCode;
                 return super.parseNetworkResponse(response);
             }
-
         };
 
 //        RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -165,18 +141,7 @@ public class SignInActivity extends AppCompatActivity {
     @OnClick(R.id.sign_in_btn__sign_in_act)
     public void signIn()
     {
-
         loginCall();
-
-
-
-
-//        if(inputEmail.getText().toString().equals("admin") && inputPassword.getText().toString().equals("admin")){
-//            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-//            startActivity(intent);
-//        } else{
-//            Toast.makeText(this, "Email/Password Salah", Toast.LENGTH_SHORT).show();
-//        }
     }
 
     @OnClick(R.id.link_to_register__sign_in_act)
