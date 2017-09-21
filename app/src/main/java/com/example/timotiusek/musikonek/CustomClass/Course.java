@@ -13,13 +13,12 @@ public class Course {
     private String coursePrice;
     private String id;
 
-    public String getId() {
-        return id;
-    }
+    private String teacherID;
+    private int durationMinute;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    private String skillID;
+
+
 
     public Course(int teacherImg, String teacherName, String courseName, String courseDesc, int courseDuration, String coursePrice, String id) {
         this.teacherImg = teacherImg;
@@ -29,6 +28,51 @@ public class Course {
         this.courseDuration = courseDuration;
         this.coursePrice = coursePrice;
         this.id = id;
+    }
+
+    public Course(int teacherImg, String teacherName, String courseName, String courseDesc, int courseDuration, String coursePrice, String id, int durationMinute, String teacherID, String skillID) {
+        this.teacherImg = teacherImg;
+        this.teacherName = teacherName;
+        this.courseName = courseName;
+        this.courseDesc = courseDesc;
+        this.courseDuration = courseDuration;
+        this.coursePrice = coursePrice;
+        this.teacherID = teacherID;
+        this.skillID = skillID;
+        this.durationMinute = durationMinute;
+        this.id = id;
+    }
+
+    public String getTeacherID() {
+        return teacherID;
+    }
+
+    public String getSkillID() {
+        return skillID;
+    }
+
+    public void setSkillID(String skillID) {
+        this.skillID = skillID;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setTeacherID(String teacherID) {
+        this.teacherID = teacherID;
+    }
+
+    public int getDurationMinute() {
+        return durationMinute;
+    }
+
+    public void setDurationMinute(int durationMinute) {
+        this.durationMinute = durationMinute;
     }
 
     public int getTeacherImg() {

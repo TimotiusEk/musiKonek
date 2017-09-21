@@ -50,23 +50,18 @@ public class CourseDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case android.R.id.home:
-                super.onBackPressed();
-
-                return true;
+        if(menuItem.getItemId() == android.R.id.home) {
+            super.onBackPressed();
+            return true;
         }
         return (super.onOptionsItemSelected(menuItem));
     }
 
     @OnClick(R.id.order_course_btn__course_detail_act)
-    void orderCourse(){
-        /**
-         * todo : set bundle and send data
-         */
-        startActivity(new Intent(this, SetScheduleActivity.class));
+    public void orderCourse(){
+//        Intent intent = new Intent(this, SetScheduleActivity.class);
+        Intent intent = new Intent(this, PlanAppointmentActivity.class);
+        intent.putExtras(this.getIntent().getExtras());
+        startActivity(intent);
     }
-
-
-
 }

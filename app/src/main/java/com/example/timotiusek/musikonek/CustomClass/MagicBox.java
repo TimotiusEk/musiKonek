@@ -18,19 +18,6 @@ public class MagicBox {
 
     private static final int INT_LENGTH = 32;
     private static final int NUMBER_OF_DAYS = 7;
-    /**
-     * Use these variables to detect wether a teacher is unavailable, available or already assigned to an appointment
-     * Used to avoid a hard coded int to make a comparison
-     */
-    public static final int UNAVAILABLE = 0;
-    public static final int AVAILABLE = 1;
-    public static final int OCCUPIED = 2;
-    /**
-     * This field can be used outside the class to generate the JSONObject with a correct key
-     * Call MagicBox.days[x]
-     */
-    public static final String[] days =
-            new String[] {"Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday", "Sunday"};
 
     /**
      * Use this method to generate string needed in JsonArray inside JsonObject appointment
@@ -40,7 +27,7 @@ public class MagicBox {
      * @return String in a certain format needed to generate correct JsonObject to pass to method MagicBox.abrakadabra
      */
     public static String dateStartEndFormatter(Date start, Date end) {
-        return "\"" + start.getHours() + "." + start.getMinutes() + " - " + end.getHours() + "." + end.getMinutes() + "\"";
+        return "" + start.getHours() + "." + start.getMinutes() + " - " + end.getHours() + "." + end.getMinutes() + "";
     }
 
     private static int[] decodeIntCode(int code) {
@@ -90,7 +77,7 @@ public class MagicBox {
             if(appointment[i] == 1 && schedule[i] == 0) {
                 throw new DataFormatException("Unmatched schedule appointment. Assigning an appointment to unavailable time");
             }
-            output[i] = appointment[i] == 1 ? OCCUPIED : schedule[i] == 1 ? AVAILABLE : UNAVAILABLE;
+            output[i] = appointment[i] == 1 ? PlanAppointmentController.OCCUPIED : schedule[i] == 1 ? PlanAppointmentController.AVAILABLE : PlanAppointmentController.UNAVAILABLE;
         }
         return output;
     }
@@ -129,10 +116,10 @@ public class MagicBox {
         }
         JSONObject output = new JSONObject();
         for(int i = 0; i < schedule.length; i++) {
-            if(!appointment.has(days[i])) {
-                throw new DataFormatException("Passed JsonObject does not contain field \"" + days[i] + "\"");
+            if(!appointment.has(PlanAppointmentController.days[i])) {
+                throw new DataFormatException("Passed JsonObject does not contain field \"" + PlanAppointmentController.days[i] + "\"");
             }
-            output.put(days[i], new JSONArray(overlap(decodeIntCode(schedule[i]), decodeJson(appointment.optJSONArray(days[i])))));
+            output.put(PlanAppointmentController.days[i], new JSONArray(overlap(decodeIntCode(schedule[i]), decodeJson(appointment.optJSONArray(PlanAppointmentController.days[i])))));
         }
         return output;
     }
@@ -171,17 +158,17 @@ public class MagicBox {
     }
      */
     public static int[] alakazam(JSONObject input) throws Exception {
-        for(String day : days) {
+        for(String day : PlanAppointmentController.days) {
             if(!input.has(day)) {
                 throw new DataFormatException("Passed JsonObject does not contain field \"" + day + "\"");
             }
         }
         int[] output = new int[NUMBER_OF_DAYS];
         for(int i = 0; i < NUMBER_OF_DAYS; i++) {
-            JSONArray jsonArray = input.optJSONArray(days[i]);
+            JSONArray jsonArray = input.optJSONArray(PlanAppointmentController.days[i]);
             int[] code = new int[jsonArray.length()];
             for(int j = 0; j < code.length; j++) {
-                if(jsonArray.optInt(j) != UNAVAILABLE && jsonArray.optInt(j) != AVAILABLE) {
+                if(jsonArray.optInt(j) != PlanAppointmentController.UNAVAILABLE && jsonArray.optInt(j) != PlanAppointmentController.AVAILABLE) {
                     throw new DataFormatException("Passed JsonArray contain unexpected value \"" + jsonArray.optInt(j) + "\"");
                 }
                 code[j] = jsonArray.optInt(j);

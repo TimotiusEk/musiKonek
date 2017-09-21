@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="ForestGreen">#228B22</color>
     <color name="tabTextColor">#d6fcff</color>
+
+    <color name="mdtp_accent_color">#f78502</color>
+    <color name="mdtp_accent_color_dark">#b27803</color>
 </resources>
