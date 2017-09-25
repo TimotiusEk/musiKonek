@@ -2,11 +2,16 @@ package com.example.timotiusek.musikonek.Helper;
 
 import android.util.Log;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 /**
  * Created by wilbe on 06/07/2017.
  */
 
 public class DateFormatter {
+
+
 
     public static String monthYear(String date){
         String result = "UNKNOWN";
@@ -78,4 +83,23 @@ public class DateFormatter {
         return month + " "+ year;
     }
 
+    public static String dayNameOf(int year, int month, int date) {
+        //String[] days = new String[] {"Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday", "Sunday"};
+        int d = new GregorianCalendar(year, month, date).get(Calendar.DAY_OF_WEEK);
+        if(d == Calendar.MONDAY) {
+            return "Monday";
+        } else if(d == Calendar.TUESDAY) {
+            return "Tuesday";
+        } else if(d == Calendar.WEDNESDAY) {
+            return "Wednessday";
+        } else if(d == Calendar.THURSDAY) {
+            return "Thursday";
+        } else if(d == Calendar.FRIDAY) {
+            return "Friday";
+        } else if(d == Calendar.SATURDAY) {
+            return "Saturday";
+        } else {
+            return "Sunday";
+        }
+    }
 }

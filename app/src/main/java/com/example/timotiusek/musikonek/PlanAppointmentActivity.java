@@ -3,48 +3,40 @@ package com.example.timotiusek.musikonek;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ListViewCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.timotiusek.musikonek.CustomClass.MagicBox;
 import com.example.timotiusek.musikonek.CustomClass.PlanAppointmentController;
-import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
-import com.wdullaer.materialdatetimepicker.time.Timepoint;
+import com.example.timotiusek.musikonek.Helper.DateFormatter;
 
 import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 
-public class PlanAppointmentActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class PlanAppointmentActivity extends AppCompatActivity {
 
     private static int DATE_PICKER_CODE = 101;
 
@@ -159,6 +151,15 @@ public class PlanAppointmentActivity extends AppCompatActivity implements DatePi
         if(meetingAmount.getText().toString().equals("")) {
             return;
         }
+        if(schedule == null) {
+            Toast.makeText(this, "Data is still loading, please wait", Toast.LENGTH_LONG).show();
+            meetingAmount.setText("");
+            return;
+        }
+        if(schedule.length != 7) {
+            Toast.makeText(this, "No active schedule for this teacher", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         String[] listViewTricker = new String[Integer.parseInt(meetingAmount.getText().toString())];
         if(listViewTricker.length == 0) {
@@ -166,14 +167,6 @@ public class PlanAppointmentActivity extends AppCompatActivity implements DatePi
         }
         for(String i : listViewTricker) {
             i = "string ga guna";
-        }
-
-        while(schedule == null) {
-            Log.d("LOG", "ignore this log");
-        }
-        if(schedule.length != 7) {
-            Toast.makeText(this, "No active schedule for this teacher", Toast.LENGTH_LONG).show();
-            return;
         }
 
         ArrayList< ArrayList<String> > actualData = getTeacherAvailableTime(getIntent().getExtras().getInt("duration_minute"));
@@ -192,36 +185,82 @@ public class PlanAppointmentActivity extends AppCompatActivity implements DatePi
         return output;
     }
 
+    private boolean dataNotValid() {
+        int[] days = ((CustomArrayAdapter) appointmentList.getAdapter()).selectedDays;
+        String[] time = ((CustomArrayAdapter) appointmentList.getAdapter()).selectedTime;
+        for(int i = 0; i < days.length - 1; i++) {
+            if(days[i] == days[i+1]) {
+                Pattern p = Pattern.compile("(\\d{1,2})\\.(\\d{1,2})\\s\\-\\s(\\d{1,2})\\.(\\d{1,2})");
+                Matcher m_1 = p.matcher(time[i]);
+                Matcher m_2 = p.matcher(time[i+1]);
+                if (m_1.find() && m_2.find()) {
+                    int h1 = Integer.parseInt(m_1.group(1));
+                    int m1 = Integer.parseInt(m_1.group(2));
+                    int h2 = Integer.parseInt(m_2.group(1));
+                    int m2 = Integer.parseInt(m_2.group(2));
+
+                    if(h1*60 + m1 >= h2*60 + m2) {
+                        return true;
+                    }
+                }
+            } else if(days[i] > days[i+1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @OnClick(R.id.submit__plan_appointment_act)
     public void submit() {
-        DatePickerDialog dialog = DatePickerDialog.newInstance(
+        if(dataNotValid()) {
+            Toast.makeText(this, "Data must be sequentially incremented", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        android.app.DatePickerDialog dialog = new android.app.DatePickerDialog(
                 PlanAppointmentActivity.this,
+                new android.app.DatePickerDialog.OnDateSetListener(){
+
+                    private boolean isDateNotValid(int year, int monthOfYear, int dayOfMonth) {
+                        Log.d("DEBUG", year+"/"+monthOfYear+"/"+dayOfMonth);
+                        String dayOfWeek = DateFormatter.dayNameOf(year, monthOfYear, dayOfMonth);
+                        for(int day : ((CustomArrayAdapter) appointmentList.getAdapter()).selectedDays) {
+                            Log.d("DEBUG", dayOfWeek + " " + PlanAppointmentController.days[day]);
+                            if(PlanAppointmentController.days[day].equalsIgnoreCase(dayOfWeek)) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                        if(isDateNotValid(year, monthOfYear, dayOfMonth)) {
+                            String message = "Date must be either";
+                            for(int day : ((CustomArrayAdapter) appointmentList.getAdapter()).selectedDays) {
+                                message += " " + PlanAppointmentController.days[day] + " ";
+                            }
+                            Toast.makeText(PlanAppointmentActivity.this, message, Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
+                        Intent intent = new Intent(PlanAppointmentActivity.this, SetScheduleActivity.class);
+                        Bundle bundle = new Bundle();
+
+                        bundle.putIntArray("calendar", new int[]{year, monthOfYear, dayOfMonth});
+                        bundle.putIntArray("day", ((CustomArrayAdapter) appointmentList.getAdapter()).selectedDays);
+                        bundle.putStringArray("time", ((CustomArrayAdapter) appointmentList.getAdapter()).selectedTime);
+                        bundle.putAll(getIntent().getExtras());
+
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                },
                 Calendar.getInstance().get(Calendar.YEAR),
                 Calendar.getInstance().get(Calendar.MONTH),
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
-        dialog.setMinDate(Calendar.getInstance());
-
-        dialog.setVersion(DatePickerDialog.Version.VERSION_1);
         dialog.setTitle("Choose Starting Date");
-        dialog.setThemeDark(true);
-        dialog.show(getFragmentManager(), "Datepickerdialog");
-    }
-
-    @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        Toast.makeText(this, "You picked the following date: "+dayOfMonth+"/"+(monthOfYear+1)+"/"+year, Toast.LENGTH_SHORT).show();
-
-        Intent intent = new Intent(PlanAppointmentActivity.this, SetScheduleActivity.class);
-        Bundle bundle = new Bundle();
-
-        bundle.putIntArray("calendar", new int[]{year, monthOfYear, dayOfMonth});
-        bundle.putIntArray("day", ((CustomArrayAdapter) appointmentList.getAdapter()).selectedDays);
-        bundle.putStringArray("time", ((CustomArrayAdapter) appointmentList.getAdapter()).selectedTime);
-        bundle.putAll(getIntent().getExtras());
-
-        intent.putExtras(bundle);
-        startActivity(intent);
+        dialog.show();
     }
 
     @Override

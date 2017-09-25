@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.timotiusek.musikonek.CustomClass.PlanAppointmentController;
 import com.example.timotiusek.musikonek.CustomClass.Schedule;
 import com.example.timotiusek.musikonek.CustomClass.SetScheduleController;
+import com.example.timotiusek.musikonek.Helper.DateFormatter;
 
 import java.sql.Time;
 import java.text.DateFormat;
@@ -29,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -121,7 +123,6 @@ public class SetScheduleActivity extends AppCompatActivity {
          * Initializing all necessary variables for the calculations
          */
         int[] calendar = getIntent().getExtras().getIntArray("calendar");
-        Date startingDate = new Date(calendar[0], calendar[1], calendar[2]);
         int[] day = getIntent().getExtras().getIntArray("day");
         Date[] time = new Date[day.length];
         for(int i = 0; i < time.length; i++) {
@@ -137,7 +138,7 @@ public class SetScheduleActivity extends AppCompatActivity {
         int appointments = getIntent().getExtras().getInt("appointments");
         appointmentDates = new Date[appointments];
 
-        String dayOfWeek = android.text.format.DateFormat.format("EEEE", startingDate).toString();
+        String dayOfWeek = DateFormatter.dayNameOf(calendar[0], calendar[1], calendar[2]);
         Log.d("DEBUG", "ANS: " + dayOfWeek + " " + calendar[2]);
 
         int startingPoint = 0;
