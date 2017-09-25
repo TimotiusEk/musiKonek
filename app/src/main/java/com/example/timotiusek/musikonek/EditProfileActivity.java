@@ -172,6 +172,10 @@ public class EditProfileActivity extends AppCompatActivity {
                             EditText lastNameEdit = (EditText) findViewById(R.id.lastname_edit);
                             lastNameEdit.setText(lastname);
 
+                            EditText addressEdit = (EditText) findViewById(R.id.address);
+                            addressEdit.setText(data.getString("address_string"));
+
+
                             Log.d("ASDF",res.toString());
 
 
@@ -310,6 +314,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 EditText lastNameEdit = (EditText) findViewById(R.id.lastname_edit);
 
+                EditText addressEdit = (EditText) findViewById(R.id.address);
+
 //                EditText usernameText = (EditText) findViewById(R.id.input_username_sign_up);
 //                EditText fullnameText  = (EditText)  findViewById(R.id.input_fullname_signup);
 
@@ -322,6 +328,8 @@ public class EditProfileActivity extends AppCompatActivity {
                 Spinner genderSpinner = (Spinner) findViewById(R.id.gender_spinner);
 
                 reqBody.put("gender", genderSpinner.getSelectedItem().toString());
+
+                reqBody.put("address_string", addressEdit.getText().toString());
 
                 reqBody.put("fullname", firstName+" "+lastName);
 

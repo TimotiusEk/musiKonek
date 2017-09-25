@@ -86,6 +86,8 @@ public class ShowAttendanceFragment extends Fragment {
         ma = (ActiveCourseActivity) getActivity();
 //        ma.clearCheckedItems();
 
+        Log.d("ASDF", "SURE I AM CALLED");
+
 
         attendances = new ArrayList<>();
 //        attendances.add(new Attendance(R.drawable.avatar, student.getCourseName(), "Pertemuan 1", student.getStudentName()));
@@ -102,6 +104,8 @@ public class ShowAttendanceFragment extends Fragment {
                 if(attendances.get(position).isTeacherAttendance().equalsIgnoreCase("true")){
                     Intent intent = new Intent(getActivity(), ReportDetailActivity.class);
 
+                    Log.d("ASDF", "appointment_id is "+attendances.get(position).getAppointmentID());
+
                     Bundle extras = new Bundle();
                     extras.putString("appointment_id",attendances.get(position).getAppointmentID());
 
@@ -109,6 +113,7 @@ public class ShowAttendanceFragment extends Fragment {
 
                     startActivity(intent);
                 }
+                //If you declined
                 else if(attendances.get(position).isTeacherAttendance().equalsIgnoreCase("false")){
                     Log.d("ASDF","Nooooo");
                 }
@@ -116,7 +121,7 @@ public class ShowAttendanceFragment extends Fragment {
 
                     Intent intent = new Intent(getActivity(), AttendanceVerificationActivity.class);
 
-                    Log.d("ASDF", "length is "+position);
+                    Log.d("ASDF", "appointment_id is "+attendances.get(position).getAppointmentID());
 
                     Bundle extras = new Bundle();
                     extras.putString("appointment_id",attendances.get(position).getAppointmentID());
