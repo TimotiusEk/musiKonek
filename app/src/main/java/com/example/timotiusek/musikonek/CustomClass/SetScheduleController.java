@@ -89,8 +89,8 @@ public class SetScheduleController {
                             appointmentDates[i].getDay()+" "+appointmentDates[i].getHours()+":"+appointmentDates[i].getMinutes()+ ":00");
                 }
 
+                reqBody.put("token", context.getSharedPreferences("profile", Context.MODE_PRIVATE).getString("token", ""));
                 reqBody.put("teacher_id", activity.getIntent().getExtras().getString("teacher_id"));
-                reqBody.put("student_id", context.getSharedPreferences("profile", Context.MODE_PRIVATE).getString("token", ""));
                 reqBody.put("appointment", activity.getIntent().getExtras().getString("appointments"));
                 reqBody.put("skill_id", activity.getIntent().getExtras().getString("skill_id"));
                 reqBody.put("course_duration_minute", activity.getIntent().getExtras().getString("duration_minute"));

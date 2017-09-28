@@ -5,25 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="15dp">
+
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/ic_music_note_black_24dp"
-        />
+        android:layout_gravity="center"
+        android:src="@drawable/ic_music_note_black_24dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginStart="10dp"
-        >
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/schedule_name__schedule_rl"
             android:text="Pertemuan 1"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,10 +37,38 @@
 
     <TextView
         android:id="@+id/schedule_status__schedule_rl"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|end"
         android:text="Selesai"
         android:textAlignment="textEnd"/>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/change_date__schedule_rl"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="CHANGE DATE"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:background="@drawable/round_btn"-->
+            <!--android:textColor="@android:color/white" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/change_time__schedule_rl"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="CHANGE TIME"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:background="@drawable/round_btn"-->
+            <!--android:textColor="@android:color/white" />-->
+
+    <!--</LinearLayout>-->
 
 </LinearLayout>

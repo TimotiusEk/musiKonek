@@ -5,12 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -48,57 +51,98 @@ public class SetScheduleActivity extends AppCompatActivity {
 
     private Date[] appointmentDates;
 
-    private class ScheduleAdapter extends BaseAdapter {
+    private class ScheduleAdapters extends ArrayAdapter<String> {
 
         private class ViewHolder {
-            public TextView scheduleName;
-            public TextView scheduleDateAndTime;
-            public TextView scheduleStatus;
+            TextView scheduleName;
+            TextView scheduleDateAndTime;
+            TextView scheduleStatus;
+            Button dateButton;
+            Button timeButton;
         }
 
-        private ArrayList<Schedule> schedules;
-        private Context mContext;
-        private LayoutInflater inflater;
+        private ArrayList<Schedule> data;
 
-        ScheduleAdapter(ArrayList<Schedule> schedules, Context mContext){
-            this.schedules = schedules;
-            this.mContext = mContext;
+        public ScheduleAdapters(Context context, ArrayList< Schedule > data) {
+            super(context, R.layout.row_layout_schedule, new String[data.size()]);
+            this.data = data;
         }
 
+        @NonNull
         @Override
-        public int getCount() {
-            return schedules.size();
-        }
+        public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            final ViewHolder viewHolder;
 
-        @Override
-        public Object getItem(int position) {
-            return schedules.get(position);
-        }
+            viewHolder = new ViewHolder();
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(R.layout.row_layout_schedule, parent, false);
+            viewHolder.scheduleName = (TextView) convertView.findViewById(R.id.schedule_name__schedule_rl);
+            viewHolder.scheduleDateAndTime = (TextView) convertView.findViewById(R.id.schedule_date_and_time__schedule_rl);
+            viewHolder.scheduleStatus = (TextView) convertView.findViewById(R.id.schedule_status__schedule_rl);
+//            viewHolder.dateButton = (Button) convertView.findViewById(R.id.change_date__schedule_rl);
+//            viewHolder.timeButton = (Button) convertView.findViewById(R.id.change_time__schedule_rl);
 
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
+            viewHolder.scheduleName.setText(this.data.get(position).getName());
+            viewHolder.scheduleDateAndTime.setText(this.data.get(position).getDateAndTime());
+            viewHolder.scheduleStatus.setText(this.data.get(position).getStatus());
 
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            final Schedule schedule = (Schedule) getItem(position);
-            inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            ViewHolder holder = new ViewHolder();
-            if(convertView == null){
-                convertView = inflater.inflate(R.layout.row_layout_schedule, parent, false);
+            convertView.setTag(viewHolder);
 
-                holder.scheduleName = convertView.findViewById(R.id.schedule_name__schedule_rl);
-                holder.scheduleDateAndTime = convertView.findViewById(R.id.schedule_date_and_time__schedule_rl);
-                holder.scheduleStatus = convertView.findViewById(R.id.schedule_status__schedule_rl);
-
-                holder.scheduleName.setText(schedule.getName());
-                holder.scheduleDateAndTime.setText(schedule.getDateAndTime());
-                holder.scheduleStatus.setText(schedule.getStatus());
-            }
             return convertView;
         }
     }
+
+//    private class ScheduleAdapter extends BaseAdapter {
+//
+//        private class ViewHolder {
+//            public TextView scheduleName;
+//            public TextView scheduleDateAndTime;
+//            public TextView scheduleStatus;
+//        }
+//
+//        private ArrayList<Schedule> schedules;
+//        private Context mContext;
+//        private LayoutInflater inflater;
+//
+//        ScheduleAdapter(ArrayList<Schedule> schedules, Context mContext){
+//            this.schedules = schedules;
+//            this.mContext = mContext;
+//        }
+//
+//        @Override
+//        public int getCount() {
+//            return schedules.size();
+//        }
+//
+//        @Override
+//        public Object getItem(int position) {
+//            return schedules.get(position);
+//        }
+//
+//        @Override
+//        public long getItemId(int position) {
+//            return position;
+//        }
+//
+//        @Override
+//        public View getView(int position, View convertView, ViewGroup parent) {
+//            final Schedule schedule = (Schedule) getItem(position);
+//            inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//            ViewHolder holder = new ViewHolder();
+//            if(convertView == null){
+//                convertView = inflater.inflate(R.layout.row_layout_schedule, parent, false);
+//
+//                holder.scheduleName = convertView.findViewById(R.id.schedule_name__schedule_rl);
+//                holder.scheduleDateAndTime = convertView.findViewById(R.id.schedule_date_and_time__schedule_rl);
+//                holder.scheduleStatus = convertView.findViewById(R.id.schedule_status__schedule_rl);
+//
+//                holder.scheduleName.setText(schedule.getName());
+//                holder.scheduleDateAndTime.setText(schedule.getDateAndTime());
+//                holder.scheduleStatus.setText(schedule.getStatus());
+//            }
+//            return convertView;
+//        }
+//    }
 
     public Date[] getAppointmentDates() {
         return appointmentDates;
@@ -106,8 +150,6 @@ public class SetScheduleActivity extends AppCompatActivity {
 
     private ArrayList<Schedule> getAppointmentList() {
         ArrayList<Schedule> schedules = new ArrayList<>();
-        int[] day = getIntent().getExtras().getIntArray("day");
-        String[] time = getIntent().getExtras().getStringArray("time");
         Log.d("DEBUG", getIntent().getExtras().getInt("appointments") + "");
         for(int i = 0; i < getIntent().getExtras().getInt("appointments"); i++) {
             Log.d("DEBUG", (i+1) + "");
@@ -168,7 +210,7 @@ public class SetScheduleActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Atur Jadwal");
 
         decodeBundle();
-        scheduleLv.setAdapter(new SetScheduleActivity.ScheduleAdapter(getAppointmentList(), this));
+        scheduleLv.setAdapter(new SetScheduleActivity.ScheduleAdapters(this, getAppointmentList()));
     }
 
     @OnClick(R.id.set_schedule_btn__set_schedule_act)
