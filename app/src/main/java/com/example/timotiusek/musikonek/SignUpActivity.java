@@ -58,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     void signUpCall(){
 
-        Log.d("ASDF","Called");
+        //Log.d("ASDF","Called");
 
         RequestQueue requestQueue;
         Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024); // 1MB cap
@@ -76,7 +76,7 @@ public class SignUpActivity extends AppCompatActivity {
                         try {
                             JSONObject res = new JSONObject(response);
 //                            String name = String.valueOf(res.get("name"));
-                            Log.d(TAG, "YOSAH + \n"+res.toString() );
+                            //Log.d(TAG, "YOSAH + \n"+res.toString() );
                             //Toast.makeText(SignUpActivity.this, "login success is "+ res.getString("success"), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(SignUpActivity.this, ConfirmationScreenActivity.class));
 

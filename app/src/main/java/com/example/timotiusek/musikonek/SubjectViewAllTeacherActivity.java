@@ -128,15 +128,19 @@ public class SubjectViewAllTeacherActivity extends AppCompatActivity {
         requestQueue.start();
         String url = Connector.getURL() +"/api/v1/teacher/list?skill="+name+"&token="+token;
 
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        dialog.dismiss();
                         try {
 
-                            Log.d("ASDF",response);
+                            //Log.d("ASDF",response);
 
                             JSONObject res = new JSONObject(response);
 //                            String name = String.valueOf(res.get("name"));
@@ -146,7 +150,7 @@ public class SubjectViewAllTeacherActivity extends AppCompatActivity {
                             for(int i=0;i<arr.length();i++){
                                 JSONObject jo =  arr.getJSONObject(i);
 
-                                String username = jo.getString("username");
+                                String username = jo.getString("fullname");
                                 String rate = jo.getString("rate");
                                 String date = jo.getString("date_created");
                                 String id = jo.getString("skill_teacher_id");
@@ -160,11 +164,11 @@ public class SubjectViewAllTeacherActivity extends AppCompatActivity {
 
                             }
 
-                            Log.d("ASDF",res.toString());
+                            //Log.d("ASDF",res.toString());
 
 
                         } catch (JSONException e) {
-                            Log.d("ASDF","ELEH");
+                            //Log.d("ASDF","ELEH2");
                             e.printStackTrace();
                         }
 
@@ -193,11 +197,13 @@ public class SubjectViewAllTeacherActivity extends AppCompatActivity {
 
                             if(networkResponse.statusCode != 401){
 
-                                Log.d("ASDF","SHIT");
+                                //Log.d("ASDF","SHIT");
 
                             }
 
                         }
+
+                        finish();
 
 
 

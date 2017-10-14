@@ -50,7 +50,7 @@ public class TextFormater {
         timeStamp = timeStamp.replace("T"," ");
         timeStamp = timeStamp.replace("Z"," ");
 
-        Log.d("ASDF",timeStamp);
+        //Log.d("ASDF",timeStamp);
 
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.sss ");
         Date date = null;
@@ -62,7 +62,7 @@ public class TextFormater {
         SimpleDateFormat dt1 = new SimpleDateFormat("dd MMMM");
         SimpleDateFormat dt2 = new SimpleDateFormat("HH:mm");
 //        SimpleDateFormat dt1 = new SimpleDateFormat("dd, MMMMM HH:mm:ss");
-        Log.d("ASDF",dt1.format(date));
+        //Log.d("ASDF",dt1.format(date));
 
         return dt1.format(date)+ " " + dt2.format(date);
 

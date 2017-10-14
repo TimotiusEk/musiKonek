@@ -221,10 +221,10 @@ public class PlanAppointmentActivity extends AppCompatActivity {
                 new android.app.DatePickerDialog.OnDateSetListener(){
 
                     private boolean isDateNotValid(int year, int monthOfYear, int dayOfMonth) {
-                        Log.d("DEBUG", year+"/"+monthOfYear+"/"+dayOfMonth);
+                        //Log.d("DEBUG", year+"/"+monthOfYear+"/"+dayOfMonth);
                         String dayOfWeek = DateFormatter.dayNameOf(year, monthOfYear, dayOfMonth);
                         for(int day : ((CustomArrayAdapter) appointmentList.getAdapter()).selectedDays) {
-                            Log.d("DEBUG", dayOfWeek + " " + PlanAppointmentController.days[day]);
+                            //Log.d("DEBUG", dayOfWeek + " " + PlanAppointmentController.days[day]);
                             if(PlanAppointmentController.days[day].equalsIgnoreCase(dayOfWeek)) {
                                 return false;
                             }
@@ -235,9 +235,37 @@ public class PlanAppointmentActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
                         if(isDateNotValid(year, monthOfYear, dayOfMonth)) {
-                            String message = "Date must be either";
+                            String message = "";
+                            String mockMessage = "";
+                            int counter = 0;
+
                             for(int day : ((CustomArrayAdapter) appointmentList.getAdapter()).selectedDays) {
-                                message += " " + PlanAppointmentController.days[day] + " ";
+                                if(!mockMessage.contains(PlanAppointmentController.days[day])){
+                                    mockMessage += " " + PlanAppointmentController.days[day] + ",";
+                                    counter++;
+                                }
+                            }
+
+                            if(counter == 1){
+                                message += "Date must be a";
+                            }else{
+                                message += "Date must be either";
+                            }
+
+                            int at = 0;
+
+                            for(int day : ((CustomArrayAdapter) appointmentList.getAdapter()).selectedDays) {
+                                if(!message.contains(PlanAppointmentController.days[day])){
+                                    if(at == counter - 1 ) {
+                                        message += " " + PlanAppointmentController.days[day];
+                                    }else if(at == counter -2){
+                                        message += " " + PlanAppointmentController.days[day] + " or";
+                                    }else{
+                                        message += " " + PlanAppointmentController.days[day] + ",";
+                                    }
+                                    //Log.d("asdf",PlanAppointmentController.days[day] + " at " + at + "/"+counter);
+                                    at++;
+                                }
                             }
                             Toast.makeText(PlanAppointmentActivity.this, message, Toast.LENGTH_LONG).show();
                             return;
@@ -268,6 +296,8 @@ public class PlanAppointmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_appointment);
         ButterKnife.bind(this);
+
+        getSupportActionBar().setTitle("Arrange Schedule");
 
         new PlanAppointmentController().getDataAsync(PlanAppointmentActivity.this);
     }

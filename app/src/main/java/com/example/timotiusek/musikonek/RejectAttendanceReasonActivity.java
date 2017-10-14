@@ -22,30 +22,36 @@ import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
 import com.example.timotiusek.musikonek.Helper.Connector;
-import com.example.timotiusek.musikonek.Helper.TextFormater;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ReportDetailActivity extends AppCompatActivity {
+public class RejectAttendanceReasonActivity extends AppCompatActivity {
+
+    @BindView(R.id.comment_text_view__reject_attendance_reason_act)
+    TextView commentTextView;
+
+    @OnClick(R.id.back_button__reject_attendance_reason_act)
+    void back(){
+        super.onBackPressed();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report_detail);
-        getSupportActionBar().setTitle("Detil Laporan");
+        setContentView(R.layout.activity_reject_attendance_reason);
+
+        getSupportActionBar().setTitle("Alasan Menolak");
+
         ButterKnife.bind(this);
 
         loadReport();
 
-    }
-
-    @OnClick(R.id.close_btn__report_detail_act)
-    void back(){
-        super.onBackPressed();
     }
 
     private void loadReport(){
@@ -75,7 +81,6 @@ public class ReportDetailActivity extends AppCompatActivity {
         dialog.show(getSupportFragmentManager(),"loading");
         dialog.setCancelable(false);
 
-
         //Log.d("ASDF",url);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -88,24 +93,13 @@ public class ReportDetailActivity extends AppCompatActivity {
                             JSONObject all = new JSONObject(response);
                             JSONObject res  = all.getJSONObject("data");
 
-                            String homework = res.getString("homework");
                             String teacherRemark = res.getString("teacher_remark");
-                            String practice = res.getString("practice");
 
-                            TextView showHomework = (TextView) findViewById(R.id.homework_text_view);
-                            TextView showComment = (TextView) findViewById(R.id.comment_text_view);
-                            TextView showExercises = (TextView) findViewById(R.id.practice_text_view);
-
-                            showHomework.setText(homework);
-                            showComment.setText(teacherRemark);
-                            showExercises.setText(practice);
-
+                            commentTextView.setText(teacherRemark);
 //                            showDate.setText(TextFormater.formatDateSpacing(res.getString("date")));
 //                            showTime.setText("Jam " +res.getString("time"));
 
                         } catch (JSONException e) {
-                            Toast.makeText(ReportDetailActivity.this, "Report not yet Available", Toast.LENGTH_SHORT).show();
-                            ReportDetailActivity.this.finish();
                             e.printStackTrace();
                         }
 
@@ -119,7 +113,7 @@ public class ReportDetailActivity extends AppCompatActivity {
 
                         if(networkResponse == null){
 
-                            Toast.makeText(ReportDetailActivity.this, "Connection Error",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RejectAttendanceReasonActivity.this, "Connection Error",Toast.LENGTH_SHORT).show();
 
                         }else{
                             int a = networkResponse.statusCode;
@@ -127,7 +121,7 @@ public class ReportDetailActivity extends AppCompatActivity {
                             }
 
                             if(networkResponse.statusCode == 500){
-                                Toast.makeText(ReportDetailActivity.this, "ERROR",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RejectAttendanceReasonActivity.this, "ERROR",Toast.LENGTH_SHORT).show();
                             }
 
                             if(networkResponse.statusCode != 401){

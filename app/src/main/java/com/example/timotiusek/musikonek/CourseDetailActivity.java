@@ -21,6 +21,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_course_detail);
         ButterKnife.bind(this);
 
+
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar__course_detail_act);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -29,6 +30,7 @@ public class CourseDetailActivity extends AppCompatActivity {
 
         Bundle params = getIntent().getExtras();
 
+        getSupportActionBar().setTitle(params.getString("course_name"));
         toolbar.setTitle(params.getString("course_name"));
 
         TextView teacherName = (TextView) findViewById(R.id.teacher_name__course_detail_act);

@@ -150,11 +150,13 @@ public class SetScheduleActivity extends AppCompatActivity {
 
     private ArrayList<Schedule> getAppointmentList() {
         ArrayList<Schedule> schedules = new ArrayList<>();
-        Log.d("DEBUG", getIntent().getExtras().getInt("appointments") + "");
+        //Log.d("DEBUG", getIntent().getExtras().getInt("appointments") + "");
         for(int i = 0; i < getIntent().getExtras().getInt("appointments"); i++) {
-            Log.d("DEBUG", (i+1) + "");
-            schedules.add(new Schedule("Pertemuan " + (i+1), appointmentDates[i].getDate() + "/" + appointmentDates[i].getMonth() +
-            "/" + appointmentDates[i].getYear() + "  " + appointmentDates[i].getHours() + ":" + appointmentDates[i].getMinutes()));
+            //Log.d("DEBUG", (i+1) + "");
+//            schedules.add(new Schedule("Pertemuan " + (i+1), appointmentDates[i].getDate() + "/" + appointmentDates[i].getMonth() +
+//            "/" + appointmentDates[i].getYear() + "  " + appointmentDates[i].getHours() + ":" + appointmentDates[i].getMinutes()));
+            schedules.add(new Schedule("Pertemuan " + (i+1), DateFormatter.setScheduleFormatter(appointmentDates[i])));
+
         }
 
         return schedules;
@@ -181,7 +183,7 @@ public class SetScheduleActivity extends AppCompatActivity {
         appointmentDates = new Date[appointments];
 
         String dayOfWeek = DateFormatter.dayNameOf(calendar[0], calendar[1], calendar[2]);
-        Log.d("DEBUG", "ANS: " + dayOfWeek + " " + calendar[2]);
+        //Log.d("DEBUG", "ANS: " + dayOfWeek + " " + calendar[2]);
 
         int startingPoint = 0;
 

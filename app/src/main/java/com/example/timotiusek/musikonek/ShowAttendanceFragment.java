@@ -73,6 +73,7 @@ public class ShowAttendanceFragment extends Fragment {
         ShowAttendanceFragment sdf = new ShowAttendanceFragment();
         sdf.setStudent(ta);
 
+        //Log.d("ASDF","Big boi is called");
         return sdf;
 
 
@@ -86,7 +87,7 @@ public class ShowAttendanceFragment extends Fragment {
         ma = (ActiveCourseActivity) getActivity();
 //        ma.clearCheckedItems();
 
-        Log.d("ASDF", "SURE I AM CALLED");
+        //Log.d("ASDF", "SURE I AM CALLED");
 
 
         attendances = new ArrayList<>();
@@ -97,14 +98,16 @@ public class ShowAttendanceFragment extends Fragment {
         showAttendanceAdapter = new ShowAttendanceAdapter(attendances, getActivity());
         showAttendanceListView.setAdapter(showAttendanceAdapter);
 
+
+
         showAttendanceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("ASDF","tur or fals "+ attendances.get(position).isTeacherAttendance());
+                //Log.d("ASDF","tur or fals "+ attendances.get(position).isTeacherAttendance());
                 if(attendances.get(position).isTeacherAttendance().equalsIgnoreCase("true")){
                     Intent intent = new Intent(getActivity(), ReportDetailActivity.class);
 
-                    Log.d("ASDF", "appointment_id is "+attendances.get(position).getAppointmentID());
+                    //Log.d("ASDF", "appointment_id is "+attendances.get(position).getAppointmentID());
 
                     Bundle extras = new Bundle();
                     extras.putString("appointment_id",attendances.get(position).getAppointmentID());
@@ -115,13 +118,20 @@ public class ShowAttendanceFragment extends Fragment {
                 }
                 //If you declined
                 else if(attendances.get(position).isTeacherAttendance().equalsIgnoreCase("false")){
-                    Log.d("ASDF","Nooooo");
+                    Intent intent = new Intent(getActivity(), RejectAttendanceReasonActivity.class);
+
+                    Bundle extras = new Bundle();
+                    extras.putString("appointment_id",attendances.get(position).getAppointmentID());
+
+                    intent.putExtras(extras);
+
+                    startActivity(intent);
                 }
                 else{
 
                     Intent intent = new Intent(getActivity(), AttendanceVerificationActivity.class);
 
-                    Log.d("ASDF", "appointment_id is "+attendances.get(position).getAppointmentID());
+                    //Log.d("ASDF", "appointment_id is "+attendances.get(position).getAppointmentID());
 
                     Bundle extras = new Bundle();
                     extras.putString("appointment_id",attendances.get(position).getAppointmentID());
@@ -165,15 +175,19 @@ public class ShowAttendanceFragment extends Fragment {
         requestQueue.start();
         String url = Connector.getURL() +"/api/v1/appointment/getAppointments?done=true&token="+token+"&course_id="+ta.getCourseID();
 
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getActivity().getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        dialog.dismiss();
                         try {
                             JSONObject res = new JSONObject(response);
-                            Log.d("ASDF",res.toString());
+                            //Log.d("ASDF",res.toString());
                             JSONArray arr = res.getJSONArray("data");
 
                             attendances.clear();
@@ -185,10 +199,10 @@ public class ShowAttendanceFragment extends Fragment {
                                 JSONObject jo =  arr.getJSONObject(i);
 
                                 if(jo.get("attendance_student").toString().equals("null")){
-                                    Log.d("ASDF","its null");
+                                    //Log.d("ASDF","its null");
                                     attendances.add(new Attendance(R.drawable.avatar, ta.getCourseName(), "Pertemuan "+(i+1), TextFormater.formatTime(jo.getString("appointment_time")), jo.getString("appointment_id"), "null"));
                                 }else{
-                                    Log.d("ASDF","its asdf" + jo.get("attendance_student") );
+                                    //Log.d("ASDF","its asdf" + jo.get("attendance_student") );
                                     attendances.add(new Attendance(R.drawable.avatar, ta.getCourseName(), "Pertemuan "+(i+1), TextFormater.formatTime(jo.getString("appointment_time")), jo.getString("appointment_id"), String.valueOf(jo.getBoolean("attendance_student"))));
                                 }
 
@@ -199,7 +213,7 @@ public class ShowAttendanceFragment extends Fragment {
 
 
                         } catch (JSONException e) {
-                            Log.d("ASDF","Fail");
+                            //Log.d("ASDF","Fail");
                             e.printStackTrace();
                         }
 
@@ -214,7 +228,9 @@ public class ShowAttendanceFragment extends Fragment {
 
                         if(networkResponse == null){
 
-                            Toast.makeText(getContext(), "Connection Error",Toast.LENGTH_SHORT).show();
+                            if(getContext()!=null){
+                                Toast.makeText(getContext(), "Connection Error",Toast.LENGTH_SHORT).show();
+                            }
 
                         }else{
                             int a = networkResponse.statusCode;
@@ -229,11 +245,13 @@ public class ShowAttendanceFragment extends Fragment {
 
                             if(networkResponse.statusCode != 401){
 
-                                Log.d("ASDF","SHIT");
+                                //Log.d("ASDF","SHIT");
 
                             }
 
                         }
+
+                        getActivity().finish();
 
 
 

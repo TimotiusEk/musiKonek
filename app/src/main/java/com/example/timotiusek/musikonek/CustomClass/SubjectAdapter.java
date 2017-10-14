@@ -163,7 +163,7 @@ public class SubjectAdapter extends BaseAdapter {
                                         intent2.putExtras(bundle2);
 
                                         activity.startActivity(intent2);
-                                Toast.makeText(activity, "Lihat Jadwal " + subject.getName(), Toast.LENGTH_LONG).show();
+//                                Toast.makeText(activity, "Lihat Jadwal " + subject.getName(), Toast.LENGTH_LONG).show();
                                 return true;
                             }
                                 return false;

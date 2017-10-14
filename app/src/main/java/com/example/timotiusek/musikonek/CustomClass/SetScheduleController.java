@@ -73,7 +73,7 @@ public class SetScheduleController {
                         } else if(error.networkResponse.statusCode == 500) {
                             Toast.makeText(context, "INVALID CREDENTIALS",Toast.LENGTH_SHORT).show();
                         } else if(error.networkResponse.statusCode != 401) {
-                            Log.d("DEBUG","Error 401");
+                            //Log.d("DEBUG","Error 401");
                         } else {
                             Toast.makeText(context, "Unknown error: " + error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
                         }

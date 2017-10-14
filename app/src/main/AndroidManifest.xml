@@ -59,7 +59,8 @@
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ActiveCourseActivity" />
         <activity android:name=".AppointmentListFragment" />
-        <activity android:name=".PlanAppointmentActivity"></activity>
+        <activity android:name=".PlanAppointmentActivity" />
+        <activity android:name=".RejectAttendanceReasonActivity"></activity>
     </application>
 
 </manifest>

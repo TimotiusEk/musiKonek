@@ -2,7 +2,9 @@ package com.example.timotiusek.musikonek.Helper;
 
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
@@ -32,14 +34,14 @@ public class DateFormatter {
         for(int i=holder+1; i<date.length();i++){
             if(date.charAt(i)=='-'){
 
-                    Log.d("this",holder+" // " + i );
+                    //Log.d("this",holder+" // " + i );
                     numMonth = date.substring(holder+1,i);
                     break;
 
             }
         }
 
-        Log.d("asdf", "this "+numMonth);
+        //Log.d("asdf", "this "+numMonth);
         int intMonth = Integer.valueOf(numMonth);
 
 
@@ -83,6 +85,12 @@ public class DateFormatter {
         return month + " "+ year;
     }
 
+    public static String setScheduleFormatter(Date date){
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        return dayNameOf(date.getYear(), date.getMonth(), date.getDate()) + ", "+simpleDateFormat.format(date);
+    }
+
     public static String dayNameOf(int year, int month, int date) {
         //String[] days = new String[] {"Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday", "Sunday"};
         int d = new GregorianCalendar(year, month, date).get(Calendar.DAY_OF_WEEK);
@@ -91,7 +99,7 @@ public class DateFormatter {
         } else if(d == Calendar.TUESDAY) {
             return "Tuesday";
         } else if(d == Calendar.WEDNESDAY) {
-            return "Wednessday";
+            return "Wednesday";
         } else if(d == Calendar.THURSDAY) {
             return "Thursday";
         } else if(d == Calendar.FRIDAY) {

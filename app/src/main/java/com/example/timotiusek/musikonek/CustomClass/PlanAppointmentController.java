@@ -15,6 +15,7 @@ import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
+import com.example.timotiusek.musikonek.DelayedProgressDialog;
 import com.example.timotiusek.musikonek.Helper.Connector;
 import com.example.timotiusek.musikonek.PlanAppointmentActivity;
 
@@ -40,7 +41,7 @@ public class PlanAppointmentController {
      * Call MagicBox.days[x]
      */
     public static final String[] days =
-            new String[] {"Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday", "Sunday"};
+            new String[] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
     private void getSchedule(final PlanAppointmentActivity activity, final Context context) {
         RequestQueue requestQueue;
@@ -54,10 +55,16 @@ public class PlanAppointmentController {
                      "&id=" + activity.getIntent().getExtras().getString("teacher_id") +
                      "&is_from_student=true";;
 
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(activity.getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
+
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        dialog.dismiss();
                         try {
                             JSONObject responseJSON = new JSONObject(response);
                             JSONArray data = responseJSON.optJSONArray("data");
@@ -89,11 +96,13 @@ public class PlanAppointmentController {
                         } else if(error.networkResponse.statusCode == 500) {
                             Toast.makeText(context, "INVALID CREDENTIALS",Toast.LENGTH_SHORT).show();
                         } else if(error.networkResponse.statusCode != 401) {
-                            Log.d("DEBUG","Error 401");
+                            //Log.d("DEBUG","Error 401");
                         } else {
                             Toast.makeText(context, "Unknown error: " + error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
                         }
+                        activity.finish();
                     }
+
                 }) {
             @Override
             protected Response<String> parseNetworkResponse(NetworkResponse response) {

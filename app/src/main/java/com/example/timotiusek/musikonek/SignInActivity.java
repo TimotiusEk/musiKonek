@@ -84,7 +84,7 @@ public class SignInActivity extends AppCompatActivity {
                         try {
                             JSONObject res = new JSONObject(response);
 //                            String name = String.valueOf(res.get("name"));
-                            Log.d("ASDF", "YOSAH + \n"+res.toString() );
+                            //Log.d("ASDF", "YOSAH + \n"+res.toString() );
 
                             if(res.getString("success").equals("true")){
 
@@ -118,7 +118,7 @@ public class SignInActivity extends AppCompatActivity {
                                 Toast.makeText(SignInActivity.this, "INVALID CREDENTIALS",Toast.LENGTH_SHORT).show();
                             }
                             if(networkResponse.statusCode != 401){
-                                Log.d("ASDF","SHIT");
+                                //Log.d("ASDF","SHIT");
                             }
                         }
                     }
@@ -152,7 +152,7 @@ public class SignInActivity extends AppCompatActivity {
 
     void loginCall(){
 
-//        Log.d("ASDF","Called");
+//        //Log.d("ASDF","Called");
 
         RequestQueue requestQueue;
         Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024); // 1MB cap
@@ -161,6 +161,9 @@ public class SignInActivity extends AppCompatActivity {
         requestQueue.start();
         String url = Connector.getURL() +"/api/v1/studentlogin";
 
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -170,7 +173,7 @@ public class SignInActivity extends AppCompatActivity {
                         try {
                             JSONObject res = new JSONObject(response);
 //                            String name = String.valueOf(res.get("name"));
-                            Log.d(TAG, "YOSAH + \n"+res.toString() );
+                            //Log.d(TAG, "YOSAH + \n"+res.toString() );
 
                             if(res.getString("token")!=null){
 
@@ -207,7 +210,7 @@ public class SignInActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        dialog.dismiss();
                         NetworkResponse networkResponse = error.networkResponse;
 
                         if(networkResponse == null){
@@ -225,7 +228,7 @@ public class SignInActivity extends AppCompatActivity {
 
                             if(networkResponse.statusCode != 401){
 
-                                Log.d("ASDF","SHIT");
+                                //Log.d("ASDF","SHIT");
 
                             }
 

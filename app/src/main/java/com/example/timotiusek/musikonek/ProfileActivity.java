@@ -43,7 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     CollapsingToolbarLayout ctl;
 
-    String fullname = "JONATHAN ";
+    String fullname = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,13 +94,15 @@ public class ProfileActivity extends AppCompatActivity {
             token = sharedPreferences.getString("token","");
         }
         String url = Connector.getURL() +"/api/v1/student/getProfileData?token="+token;
-
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        dialog.dismiss();
                         try {
                             JSONObject res = new JSONObject(response);
 //                            String name = String.valueOf(res.get("name"));
@@ -124,7 +126,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 //                            getSupportActionBar().setTitle("fullname");
                             ctl.setTitle(fullname);
-                            Log.d("ASDF","fullname"+fullname);
+                            //Log.d("ASDF","fullname"+fullname);
 
                             TextView emailText = (TextView) findViewById(R.id.email__profile_act);
                             emailText.setText(email);
@@ -133,11 +135,11 @@ public class ProfileActivity extends AppCompatActivity {
                             addressText.setText(data.getString("address_string")+"\nlong : "+x+"\t"+"lang : "+y);
 
 
-                            Log.d("ASDF",res.toString());
+                            //Log.d("ASDF",res.toString());
 
 
                         } catch (JSONException e) {
-                            Log.d("ASDF","ELEH");
+                            //Log.d("ASDF","ELEH");
                             e.printStackTrace();
                         }
 
@@ -146,6 +148,7 @@ public class ProfileActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+
 
                         NetworkResponse networkResponse = error.networkResponse;
 
@@ -166,13 +169,13 @@ public class ProfileActivity extends AppCompatActivity {
 
                             if(networkResponse.statusCode != 401){
 
-                                Log.d("ASDF","SHIT");
+                                //Log.d("ASDF","SHIT");
 
                             }
 
                         }
 
-
+                        ProfileActivity.this.finish();
 
                     }
                 }){

@@ -176,13 +176,16 @@ public class SubjectViewFragment extends Fragment {
         requestQueue = new RequestQueue(cache, network);
         requestQueue.start();
         String url = Connector.getURL() +"/api/v1/course/getOngoingCourseByStudentId?token="+token;
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getActivity().getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        dialog.dismiss();
                         try {
                             JSONObject res = new JSONObject(response);
 
@@ -196,7 +199,7 @@ public class SubjectViewFragment extends Fragment {
                                 String id = jo.getString("course_id");
 //                                String date = jo.getString("date_created");
 
-                                subjects.add(new Subject(R.drawable.avatar, instrument,teacherName, id));
+                                subjects.add(new Subject(R.drawable.bass, instrument,teacherName, id));
 
                                 subjectAdapter.notifyDataSetChanged();
 
@@ -234,13 +237,13 @@ public class SubjectViewFragment extends Fragment {
 
                             if(networkResponse.statusCode != 401){
 
-                                Log.d("ASDF","SHIT");
+                                //Log.d("ASDF","SHIT");
 
                             }
 
                         }
 
-
+                        getActivity().finish();
 
                     }
                 }){
@@ -294,6 +297,12 @@ public class SubjectViewFragment extends Fragment {
         final Network network = new BasicNetwork(new HurlStack());
         requestQueue = new RequestQueue(cache, network);
         requestQueue.start();
+
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getActivity().getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
+
+
         String url = Connector.getURL() +"/api/v1/course/getGraduatedCourseByStudentId?token="+token;
 
 
@@ -303,7 +312,8 @@ public class SubjectViewFragment extends Fragment {
                     public void onResponse(String response) {
 
                         try {
-                            Log.d("ASDF",response);
+                            //Log.d("ASDF",response);
+                            dialog.dismiss();
                             JSONObject res = new JSONObject(response);
 
                             JSONArray arr = res.getJSONArray("data");
@@ -326,11 +336,11 @@ public class SubjectViewFragment extends Fragment {
 
                             }
 
-//                            Log.d("ASDF","ELEH" + res.toString());
+//                            //Log.d("ASDF","ELEH" + res.toString());
 
 
                         } catch (JSONException e) {
-                            Log.d("ASDF","Fail");
+                            //Log.d("ASDF","Fail");
                             e.printStackTrace();
                         }
 
@@ -359,11 +369,12 @@ public class SubjectViewFragment extends Fragment {
 
                             if(networkResponse.statusCode != 401){
 
-                                Log.d("ASDF","SHIT");
+                                //Log.d("ASDF","SHIT");
 
                             }
 
                         }
+                        getActivity().finish();
 
 
 

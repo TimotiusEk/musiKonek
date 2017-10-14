@@ -91,15 +91,18 @@ public class AttendanceVerificationActivity extends AppCompatActivity {
         requestQueue = new RequestQueue(cache, network);
         requestQueue.start();
         String url = Connector.getURL() +"/api/v1/appointment/studentCheckIn";
-        Log.d("ASDF",url);
+        //Log.d("ASDF",url);
 
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("ASDF","SUCCESS");
+                        //Log.d("ASDF","SUCCESS");
                         AttendanceVerificationActivity.this.finish();
                     }
                 },
@@ -108,6 +111,7 @@ public class AttendanceVerificationActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
 
                         NetworkResponse networkResponse = error.networkResponse;
+                        dialog.dismiss();
 
                         if(networkResponse == null){
 
@@ -128,7 +132,6 @@ public class AttendanceVerificationActivity extends AppCompatActivity {
                             }
 
                         }
-
 
 
                     }

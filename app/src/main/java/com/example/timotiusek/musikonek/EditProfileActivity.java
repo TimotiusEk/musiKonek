@@ -134,12 +134,16 @@ public class EditProfileActivity extends AppCompatActivity {
         }
         String url = Connector.getURL() +"/api/v1/student/getProfileData?token="+token;
 
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        dialog.dismiss();
                         try {
                             JSONObject res = new JSONObject(response);
 //                            String name = String.valueOf(res.get("name"));
@@ -176,11 +180,11 @@ public class EditProfileActivity extends AppCompatActivity {
                             addressEdit.setText(data.getString("address_string"));
 
 
-                            Log.d("ASDF",res.toString());
+                            //Log.d("ASDF",res.toString());
 
 
                         } catch (JSONException e) {
-                            Log.d("ASDF","ELEH");
+                            //Log.d("ASDF","ELEH");
                             e.printStackTrace();
                         }
 
@@ -209,12 +213,12 @@ public class EditProfileActivity extends AppCompatActivity {
 
                             if(networkResponse.statusCode != 401){
 
-                                Log.d("ASDF","SHIT");
+                                //Log.d("ASDF","SHIT");
 
                             }
 
                         }
-
+                        finish();
 
 
                     }
@@ -246,6 +250,11 @@ public class EditProfileActivity extends AppCompatActivity {
 
         String url = Connector.getURL() +"/api/v1/student/update";
 
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
+
+
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, url,
                 new Response.Listener<String>() {
                     @Override
@@ -254,7 +263,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         try {
                             JSONObject res = new JSONObject(response);
 //                            String name = String.valueOf(res.get("name"));
-                            Log.d("ASDF", "YOSAH + \n"+res.toString() );
+                            //Log.d("ASDF", "YOSAH + \n"+res.toString() );
 
                             SharedPreferences sharedPreferences = getSharedPreferences("profile", Context.MODE_PRIVATE);
 
@@ -267,7 +276,7 @@ public class EditProfileActivity extends AppCompatActivity {
                             editor.putString("fullname",firstNameEdit.getText().toString() + " " + lastNameEdit.getText().toString());
                             editor.apply();
 
-
+                            Toast.makeText(EditProfileActivity.this, "Success", Toast.LENGTH_SHORT).show();
                             finish();
 
                         } catch (JSONException e) {

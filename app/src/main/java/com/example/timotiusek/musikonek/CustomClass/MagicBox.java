@@ -105,7 +105,7 @@ public class MagicBox {
                 + "," + "\"" + MagicBox.days[6] +  "\":[" + MagicBox.dateStartEndFormatter(new Date(0,0,0,10,0,0), new Date(0,0,0,13,0,0)) + ", " + MagicBox.dateStartEndFormatter(new Date(0,0,0,17,30,0), new Date(0,0,0,20,0,0)) + "]}");
 
         JSONObject schedule = MagicBox.abrakadabra(scheduleFromServer, appointmentFromServer);
-        Log.d("DEBUG", schedule.toString());
+        //Log.d("DEBUG", schedule.toString());
     } catch (Exception e) {
         e.printStackTrace();
     }
@@ -151,7 +151,7 @@ public class MagicBox {
                 "\"" + MagicBox.days[6] + "\":[1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]}");
         int[] schedule = MagicBox.alakazam(dataFromClient);
         for(int i = 0; i < schedule.length; i++) {
-            Log.d("DEBUG", schedule[i] + "");
+            //Log.d("DEBUG", schedule[i] + "");
         }
     } catch (Exception e) {
         e.printStackTrace();

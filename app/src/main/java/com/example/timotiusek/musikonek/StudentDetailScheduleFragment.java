@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -102,12 +103,21 @@ public class StudentDetailScheduleFragment extends Fragment {
         }
 
 
+
+
         RequestQueue requestQueue;
         Cache cache = new DiskBasedCache(getContext().getCacheDir(), 1024 * 1024); // 1MB cap
         final Network network = new BasicNetwork(new HurlStack());
         requestQueue = new RequestQueue(cache, network);
         requestQueue.start();
         String url = Connector.getURL() +"/api/v1/appointment/getAppointments?token="+token+"&course_id="+ta.getCourseID();
+        Log.d("ASDF",url);
+
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getActivity().getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
+
+
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -116,17 +126,19 @@ public class StudentDetailScheduleFragment extends Fragment {
                     public void onResponse(String response) {
 
                         try {
+                            dialog.dismiss();
                             JSONObject res = new JSONObject(response);
                             Log.d("ASDF",res.toString());
                             JSONArray arr = res.getJSONArray("data");
 
+
+                            schedules.clear();
                             for(int i=0;i<arr.length();i++){
 
 
-                                schedules.clear();
 
                                 JSONObject jo =  arr.getJSONObject(i);
-
+                                Log.d("ASDF","added "+arr.length());
                                 schedules.add(new Schedule("Pertemuan " + String.valueOf(i+1), TextFormater.formatTime(jo.getString("appointment_time"))));
 //                                schedules.add(new Schedule(R.drawable.avatar, student.getCourseName(), "Pertemuan "+(i+1), TextFormater.formatTime(jo.getString("appointment_time")), jo.getString("appointment_id"), jo.getBoolean("attendance_teacher")));
 
@@ -136,7 +148,7 @@ public class StudentDetailScheduleFragment extends Fragment {
 
 
                         } catch (JSONException e) {
-                            Log.d("ASDF","Fail");
+                            //Log.d("ASDF","Fail");
                             e.printStackTrace();
                         }
 
@@ -150,8 +162,9 @@ public class StudentDetailScheduleFragment extends Fragment {
                         NetworkResponse networkResponse = error.networkResponse;
 
                         if(networkResponse == null){
-
-                            Toast.makeText(getContext(), "Connection Error",Toast.LENGTH_SHORT).show();
+                            if(getContext()!=null){
+                                Toast.makeText(getContext(), "Connection Error",Toast.LENGTH_SHORT).show();
+                            }
 
                         }else{
                             int a = networkResponse.statusCode;
@@ -166,11 +179,13 @@ public class StudentDetailScheduleFragment extends Fragment {
 
                             if(networkResponse.statusCode != 401){
 
-                                Log.d("ASDF","SHIT");
+                                //Log.d("ASDF","SHIT");
 
                             }
 
                         }
+
+                        getActivity().finish();
 
 
 

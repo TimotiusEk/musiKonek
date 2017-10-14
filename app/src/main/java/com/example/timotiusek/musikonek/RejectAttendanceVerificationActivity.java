@@ -70,15 +70,18 @@ public class RejectAttendanceVerificationActivity extends AppCompatActivity {
         requestQueue = new RequestQueue(cache, network);
         requestQueue.start();
         String url = Connector.getURL() +"/api/v1/appointment/rejectAttendanceStudent";
-        Log.d("ASDF",url);
+        //Log.d("ASDF",url);
 
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("ASDF","SUCCESS");
+                        //Log.d("ASDF","SUCCESS");
                         setResult(RESULT_OK);
                         RejectAttendanceVerificationActivity.this.finish();
                     }
@@ -86,7 +89,7 @@ public class RejectAttendanceVerificationActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        dialog.dismiss();
                         NetworkResponse networkResponse = error.networkResponse;
 
                         if(networkResponse == null){

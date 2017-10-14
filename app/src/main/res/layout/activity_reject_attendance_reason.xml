@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="15dp"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alasan Menolak"
+        android:textColor="#b7b7b7"
+        android:layout_marginTop="30dp"
+        android:layout_weight="0"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/comment_text_view__reject_attendance_reason_act"
+        android:layout_weight="1"
+        android:text="-Lebih berkonsentrasi saat latihan \n -Jangan terlalu banyak istirahat"/>
+
+    <Button
+        android:id="@+id/back_button__reject_attendance_reason_act"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/round_btn"
+        android:text="Tutup"
+        android:textColor="@android:color/white"
+        android:layout_weight="0"/>
+
+</LinearLayout>

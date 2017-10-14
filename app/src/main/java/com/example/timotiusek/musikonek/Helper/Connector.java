@@ -8,7 +8,8 @@ public class Connector {
 
 //    private static String URL = "http://192.168.0.107:3000";
 
-    private static String URL = "http://192.168.0.14:3000";
+    private static String URL = "http://192.168.0.105:3000";
+//    private static String URL = "http://172.18.1.131:3000";
 
     public static String getURL(){
         return URL;

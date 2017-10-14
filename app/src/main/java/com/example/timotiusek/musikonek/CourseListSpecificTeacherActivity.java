@@ -97,7 +97,7 @@ public class CourseListSpecificTeacherActivity extends AppCompatActivity {
                 extras.putString("skill_id",courses.get(position).getSkillID());
 
 //                extras.putString("teacher_id",CourseListSpecificTeacherActivity.this.getIntent().getExtras().getString("teacher_id"));
-//                Log.d("DEBUG", "Angkanya: " + CourseListSpecificTeacherActivity.this.getIntent().getExtras().getString("teacher_id"));
+//                //Log.d("DEBUG", "Angkanya: " + CourseListSpecificTeacherActivity.this.getIntent().getExtras().getString("teacher_id"));
                 intent.putExtras(extras);
 
                 startActivity(intent);
@@ -138,6 +138,10 @@ public class CourseListSpecificTeacherActivity extends AppCompatActivity {
 
         String url = Connector.getURL() +"/api/v1/program/list?skill_teacher_id="+id+"&token="+token;
 
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -145,10 +149,10 @@ public class CourseListSpecificTeacherActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
-
+                            dialog.dismiss();
                             courses.clear();
 
-                            Log.d("ASDF",response);
+                            //Log.d("ASDF",response);
 
                             JSONObject res = new JSONObject(response);
 //                            String name = String.valueOf(res.get("name"));
@@ -173,15 +177,15 @@ public class CourseListSpecificTeacherActivity extends AppCompatActivity {
 
                                 courseAdapter.notifyDataSetChanged();
 
-                                Log.d("ASDF","yes data + length "+ courses.size());
+                                //Log.d("ASDF","yes data + length "+ courses.size());
 
                             }
 
-                            Log.d("ASDF",res.toString());
+                            //Log.d("ASDF",res.toString());
 
 
                         } catch (JSONException e) {
-                            Log.d("ASDF","ELEH");
+                            //Log.d("ASDF","ELEH");
                             e.printStackTrace();
                         }
 
@@ -210,11 +214,13 @@ public class CourseListSpecificTeacherActivity extends AppCompatActivity {
 
                             if(networkResponse.statusCode != 401){
 
-                                Log.d("ASDF","SHIT");
+                                //Log.d("ASDF","SHIT");
 
                             }
 
                         }
+
+                        finish();
 
 
 

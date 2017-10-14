@@ -55,10 +55,10 @@ public class AppointmentListFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_appointment_list_fragment, container, false);
         ButterKnife.bind(this, view);
 
-        Log.d("ASDF",ta.getCourseName() + " id is " + ta.getCourseID());
+        //Log.d("ASDF","What you want" + ta.getCourseName() + " id is " + ta.getCourseID());
 
         ma = (ActiveCourseActivity) getActivity();
-        ma.getSupportActionBar().setTitle(ta.getStudentName());
+        ma.getSupportActionBar().setTitle(ta.getCourseName());
 //        ma.clearCheckedItems();
         /**
          * todo : tentuin set checknya
@@ -68,7 +68,7 @@ public class AppointmentListFragment extends Fragment {
         viewPager.setAdapter(new AppointmentListFragment.MyAdapter(getChildFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
 
-        Log.d("ASDF","course name here is " + ta.getCourseName());
+        //Log.d("ASDF","course name here is " + ta.getCourseName());
 
         viewPager.setCurrentItem(0);
         // Inflate the layout for this fragment

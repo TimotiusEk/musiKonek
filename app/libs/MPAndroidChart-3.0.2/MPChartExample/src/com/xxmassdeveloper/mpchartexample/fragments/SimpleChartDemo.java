@@ -43,7 +43,7 @@ public class SimpleChartDemo extends DemoBase {
             
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+                dia//Log.dismiss();
             }
         });
         b.show();

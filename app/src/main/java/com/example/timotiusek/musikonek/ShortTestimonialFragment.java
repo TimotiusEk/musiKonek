@@ -115,14 +115,18 @@ public class ShortTestimonialFragment extends Fragment {
         requestQueue = new RequestQueue(cache, network);
         requestQueue.start();
         String url = Connector.getURL() +"/api/v1/course/rate";
-        Log.d("ASDF",url);
+        //Log.d("ASDF",url);
 
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getActivity().getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        dialog.dismiss();
                         Toast.makeText(getActivity(),"Success", Toast.LENGTH_SHORT).show();
                         EditText commentEdit = (EditText) getView().findViewById(R.id.edit_comment__short_testimonial_fra);
                         TextView commentView = (TextView) getView().findViewById(R.id.comment__short_testimonial_fra);
@@ -163,7 +167,7 @@ public class ShortTestimonialFragment extends Fragment {
 
                         }
 
-
+                        getActivity().finish();
 
                     }
                 }){
@@ -237,15 +241,21 @@ public class ShortTestimonialFragment extends Fragment {
 
         String url = Connector.getURL() +"/api/v1/course/rating?token="+token+"&course_id="+ta.getCourseID();
 
-        Log.d("ASDF",url);
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getActivity().getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
+
+
+        //Log.d("ASDF",url);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("ASDF",response);
+                        //Log.d("ASDF",response);
 
                         try {
+                            dialog.dismiss();
                             JSONObject all = new JSONObject(response);
                             JSONObject res  = all.getJSONObject("data");
 
@@ -298,6 +308,8 @@ public class ShortTestimonialFragment extends Fragment {
                             }
 
                         }
+
+                        getActivity().finish();
 
 
 
