@@ -94,7 +94,7 @@ public class AttendanceVerificationActivity extends AppCompatActivity {
         //Log.d("ASDF",url);
 
         final DelayedProgressDialog dialog = new DelayedProgressDialog();
-        dialog.show(getSupportFragmentManager(),"loading");
+        dialog.show(getSupportFragmentManager(),"loading1");
         dialog.setCancelable(false);
 
 

@@ -39,7 +39,7 @@ public class AttendanceFragment extends Fragment {
 
         ma = (MainActivity) getActivity();
         ma.setTitle("Attendance");
-        ma.setChecked(R.id.menu_attendance);
+//        ma.setChecked(R.id.menu_attendance);
 
         viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);

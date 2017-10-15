@@ -79,7 +79,6 @@ public class RejectAttendanceReasonActivity extends AppCompatActivity {
 
         final DelayedProgressDialog dialog = new DelayedProgressDialog();
         dialog.show(getSupportFragmentManager(),"loading");
-        dialog.setCancelable(false);
 
         //Log.d("ASDF",url);
 

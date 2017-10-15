@@ -39,13 +39,133 @@ public class ReportDetailActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Detil Laporan");
         ButterKnife.bind(this);
 
-        loadReport();
+        Bundle params = getIntent().getExtras();
+        if(params.getString("courseID").equals("")){
+            loadReport();
+        }else{
+            loadMostRecentReport();
+        }
+
 
     }
 
     @OnClick(R.id.close_btn__report_detail_act)
     void back(){
         super.onBackPressed();
+    }
+
+    private void loadMostRecentReport(){
+
+        RequestQueue requestQueue;
+        Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024); // 1MB cap
+        final Network network = new BasicNetwork(new HurlStack());
+        requestQueue = new RequestQueue(cache, network);
+        requestQueue.start();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("profile", Context.MODE_PRIVATE);
+
+        String token ="";
+        if(!sharedPreferences.getString("token","").equals("")) {
+            token = sharedPreferences.getString("token","");
+        }
+
+        Intent incoming = getIntent();
+
+        Bundle params = incoming.getExtras();
+        String courseID = params.getString("courseID");
+
+
+        String url = Connector.getURL() +"/api/v1/report/showReport?token="+token+"&course_id="+courseID;
+
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getSupportFragmentManager(),"loading");
+        //dialog.setCancelable(false);
+
+
+        Log.d("ASDF",url);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //Log.d("ASDF",response);
+                        dialog.dismiss();
+                        try {
+                            JSONObject all = new JSONObject(response);
+                            JSONObject res  = all.getJSONObject("data");
+
+                            String homework = res.getString("homework");
+                            String teacherRemark = res.getString("teacher_remark");
+                            String practice = res.getString("practice");
+
+                            TextView showHomework = (TextView) findViewById(R.id.homework_text_view);
+                            TextView showComment = (TextView) findViewById(R.id.comment_text_view);
+                            TextView showExercises = (TextView) findViewById(R.id.practice_text_view);
+
+                            showHomework.setText(homework);
+                            showComment.setText(teacherRemark);
+                            showExercises.setText(practice);
+
+//                            showDate.setText(TextFormater.formatDateSpacing(res.getString("date")));
+//                            showTime.setText("Jam " +res.getString("time"));
+
+                        } catch (JSONException e) {
+                            Toast.makeText(ReportDetailActivity.this, "There Are no Recent Report", Toast.LENGTH_SHORT).show();
+                            ReportDetailActivity.this.finish();
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        NetworkResponse networkResponse = error.networkResponse;
+
+                        if(networkResponse == null){
+
+                            Toast.makeText(ReportDetailActivity.this, "Connection Error",Toast.LENGTH_SHORT).show();
+
+                        }else{
+                            int a = networkResponse.statusCode;
+                            if(networkResponse.statusCode == 401){
+                            }
+
+                            if(networkResponse.statusCode == 500){
+                                Toast.makeText(ReportDetailActivity.this, "ERROR",Toast.LENGTH_SHORT).show();
+                            }
+
+                            if(networkResponse.statusCode != 401){
+
+
+                            }
+
+                        }
+
+                        finish();
+
+                    }
+                }){
+
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                int mStatusCode = response.statusCode;
+                return super.parseNetworkResponse(response);
+            }
+
+        };
+
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(stringRequest);
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        requestQueue.add(stringRequest);
+
     }
 
     private void loadReport(){
@@ -73,7 +193,7 @@ public class ReportDetailActivity extends AppCompatActivity {
 
         final DelayedProgressDialog dialog = new DelayedProgressDialog();
         dialog.show(getSupportFragmentManager(),"loading");
-        dialog.setCancelable(false);
+        //dialog.setCancelable(false);
 
 
         //Log.d("ASDF",url);

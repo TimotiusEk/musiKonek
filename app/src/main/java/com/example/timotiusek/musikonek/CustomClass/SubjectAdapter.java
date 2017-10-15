@@ -142,7 +142,7 @@ public class SubjectAdapter extends BaseAdapter {
                                 switch (menuItem.getItemId()) {
                                     case R.id.look_report_menu:
                                     //                startActivity(new Intent(getActivity(), ReportDetailActivity.class));
-                                        Toast.makeText(activity, "Lihat Laporan " + subject.getName(), Toast.LENGTH_LONG).show();
+//                                        Toast.makeText(activity, "Lihat Laporan " + subject.getName(), Toast.LENGTH_LONG).show();
 
                                         Intent intent = new Intent(activity, ReportDetailActivity.class);
                                         Bundle bundle = new Bundle();

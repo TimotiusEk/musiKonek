@@ -16,6 +16,7 @@ import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
+import com.example.timotiusek.musikonek.DelayedProgressDialog;
 import com.example.timotiusek.musikonek.Helper.Connector;
 import com.example.timotiusek.musikonek.Helper.ShaConverter;
 import com.example.timotiusek.musikonek.PlanAppointmentActivity;
@@ -47,10 +48,15 @@ public class SetScheduleController {
 
         String url = Connector.getURL() +"/api/v1/course/studentRequestCourse";
 
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(activity.getSupportFragmentManager(),"loading");
+        dialog.setCancelable(false);
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        dialog.dismiss();
                         try {
                             JSONObject status = new JSONObject(response);
                             if(status.getBoolean("success")) {
@@ -77,6 +83,7 @@ public class SetScheduleController {
                         } else {
                             Toast.makeText(context, "Unknown error: " + error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
                         }
+                        dialog.dismiss();
                     }
                 }) {
             @Override

@@ -243,7 +243,6 @@ public class ShortTestimonialFragment extends Fragment {
 
         final DelayedProgressDialog dialog = new DelayedProgressDialog();
         dialog.show(getActivity().getSupportFragmentManager(),"loading");
-        dialog.setCancelable(false);
 
 
         //Log.d("ASDF",url);

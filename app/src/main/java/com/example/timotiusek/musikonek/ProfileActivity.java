@@ -96,7 +96,7 @@ public class ProfileActivity extends AppCompatActivity {
         String url = Connector.getURL() +"/api/v1/student/getProfileData?token="+token;
         final DelayedProgressDialog dialog = new DelayedProgressDialog();
         dialog.show(getSupportFragmentManager(),"loading");
-        dialog.setCancelable(false);
+        //dialog.setCancelable(false);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {

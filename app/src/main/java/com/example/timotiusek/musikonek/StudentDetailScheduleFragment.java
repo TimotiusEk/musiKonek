@@ -114,19 +114,15 @@ public class StudentDetailScheduleFragment extends Fragment {
         Log.d("ASDF",url);
 
         final DelayedProgressDialog dialog = new DelayedProgressDialog();
-        dialog.show(getActivity().getSupportFragmentManager(),"loading");
-        dialog.setCancelable(false);
-
-
-
+        dialog.show(getChildFragmentManager(),"loading");
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
+                        dialog.cancel();
                         try {
-                            dialog.dismiss();
                             JSONObject res = new JSONObject(response);
                             Log.d("ASDF",res.toString());
                             JSONArray arr = res.getJSONArray("data");

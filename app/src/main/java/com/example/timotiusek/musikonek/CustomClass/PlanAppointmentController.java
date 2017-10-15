@@ -57,7 +57,6 @@ public class PlanAppointmentController {
 
         final DelayedProgressDialog dialog = new DelayedProgressDialog();
         dialog.show(activity.getSupportFragmentManager(),"loading");
-        dialog.setCancelable(false);
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,

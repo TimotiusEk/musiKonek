@@ -177,7 +177,7 @@ public class ShowAttendanceFragment extends Fragment {
 
         final DelayedProgressDialog dialog = new DelayedProgressDialog();
         dialog.show(getActivity().getSupportFragmentManager(),"loading");
-        dialog.setCancelable(false);
+        //dialog.setCancelable(false);
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,

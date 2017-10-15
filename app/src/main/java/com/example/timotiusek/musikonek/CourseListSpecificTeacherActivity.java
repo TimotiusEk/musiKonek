@@ -140,7 +140,7 @@ public class CourseListSpecificTeacherActivity extends AppCompatActivity {
 
         final DelayedProgressDialog dialog = new DelayedProgressDialog();
         dialog.show(getSupportFragmentManager(),"loading");
-        dialog.setCancelable(false);
+        //dialog.setCancelable(false);
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,

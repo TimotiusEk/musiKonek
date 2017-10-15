@@ -134,9 +134,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.menu_home) {
             changeFragment(new HomeFragment());
-        } else if (id == R.id.menu_attendance) {
-            changeFragment(new AttendanceFragment());
-        } else if (id == R.id.menu_course) {
+//        } else if (id == R.id.menu_attendance) {
+//            changeFragment(new AttendanceFragment());
+//        }
+        }else if (id == R.id.menu_course) {
             changeFragment(new BrowseFragment());
         } else if (id == R.id.menu_profile) {
             Intent intent = new Intent(this, ProfileActivity.class);

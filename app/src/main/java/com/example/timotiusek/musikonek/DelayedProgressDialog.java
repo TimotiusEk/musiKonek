@@ -14,8 +14,11 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.ProgressBar;
+
+import java.util.concurrent.Delayed;
 
 /*
  * Copyright 2017 Qi Li
@@ -43,9 +46,15 @@ public class DelayedProgressDialog extends DialogFragment {
     private long mStartMillisecond;
     private long mStopMillisecond;
 
+    FragmentManager fm;
+
     // default constructor. Needed so rotation doesn't crash
     public DelayedProgressDialog() {
         super();
+    }
+
+    static public DelayedProgressDialog newInstance(){
+        return new DelayedProgressDialog();
     }
 
     @NonNull
@@ -76,7 +85,7 @@ public class DelayedProgressDialog extends DialogFragment {
         mStartMillisecond = System.currentTimeMillis();
         startedShowing = false;
         mStopMillisecond = Long.MAX_VALUE;
-
+        this.fm =fm;
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -127,5 +136,16 @@ public class DelayedProgressDialog extends DialogFragment {
             }
         }, DELAY_MILLISECOND);
     }
+
+    public boolean fragmentManagerIsNull(){
+        if(getActivity() != null){
+            Log.d("ASDF","fragment manager is there");
+            return false;
+        }else{
+            Log.d("ASDF","fragment manager is not there");
+            return true;
+        }
+    }
+
 }
 

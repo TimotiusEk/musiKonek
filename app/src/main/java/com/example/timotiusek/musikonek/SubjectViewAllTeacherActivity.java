@@ -130,14 +130,15 @@ public class SubjectViewAllTeacherActivity extends AppCompatActivity {
 
         final DelayedProgressDialog dialog = new DelayedProgressDialog();
         dialog.show(getSupportFragmentManager(),"loading");
-        dialog.setCancelable(false);
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        dialog.dismiss();
+                        if(!dialog.fragmentManagerIsNull()){
+                            dialog.dismiss();
+                        }
                         try {
 
                             //Log.d("ASDF",response);

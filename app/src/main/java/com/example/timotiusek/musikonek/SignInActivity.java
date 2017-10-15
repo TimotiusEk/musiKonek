@@ -77,6 +77,10 @@ public class SignInActivity extends AppCompatActivity {
         requestQueue.start();
         String url = Connector.getURL() +"/api/v1/checktoken?token="+token;
 
+        final DelayedProgressDialog dialog = new DelayedProgressDialog();
+        dialog.show(getSupportFragmentManager(),"loading");
+//        dialog.setCancelable(false);
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -108,6 +112,7 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         NetworkResponse networkResponse = error.networkResponse;
+                        dialog.dismiss();
                         if(networkResponse == null){
                             Toast.makeText(SignInActivity.this, "Connection Error",Toast.LENGTH_SHORT).show();
                         }else{

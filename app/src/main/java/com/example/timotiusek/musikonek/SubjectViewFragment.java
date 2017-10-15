@@ -177,15 +177,18 @@ public class SubjectViewFragment extends Fragment {
         requestQueue.start();
         String url = Connector.getURL() +"/api/v1/course/getOngoingCourseByStudentId?token="+token;
         final DelayedProgressDialog dialog = new DelayedProgressDialog();
-        dialog.show(getActivity().getSupportFragmentManager(),"loading");
-        dialog.setCancelable(false);
-
+        dialog.show(getChildFragmentManager(),"loading2");
+        //dialog.setCancelable(false);
+        Log.d("ASDF",url);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        dialog.dismiss();
+
+
+                            dialog.dismiss();
+
                         try {
                             JSONObject res = new JSONObject(response);
 
@@ -270,8 +273,8 @@ public class SubjectViewFragment extends Fragment {
         graduatedSubjectAdapter = new SubjectAdapter(graduatedSubjects, getActivity(), "GRADUATED", getActivity());
         existingSubjectListView.setAdapter(graduatedSubjectAdapter);
         subjects = new ArrayList<>();
-        subjects.add(new Subject(R.drawable.avatar, 12, "17 March 2017", R.drawable.guitar, "GUITAR", "Bu Marilyn","12"));
-        subjects.add(new Subject(R.drawable.avatar, 120, "1 April 2016", R.drawable.bass, "BASS", "Pak Monroe","13"));
+//        subjects.add(new Subject(R.drawable.avatar, 12, "17 March 2017", R.drawable.guitar, "GUITAR", "Bu Marilyn","12"));
+//        subjects.add(new Subject(R.drawable.avatar, 120, "1 April 2016", R.drawable.bass, "BASS", "Pak Monroe","13"));
         subjectAdapter = new SubjectAdapter(subjects, getActivity(), "GRADUATED", getActivity());
         existingSubjectListView.setAdapter(subjectAdapter);
 
@@ -300,7 +303,7 @@ public class SubjectViewFragment extends Fragment {
 
         final DelayedProgressDialog dialog = new DelayedProgressDialog();
         dialog.show(getActivity().getSupportFragmentManager(),"loading");
-        dialog.setCancelable(false);
+//        dialog.setCancelable(false);
 
 
         String url = Connector.getURL() +"/api/v1/course/getGraduatedCourseByStudentId?token="+token;
@@ -310,10 +313,11 @@ public class SubjectViewFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        dialog.cancel();
 
                         try {
                             //Log.d("ASDF",response);
-                            dialog.dismiss();
+
                             JSONObject res = new JSONObject(response);
 
                             JSONArray arr = res.getJSONArray("data");
