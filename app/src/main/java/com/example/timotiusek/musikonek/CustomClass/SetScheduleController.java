@@ -52,11 +52,13 @@ public class SetScheduleController {
         dialog.show(activity.getSupportFragmentManager(),"loading");
         dialog.setCancelable(false);
 
+        Log.d("ASDF", url);
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        dialog.dismiss();
+                        dialog.cancel();
                         try {
                             JSONObject status = new JSONObject(response);
                             if(status.getBoolean("success")) {
@@ -83,7 +85,7 @@ public class SetScheduleController {
                         } else {
                             Toast.makeText(context, "Unknown error: " + error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
                         }
-                        dialog.dismiss();
+                        dialog.cancel();
                     }
                 }) {
             @Override

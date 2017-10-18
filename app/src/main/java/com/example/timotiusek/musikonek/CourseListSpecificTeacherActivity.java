@@ -148,8 +148,8 @@ public class CourseListSpecificTeacherActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
+                        dialog.cancel();
                         try {
-                            dialog.dismiss();
                             courses.clear();
 
                             //Log.d("ASDF",response);

@@ -136,9 +136,8 @@ public class SubjectViewAllTeacherActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if(!dialog.fragmentManagerIsNull()){
-                            dialog.dismiss();
-                        }
+                        dialog.cancel();
+
                         try {
 
                             //Log.d("ASDF",response);

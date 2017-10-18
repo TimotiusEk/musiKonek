@@ -126,7 +126,7 @@ public class ShortTestimonialFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        dialog.dismiss();
+                        dialog.cancel();
                         Toast.makeText(getActivity(),"Success", Toast.LENGTH_SHORT).show();
                         EditText commentEdit = (EditText) getView().findViewById(R.id.edit_comment__short_testimonial_fra);
                         TextView commentView = (TextView) getView().findViewById(R.id.comment__short_testimonial_fra);
@@ -254,7 +254,7 @@ public class ShortTestimonialFragment extends Fragment {
                         //Log.d("ASDF",response);
 
                         try {
-                            dialog.dismiss();
+                            dialog.cancel();
                             JSONObject all = new JSONObject(response);
                             JSONObject res  = all.getJSONObject("data");
 

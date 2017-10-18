@@ -63,7 +63,7 @@ public class PlanAppointmentController {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        dialog.dismiss();
+                        dialog.cancel();
                         try {
                             JSONObject responseJSON = new JSONObject(response);
                             JSONArray data = responseJSON.optJSONArray("data");

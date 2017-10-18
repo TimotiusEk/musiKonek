@@ -112,7 +112,7 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         NetworkResponse networkResponse = error.networkResponse;
-                        dialog.dismiss();
+                        dialog.cancel();
                         if(networkResponse == null){
                             Toast.makeText(SignInActivity.this, "Connection Error",Toast.LENGTH_SHORT).show();
                         }else{
@@ -215,7 +215,7 @@ public class SignInActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        dialog.dismiss();
+                        dialog.cancel();
                         NetworkResponse networkResponse = error.networkResponse;
 
                         if(networkResponse == null){

@@ -187,10 +187,12 @@ public class SubjectViewFragment extends Fragment {
                     public void onResponse(String response) {
 
 
-                            dialog.dismiss();
+                            dialog.cancel();
 
                         try {
                             JSONObject res = new JSONObject(response);
+
+                            Log.d("ASDF","response is " + response);
 
                             JSONArray arr = res.getJSONArray("data");
 
@@ -198,7 +200,7 @@ public class SubjectViewFragment extends Fragment {
                                 JSONObject jo =  arr.getJSONObject(i);
 
                                 String instrument = jo.getString("name");
-                                String teacherName = jo.getString("teacher_name");
+                                String teacherName = jo.getString("fullname");
                                 String id = jo.getString("course_id");
 //                                String date = jo.getString("date_created");
 

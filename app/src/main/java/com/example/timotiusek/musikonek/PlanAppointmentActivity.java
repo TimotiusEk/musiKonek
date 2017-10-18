@@ -137,7 +137,19 @@ public class PlanAppointmentActivity extends AppCompatActivity {
                 if((schedule[i] & (courseLength << j)) == (courseLength << j)) {
                     Date s_time = new Time(7, j*30, 0);
                     Date e_time = new Time(7, j*30 + duration, 0);
-                    a.add(MagicBox.dateStartEndFormatter(s_time, e_time));
+
+                    String firstMinute = s_time.getMinutes()+"";
+                    if(firstMinute.length()==1){
+                        firstMinute += "0";
+                    }
+
+                    String secondMinute = e_time.getMinutes()+"";
+                    if(secondMinute.length()==1){
+                        secondMinute += "0";
+                    }
+
+                    a.add(s_time.getHours()+"."+firstMinute + " - " + e_time.getHours()+"."+secondMinute );
+//                    a.add(MagicBox.dateStartEndFormatter(s_time, e_time));
                 }
             }
             output.add(a);

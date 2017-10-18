@@ -75,7 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        dialog.dismiss();
+                        dialog.cancel();
                         try {
                             JSONObject res = new JSONObject(response);
 //                            String name = String.valueOf(res.get("name"));
@@ -92,7 +92,7 @@ public class SignUpActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        dialog.dismiss();
+                        dialog.cancel();
 
                         NetworkResponse networkResponse = error.networkResponse;
 

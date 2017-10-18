@@ -102,7 +102,7 @@ public class ProfileActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        dialog.dismiss();
+                        dialog.cancel();
                         try {
                             JSONObject res = new JSONObject(response);
 //                            String name = String.valueOf(res.get("name"));

@@ -89,7 +89,7 @@ public class ReportDetailActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         //Log.d("ASDF",response);
-                        dialog.dismiss();
+                        dialog.cancel();
                         try {
                             JSONObject all = new JSONObject(response);
                             JSONObject res  = all.getJSONObject("data");
@@ -203,7 +203,7 @@ public class ReportDetailActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         //Log.d("ASDF",response);
-                        dialog.dismiss();
+                        dialog.cancel();
                         try {
                             JSONObject all = new JSONObject(response);
                             JSONObject res  = all.getJSONObject("data");

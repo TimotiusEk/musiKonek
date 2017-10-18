@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 /**
  * Created by wilbe on 06/07/2017.
@@ -87,8 +88,10 @@ public class DateFormatter {
 
     public static String setScheduleFormatter(Date date){
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-        return dayNameOf(date.getYear(), date.getMonth(), date.getDate()) + ", "+simpleDateFormat.format(date);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/", Locale.ENGLISH);
+        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat(" hh:mm", Locale.ENGLISH);
+        Log.d("ASDF", "YEAR"+date.getYear()+"After"+simpleDateFormat.format(date));
+        return dayNameOf(date.getYear(), date.getMonth(), date.getDate()) + ", "+simpleDateFormat.format(date)+date.getYear()+simpleDateFormat2.format(date);
     }
 
     public static String dayNameOf(int year, int month, int date) {

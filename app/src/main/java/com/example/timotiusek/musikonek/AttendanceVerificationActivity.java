@@ -111,7 +111,7 @@ public class AttendanceVerificationActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
 
                         NetworkResponse networkResponse = error.networkResponse;
-                        dialog.dismiss();
+                        dialog.cancel();
 
                         if(networkResponse == null){
 

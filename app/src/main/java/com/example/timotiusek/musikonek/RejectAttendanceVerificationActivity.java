@@ -89,7 +89,7 @@ public class RejectAttendanceVerificationActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        dialog.dismiss();
+                        dialog.cancel();
                         NetworkResponse networkResponse = error.networkResponse;
 
                         if(networkResponse == null){
