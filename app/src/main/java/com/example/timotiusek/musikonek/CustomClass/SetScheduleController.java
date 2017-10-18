@@ -28,7 +28,9 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,17 +85,18 @@ public class SetScheduleController {
             protected Map<String,String> getParams(){
                 Map<String,String> reqBody = new HashMap<String, String>();
                 JSONArray appointmentTime = new JSONArray();
-                Date[] appointmentDates = activity.getAppointmentDates();
+                GregorianCalendar[] appointmentDates = activity.getAppointmentDates();
                 for(int i = 0; i < appointmentDates.length; i++){
-                    appointmentTime.put(appointmentDates[i].getYear()+"-"+appointmentDates[i].getMonth()+"-"+
-                            appointmentDates[i].getDay()+" "+appointmentDates[i].getHours()+":"+appointmentDates[i].getMinutes()+ ":00");
+                    appointmentTime.put(appointmentDates[i].get(Calendar.YEAR)+"-"+(appointmentDates[i].get(Calendar.MONTH)+1)+"-"+
+                            appointmentDates[i].get(Calendar.DATE)+" "+appointmentDates[i].get(Calendar.HOUR)+":"+
+                            appointmentDates[i].get(Calendar.MINUTE)+ ":00");
                 }
 
                 reqBody.put("token", context.getSharedPreferences("profile", Context.MODE_PRIVATE).getString("token", ""));
                 reqBody.put("teacher_id", activity.getIntent().getExtras().getString("teacher_id"));
-                reqBody.put("appointment", activity.getIntent().getExtras().getString("appointments"));
+                reqBody.put("appointment", activity.getIntent().getExtras().getInt("appointments") + "");
                 reqBody.put("skill_id", activity.getIntent().getExtras().getString("skill_id"));
-                reqBody.put("course_duration_minute", activity.getIntent().getExtras().getString("duration_minute"));
+                reqBody.put("course_duration_minute", activity.getIntent().getExtras().getInt("duration_minute") + "");
                 reqBody.put("description", activity.getIntent().getExtras().getString("description"));
                 reqBody.put("appointment_time", appointmentTime.toString());
 

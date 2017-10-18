@@ -234,6 +234,7 @@ public class PlanAppointmentActivity extends AppCompatActivity {
 
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                        Log.d("DEBUG", year + "/" + monthOfYear + "/" + dayOfMonth);
                         if(isDateNotValid(year, monthOfYear, dayOfMonth)) {
                             String message = "Date must be either";
                             for(int day : ((CustomArrayAdapter) appointmentList.getAdapter()).selectedDays) {
