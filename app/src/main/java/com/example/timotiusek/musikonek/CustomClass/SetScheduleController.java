@@ -94,15 +94,16 @@ public class SetScheduleController {
                 JSONArray appointmentTime = new JSONArray();
                 Date[] appointmentDates = activity.getAppointmentDates();
                 for(int i = 0; i < appointmentDates.length; i++){
-                    appointmentTime.put(appointmentDates[i].getYear()+"-"+appointmentDates[i].getMonth()+"-"+
+                    appointmentTime.put(appointmentDates[i].getYear()+"-"+(appointmentDates[i].getMonth()+1)+"-"+
                             appointmentDates[i].getDay()+" "+appointmentDates[i].getHours()+":"+appointmentDates[i].getMinutes()+ ":00");
                 }
+                Log.d("DEBUG", appointmentTime.toString());
 
                 reqBody.put("token", context.getSharedPreferences("profile", Context.MODE_PRIVATE).getString("token", ""));
                 reqBody.put("teacher_id", activity.getIntent().getExtras().getString("teacher_id"));
-                reqBody.put("appointment", activity.getIntent().getExtras().getString("appointments"));
+                reqBody.put("appointment", activity.getIntent().getExtras().getInt("appointments") + "");
                 reqBody.put("skill_id", activity.getIntent().getExtras().getString("skill_id"));
-                reqBody.put("course_duration_minute", activity.getIntent().getExtras().getString("duration_minute"));
+                reqBody.put("course_duration_minute", activity.getIntent().getExtras().getInt("duration_minute") + "");
                 reqBody.put("description", activity.getIntent().getExtras().getString("description"));
                 reqBody.put("appointment_time", appointmentTime.toString());
 
